@@ -86,7 +86,7 @@ export default function Site() {
     }
   };
 
-  const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbwd6VjcxNZLDMCoSk0385J0k1jwPBryIxb7l7AXNpnnGOxgjQNMFzgJuw5Ruz-bOHbw/exec";
+  const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbwN5toHbVHrm8ttu24Og7Hhqg9PigBJqYXdtLeiETembYRpqRZzYdP8A6hBb-aYUw1j/exec";
   const [form, setForm] = useState({ name:"", email:"", company:"", message:"", website:"" });
   const [status, setStatus] = useState({ type:"idle", note:"" });
 

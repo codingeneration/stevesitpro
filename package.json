@@ -1,7 +1,7 @@
 {
   "name": "stevesitpro",
   "private": true,
-  "version": "1.1.0",
+  "version": "1.2.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -14,9 +14,9 @@
     "lucide-react": "^0.453.0"
   },
   "devDependencies": {
-    "autoprefixer": "^10.4.20",
-    "postcss": "^8.4.47",
+    "vite": "^5.4.0",
     "tailwindcss": "^3.4.10",
-    "vite": "^5.4.0"
+    "postcss": "^8.4.47",
+    "autoprefixer": "^10.4.20"
   }
 }

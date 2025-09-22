@@ -96,18 +96,18 @@ export default function Site() {
     setStatus({ type:"sending" });
     try {
       const res = await fetch(WEB_APP_URL, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ source:"stevesitpro.com", ...form, timestamp:new Date().toISOString() }),
-      });
-      if (!res.ok) throw new Error(String(res.status));
-      setStatus({ type:"ok", note:"Thanks! We received your message." });
-      setForm({ name:"", email:"", company:"", message:"", website:"" });
-    } catch {
-      setStatus({ type:"error", note:"Submission failed. Try again or email us." });
-    }
-  };
-
+  method: "POST",
+  headers: { "Content-Type": "text/plain;charset=utf-8" }, // avoids CORS preflight
+  body: JSON.stringify({
+    name: form.name,
+    email: form.email,
+    company: form.company,
+    message: form.message,
+    website: form.website || "",   // honeypot
+    source: "stevesitpro.com"
+  }),
+});
+      
   const heroCTA = getHeroSecondaryCta(INTAKE_FORM_URL);
   const calendlyCTA = resolveLink(CALENDLY_URL);
   const formCTA = resolveLink(INTAKE_FORM_URL);

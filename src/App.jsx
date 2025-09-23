@@ -293,9 +293,15 @@ export default function App() {
             >
               Book a free consult <ArrowRight className="w-4 h-4" />
             </a>
-            <a href="#contact" className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white text-blue-600 border border-white">
-              Start discovery form <ArrowRight className="w-4 h-4" />
-            </a>
+           <a
+  href={INTAKE_FORM_URL}
+  target="_blank"
+  rel="noreferrer"
+  className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white text-blue-600 border border-white"
+>
+  Start discovery form <ArrowRight className="w-4 h-4" />
+</a>
+
           </div>
         </div>
       </section>

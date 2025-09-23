@@ -313,7 +313,7 @@ export default function App() {
             </div>
           ))}
         </div>
-        <div className="mt-3 text-xs text-slate-500">* Sample testimonials for layout only. Replace with real client reviews.</div>
+       
       </section>
 
       {/* Contact */}

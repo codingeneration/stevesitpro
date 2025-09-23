@@ -5,7 +5,7 @@ import { Check, Zap, Shield, Clock, ArrowRight, Mail, Phone, Quote } from "lucid
 const CONTACT_EMAIL = "steve@stevesitpro.com";
 const BUSINESS_PHONE = "TBD";
 const CALENDLY_URL = "#";                   // add later if you want
-const INTAKE_FORM_URL = "";                 // optional external intake form
+const INTAKE_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLScGj_hocIEBDevsfLjQlSHTX74xX78hrLmz2TUejaFRTTBkvQ/viewform?usp=header";                 // optional external intake form
 const WEB_APP_URL =
   "https://script.google.com/macros/s/AKfycbyevJvyyUv4wDkbCJuHkMJ18iRICrEyLpMtJ5x7r0U9-OG7ntO7tsNgFWAE_0sKN0KM/exec";
 

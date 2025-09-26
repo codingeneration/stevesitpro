@@ -138,8 +138,16 @@ export default function App() {
           source: "stevesitpro.com",
         }),
       });
-      setStatus({ type: "ok", note: "Thanks! We received your message." });
-      setForm({ name: "", email: "", company: "", message: "", website: "" });
+setStatus({ type: "ok", note: "Thanks! We received your message." });
+
+// GA4: contact form submission
+track("contact_form_submit", {
+  form_id: "contact",
+  method: "apps_script",
+  page_location: window.location.href,
+});
+
+setForm({ name: "", email: "", company: "", message: "", website: "" });
     } catch {
       setStatus({ type: "error", note: "Submission failed. Try again or email us." });
     }

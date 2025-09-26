@@ -146,7 +146,7 @@ export default function App() {
       <header className="sticky top-0 z-20 backdrop-blur bg-white/80 border-b border-slate-200">
         <div className="mx-auto max-w-7xl px-4 py-3 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <img src="/favicon.svg" alt="Logo" className="h-9 w-9 rounded-2xl p-0.5" />
+            <img src="/logo.png" alt="Steves IT Pro" className="h-10 w-auto rounded-2xl p-0.5" />
             <div className="font-semibold text-blue-600">Steve’s IT Pro</div>
           </div>
           <nav className="hidden md:flex items-center gap-6 text-sm">

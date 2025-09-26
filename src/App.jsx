@@ -10,6 +10,11 @@ const WEB_APP_URL =
   "https://script.google.com/macros/s/AKfycbyevJvyyUv4wDkbCJuHkMJ18iRICrEyLpMtJ5x7r0U9-OG7ntO7tsNgFWAE_0sKN0KM/exec";
 
 /* ---------- Helpers ---------- */
+function track(event, params = {}) {
+  if (typeof window !== "undefined" && window.gtag) {
+    window.gtag("event", event, params);
+  }
+}
 function resolveLink(url, fallback = "#contact") {
   const u = (url || "").trim();
   if (u && u !== "#") return { href: u, external: /^https?:\/\//.test(u) };

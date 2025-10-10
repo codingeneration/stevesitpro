@@ -4,12 +4,17 @@ import { Check, Zap, Shield, Clock, ArrowRight, Mail, Phone, Quote } from "lucid
 /* ---------- Config ---------- */
 const CONTACT_EMAIL = "steve@stevesitpro.com";
 const BUSINESS_PHONE = "TBD";
-const CALENDLY_URL = "#";                   // add later if you want
-const INTAKE_FORM_URL = "";                 // optional external intake form
+const CALENDLY_URL = "#";                      // add later if you want
+const INTAKE_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLScGj_hocIEBDevsfLjQlSHTX74xX78hrLmz2TUejaFRTTBkvQ/viewform?usp=header";                      // optional external intake form
 const WEB_APP_URL =
   "https://script.google.com/macros/s/AKfycbyevJvyyUv4wDkbCJuHkMJ18iRICrEyLpMtJ5x7r0U9-OG7ntO7tsNgFWAE_0sKN0KM/exec";
 
 /* ---------- Helpers ---------- */
+function track(event, params = {}) {
+  if (typeof window !== "undefined" && window.gtag) {
+    window.gtag("event", event, params);
+  }
+}
 function resolveLink(url, fallback = "#contact") {
   const u = (url || "").trim();
   if (u && u !== "#") return { href: u, external: /^https?:\/\//.test(u) };
@@ -133,8 +138,16 @@ export default function App() {
           source: "stevesitpro.com",
         }),
       });
-      setStatus({ type: "ok", note: "Thanks! We received your message." });
-      setForm({ name: "", email: "", company: "", message: "", website: "" });
+setStatus({ type: "ok", note: "Thanks! We received your message." });
+
+// GA4: contact form submission
+track("contact_form_submit", {
+  form_id: "contact",
+  method: "apps_script",
+  page_location: window.location.href,
+});
+
+setForm({ name: "", email: "", company: "", message: "", website: "" });
     } catch {
       setStatus({ type: "error", note: "Submission failed. Try again or email us." });
     }
@@ -146,11 +159,12 @@ export default function App() {
       <header className="sticky top-0 z-20 backdrop-blur bg-white/80 border-b border-slate-200">
         <div className="mx-auto max-w-7xl px-4 py-3 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <img src="/favicon.svg" alt="Logo" className="h-9 w-9 rounded-2xl p-0.5" />
+            <img src="/logo.png" alt="Steves IT Pro" className="h-10 w-auto rounded-2xl p-0.5" />
             <div className="font-semibold text-blue-600">Steve’s IT Pro</div>
           </div>
           <nav className="hidden md:flex items-center gap-6 text-sm">
             <a href="#services" className="hover:text-blue-600">Services</a>
+            <a href="#games" className="hover:text-blue-600">Games</a>
             <a href="#pricing" className="hover:text-blue-600">Pricing</a>
             <a href="#advantages" className="hover:text-blue-600">Why Us</a>
             <a href="#testimonials" className="hover:text-blue-600">Testimonials</a>
@@ -226,6 +240,28 @@ export default function App() {
         </div>
       </section>
 
+      {/* Interactive Training Games */}
+      <section id="games" className="mx-auto max-w-7xl px-4 py-6">
+        <h2 className="text-2xl font-bold text-blue-700">Interactive Training Games</h2>
+        <p className="mt-2 text-slate-600">Ready to test your knowledge? Try one of our interactive challenges to sharpen your skills!</p>
+        <div className="mt-6 grid md:grid-cols-2 gap-6">
+          <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm flex flex-col">
+            <h3 className="font-semibold text-lg text-green-600">Gmail Shortcut Challenge</h3>
+            <p className="mt-3 text-sm text-slate-700 flex-grow">Master Gmail's keyboard shortcuts and boost your productivity in this timed, competitive challenge.</p>
+            <a href="/gmail_shortcut_challenge.html" target="_blank" rel="noreferrer" className="mt-5 inline-flex items-center gap-2 w-full justify-center px-4 py-2 rounded-xl bg-blue-600 text-white">
+              Play Now <ArrowRight className="w-4 h-4" />
+            </a>
+          </div>
+          <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm flex flex-col">
+            <h3 className="font-semibold text-lg text-green-600">Workspace Migration Challenge</h3>
+            <p className="mt-3 text-sm text-slate-700 flex-grow">A fun quiz for users moving from Microsoft 365 to Google Workspace. Test your knowledge of app equivalents.</p>
+            <a href="/workspace_migration_game.html" target="_blank" rel="noreferrer" className="mt-5 inline-flex items-center gap-2 w-full justify-center px-4 py-2 rounded-xl bg-blue-600 text-white">
+              Play Now <ArrowRight className="w-4 h-4" />
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* Pricing */}
       <section id="pricing" className="mx-auto max-w-7xl px-4 py-10">
         <div className="flex items-end justify-between gap-6 flex-wrap">
@@ -293,9 +329,15 @@ export default function App() {
             >
               Book a free consult <ArrowRight className="w-4 h-4" />
             </a>
-            <a href="#contact" className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white text-blue-600 border border-white">
-              Start discovery form <ArrowRight className="w-4 h-4" />
-            </a>
+           <a
+  href={INTAKE_FORM_URL}
+  target="_blank"
+  rel="noreferrer"
+  className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white text-blue-600 border border-white"
+>
+  Start discovery form <ArrowRight className="w-4 h-4" />
+</a>
+
           </div>
         </div>
       </section>
@@ -313,7 +355,7 @@ export default function App() {
             </div>
           ))}
         </div>
-       
+        
       </section>
 
       {/* Contact */}
@@ -395,7 +437,7 @@ export default function App() {
             <p>By engaging Steve’s IT Pro, you agree that statements of work (SOWs), proposals, or emails define scope, pricing, and timelines. Unless otherwise agreed, time &amp; materials work is billed in 30-minute increments.</p>
             <p>You’re responsible for providing accurate information and necessary access. We follow least-privilege principles and are not liable for downtime caused by pre-existing system issues or third-party outages.</p>
             <p>Deliverables are provided “as is” with a 14-day defect fix window unless a different warranty is specified in the SOW. Ownership of custom code and artifacts transfers upon full payment, excluding third-party libraries and Google services.</p>
-            <p>Arizona law governs these terms. Disputes will be handled in Maricopa County, AZ, unless both parties agree otherwise.</p>
+            <p>Arizona law governs these terms. Disputes will be handled in Pinal County, AZ, unless both parties agree otherwise.</p>
           </div>
         </div>
       </section>

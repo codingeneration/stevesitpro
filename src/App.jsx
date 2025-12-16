@@ -198,7 +198,7 @@ setForm({ name: "", email: "", company: "", message: "", website: "" });
               Contact us
             </a>
           </div>
-          <div className="mt-5 text-sm text-slate-600">Arizona-based • Remote-first • Fast turnarounds</div>
+          <div className="mt-5 text-sm text-slate-600">California-based • Remote-first • Fast turnarounds</div>
         </div>
         <div className="rounded-3xl bg-white shadow-lg border border-slate-200 p-5">
           <div className="text-sm font-medium text-blue-600">Quick wins you’ll see</div>
@@ -437,7 +437,7 @@ setForm({ name: "", email: "", company: "", message: "", website: "" });
             <p>By engaging Steve’s IT Pro, you agree that statements of work (SOWs), proposals, or emails define scope, pricing, and timelines. Unless otherwise agreed, time &amp; materials work is billed in 30-minute increments.</p>
             <p>You’re responsible for providing accurate information and necessary access. We follow least-privilege principles and are not liable for downtime caused by pre-existing system issues or third-party outages.</p>
             <p>Deliverables are provided “as is” with a 14-day defect fix window unless a different warranty is specified in the SOW. Ownership of custom code and artifacts transfers upon full payment, excluding third-party libraries and Google services.</p>
-            <p>Arizona law governs these terms. Disputes will be handled in Pinal County, AZ, unless both parties agree otherwise.</p>
+            <p>California law governs these terms. Disputes will be handled in San Diego County, CA, unless both parties agree otherwise.</p>
           </div>
         </div>
       </section>

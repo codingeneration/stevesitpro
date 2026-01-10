@@ -207,7 +207,7 @@ export default function App() {
         rel="noreferrer"
         className="text-sm text-white/70 hover:text-white transition"
       >
-        About Steven
+        About Steve
       </a>
     </div>
 

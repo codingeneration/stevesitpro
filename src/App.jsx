@@ -198,18 +198,29 @@ export default function App() {
     <main className="min-h-screen bg-slate-950 text-white">
       {/* Header */}
       <header className="sticky top-0 z-30 bg-slate-950/80 backdrop-blur border-b border-white/10">
-        <div className="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
-          <div className="font-bold text-sky-400">Steve’s IT Pro</div>
-          <a
-            href={INTAKE_FORM_URL}
-            target="_blank"
-            rel="noreferrer"
-            className="px-4 py-2 rounded-xl bg-sky-500 text-slate-950 font-semibold"
-          >
-            Book a free consult →
-          </a>
-        </div>
-      </header>
+  <div className="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+    <div className="flex items-center gap-6">
+      <div className="font-bold text-sky-400">Steve’s IT Pro</div>
+      <a
+        href="https://stevemoynihan.com"
+        target="_blank"
+        rel="noreferrer"
+        className="text-sm text-white/70 hover:text-white transition"
+      >
+        About Steven
+      </a>
+    </div>
+
+    <a
+      href={INTAKE_FORM_URL}
+      target="_blank"
+      rel="noreferrer"
+      className="px-4 py-2 rounded-xl bg-sky-500 text-slate-950 font-semibold"
+    >
+      Book a free consult →
+    </a>
+  </div>
+</header>
 
       {/* Hero */}
       <section className="max-w-7xl mx-auto px-4 pt-14 pb-10 grid md:grid-cols-2 gap-10">

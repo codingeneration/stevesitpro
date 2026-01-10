@@ -380,16 +380,26 @@ export default function App() {
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-white/10 py-10 text-center text-sm text-white/60">
-        <div className="flex justify-center gap-4">
-          <a href={LEGAL.terms}>Terms</a>
-          <a href={LEGAL.privacy}>Privacy</a>
-          <a href={LEGAL.refunds}>Refunds</a>
-        </div>
-        <div className="mt-4">
-          © {new Date().getFullYear()} Steve’s IT Pro
-        </div>
-      </footer>
+<footer className="border-t border-white/10 py-10 text-center text-sm text-white/60">
+  <div className="flex flex-wrap justify-center gap-4">
+    <a href={LEGAL.terms} className="hover:text-white">Terms</a>
+    <a href={LEGAL.privacy} className="hover:text-white">Privacy</a>
+    <a href={LEGAL.refunds} className="hover:text-white">Refunds</a>
+    <a
+      href="https://stevemoynihan.com"
+      target="_blank"
+      rel="noreferrer"
+      className="hover:text-white"
+    >
+      About Steve
+    </a>
+  </div>
+
+  <div className="mt-4">
+    © {new Date().getFullYear()} Steve’s IT Pro
+  </div>
+</footer>
+
     </main>
   );
 }

@@ -1,11 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://www.stevesitpro.com/</loc><priority>1.0</priority></url>
-  <url><loc>https://www.stevesitpro.com/#services</loc><priority>0.8</priority></url>
-  <url><loc>https://www.stevesitpro.com/#pricing</loc><priority>0.8</priority></url>
-  <url><loc>https://www.stevesitpro.com/#advantages</loc><priority>0.7</priority></url>
-  <url><loc>https://www.stevesitpro.com/#testimonials</loc><priority>0.6</priority></url>
-  <url><loc>https://www.stevesitpro.com/#contact</loc><priority>0.6</priority></url>
-  <url><loc>https://www.stevesitpro.com/#privacy</loc><priority>0.5</priority></url>
-  <url><loc>https://www.stevesitpro.com/#terms</loc><priority>0.5</priority></url>
+
+  <!-- Homepage -->
+  <url>
+    <loc>https://stevesitpro.com/</loc>
+    <lastmod>2026-03-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Blog Index -->
+  <url>
+    <loc>https://stevesitpro.com/#blog</loc>
+    <lastmod>2026-03-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Blog Post 1 -->
+  <url>
+    <loc>https://stevesitpro.com/#spf-dkim-dmarc-google-workspace</loc>
+    <lastmod>2026-03-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Blog Post 2 -->
+  <url>
+    <loc>https://stevesitpro.com/#apps-script-vs-zapier-google-workspace</loc>
+    <lastmod>2026-03-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Blog Post 3 -->
+  <url>
+    <loc>https://stevesitpro.com/#google-workspace-shared-drive-setup</loc>
+    <lastmod>2026-03-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
 </urlset>

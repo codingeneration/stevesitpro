@@ -1,3 +1,4 @@
 User-agent: *
 Allow: /
-Sitemap: https://www.stevesitpro.com/sitemap.xml
+
+Sitemap: https://stevesitpro.com/sitemap.xml

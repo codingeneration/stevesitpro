@@ -315,6 +315,27 @@ excerpt: "My Drive is a trap. Learn how to set up Shared Drives with the right s
 readTime: "9 min read",
 component: BlogPostSharedDrives,
 },
+{
+slug: "google-workspace-vs-microsoft-365-small-business",
+category: "Comparison",
+title: "Google Workspace vs. Microsoft 365 for Small Business: An Honest Comparison (2026)",
+excerpt: "Google Workspace or Microsoft 365? This honest comparison breaks down cost, collaboration, email, admin, and security for small businesses with 5-50 employees.",
+readTime: "10 min read",
+},
+{
+slug: "google-workspace-security-checklist-small-business",
+category: "Security",
+title: "Google Workspace Security Checklist for Small Business (2026)",
+excerpt: "A 15-point security checklist covering 2FA, admin roles, email authentication, sharing policies, and monitoring. The same audit I run with every new client.",
+readTime: "11 min read",
+},
+{
+slug: "employee-offboarding-google-workspace",
+category: "Admin Guide",
+title: "How to Offboard an Employee in Google Workspace Without Losing Data",
+excerpt: "Don't delete that account yet. Step-by-step guide to transferring files, reassigning email, revoking access, and protecting company data when someone leaves.",
+readTime: "8 min read",
+},
 ];
 
 function BlogIndex() {

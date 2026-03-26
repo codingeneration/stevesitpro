@@ -41,6 +41,30 @@
     <priority>0.8</priority>
   </url>
 
+  <!-- Blog Post 4 -->
+  <url>
+    <loc>https://stevesitpro.com/blog/google-workspace-vs-microsoft-365-small-business.html</loc>
+    <lastmod>2026-03-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Blog Post 5 -->
+  <url>
+    <loc>https://stevesitpro.com/blog/google-workspace-security-checklist-small-business.html</loc>
+    <lastmod>2026-03-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Blog Post 6 -->
+  <url>
+    <loc>https://stevesitpro.com/blog/employee-offboarding-google-workspace.html</loc>
+    <lastmod>2026-03-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
   <!-- Consultation Page -->
   <url>
     <loc>https://stevesitpro.com/consultation/</loc>

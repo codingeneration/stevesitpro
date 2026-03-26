@@ -81,6 +81,38 @@
     <priority>0.7</priority>
   </url>
 
+  <!-- Booking Page -->
+  <url>
+    <loc>https://stevesitpro.com/book/</loc>
+    <lastmod>2026-03-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Service: Email Security -->
+  <url>
+    <loc>https://stevesitpro.com/services/email-security-audit.html</loc>
+    <lastmod>2026-03-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Service: Automation -->
+  <url>
+    <loc>https://stevesitpro.com/services/google-workspace-automation.html</loc>
+    <lastmod>2026-03-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Service: Setup -->
+  <url>
+    <loc>https://stevesitpro.com/services/google-workspace-setup.html</loc>
+    <lastmod>2026-03-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
   <!-- Consultation Page -->
   <url>
     <loc>https://stevesitpro.com/consultation/</loc>

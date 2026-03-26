@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Google Workspace Email Security Audit | Steve's IT Pro</title>
+  <meta name="description" content="Stop your business emails from landing in spam. Get a full SPF, DKIM, and DMARC audit for Google Workspace — fix email deliverability and prevent domain spoofing. Fixed-price service from Steve's IT Pro." />
+  <meta name="author" content="Steve Moynihan" />
+  <meta name="keywords" content="google workspace email security, SPF DKIM DMARC setup service, email authentication consultant, email deliverability fix, domain spoofing prevention" />
+  <link rel="canonical" href="https://stevesitpro.com/services/email-security-audit.html" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Google Workspace Email Security Audit | Steve's IT Pro" />
+  <meta property="og:description" content="Stop your business emails from landing in spam. Full SPF, DKIM, and DMARC audit for Google Workspace — fixed-price, done in days." />
+  <meta property="og:url" content="https://stevesitpro.com/services/email-security-audit.html" />
+  <meta property="og:site_name" content="Steve's IT Pro" />
+  <meta property="og:image" content="https://stevesitpro.com/og-image.png" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Google Workspace Email Security Audit | Steve's IT Pro" />
+  <meta name="twitter:description" content="Stop your business emails from landing in spam. Full SPF, DKIM, and DMARC audit for Google Workspace." />
+  <meta name="twitter:image" content="https://stevesitpro.com/og-image.png" />
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Google Workspace Email Security Audit",
+    "description": "Full SPF, DKIM, and DMARC audit and configuration for Google Workspace. Fix email deliverability, prevent domain spoofing, and protect your sender reputation.",
+    "provider": {
+      "@type": "Organization",
+      "name": "Steve's IT Pro",
+      "url": "https://stevesitpro.com"
+    },
+    "serviceType": "Email Security Consulting",
+    "areaServed": "US",
+    "offers": {
+      "@type": "Offer",
+      "price": "749",
+      "priceCurrency": "USD",
+      "description": "Starter Setup — includes email authentication audit and configuration"
+    }
+  }
+  </script>
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-B1SMKSG54N"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-B1SMKSG54N');</script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #020817; color: rgba(255,255,255,0.85); line-height: 1.7; }
+    a { color: #34d399; text-decoration: none; } a:hover { text-decoration: underline; }
+
+    /* Header */
+    .header { position: sticky; top: 0; z-index: 30; background: rgba(2,8,23,0.8); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .header-inner { max-width: 72rem; margin: 0 auto; padding: 0.75rem 1.5rem; display: flex; justify-content: space-between; align-items: center; }
+    .logo { font-weight: 700; color: #38bdf8; } .logo:hover { color: #7dd3fc; text-decoration: none; }
+    .nav-links { display: flex; align-items: center; gap: 1.5rem; }
+    .nav-links a { font-size: 0.875rem; color: rgba(255,255,255,0.5); } .nav-links a:hover { color: #fff; text-decoration: none; }
+    .cta-btn { padding: 0.5rem 1.25rem; border-radius: 0.75rem; background: #10b981; color: #020817; font-weight: 600; font-size: 0.875rem; }
+    .cta-btn:hover { background: #34d399; text-decoration: none; }
+
+    /* Hero */
+    .hero { max-width: 52rem; margin: 0 auto; padding: 4rem 1.5rem 3rem; text-align: center; }
+    .hero .badge { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.3); border-radius: 2rem; padding: 0.35rem 1rem; font-size: 0.8rem; color: #34d399; font-weight: 600; margin-bottom: 1.5rem; }
+    .hero h1 { font-size: 2.5rem; font-weight: 800; color: #fff; line-height: 1.2; margin-bottom: 1rem; }
+    .hero h1 span { color: #34d399; }
+    .hero .sub { font-size: 1.15rem; color: rgba(255,255,255,0.6); max-width: 38rem; margin: 0 auto 2rem; }
+    .cta-primary { display: inline-block; background: #10b981; color: #020817; font-weight: 700; padding: 1rem 2.5rem; border-radius: 1rem; font-size: 1.05rem; transition: background 0.2s; }
+    .cta-primary:hover { background: #34d399; text-decoration: none; }
+    .cta-note { color: rgba(255,255,255,0.35); font-size: 0.8rem; margin-top: 0.75rem; }
+
+    /* Sections */
+    .section { max-width: 52rem; margin: 0 auto; padding: 2.5rem 1.5rem; }
+    .section h2 { font-size: 1.75rem; font-weight: 700; color: #fff; text-align: center; margin-bottom: 0.5rem; }
+    .section .section-sub { text-align: center; color: rgba(255,255,255,0.5); margin-bottom: 2rem; }
+
+    /* Problem cards */
+    .problems { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 2rem; }
+    .problem-card { background: rgba(248,113,113,0.05); border: 1px solid rgba(248,113,113,0.15); border-radius: 1rem; padding: 1.25rem; }
+    .problem-card .x { color: #f87171; font-weight: 700; margin-right: 0.5rem; }
+    .problem-card p { font-size: 0.9rem; color: rgba(255,255,255,0.7); }
+
+    /* Included list */
+    .included-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 2rem; }
+    .included-item { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 1rem; padding: 1.25rem; }
+    .included-item h3 { color: #fff; font-size: 1rem; margin-bottom: 0.35rem; display: flex; align-items: center; gap: 0.5rem; }
+    .included-item h3 .check { color: #34d399; font-weight: 700; }
+    .included-item p { font-size: 0.85rem; color: rgba(255,255,255,0.55); }
+
+    /* Steps */
+    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-bottom: 2rem; }
+    .step { text-align: center; }
+    .step-num { width: 2.5rem; height: 2.5rem; border-radius: 50%; background: rgba(16,185,129,0.15); color: #34d399; font-weight: 700; display: inline-flex; align-items: center; justify-content: center; margin-bottom: 0.75rem; }
+    .step h3 { color: #fff; font-size: 1rem; margin-bottom: 0.35rem; }
+    .step p { font-size: 0.85rem; color: rgba(255,255,255,0.5); }
+
+    /* Testimonial */
+    .test-card { max-width: 36rem; margin: 0 auto 2rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 1rem; padding: 1.5rem; text-align: center; }
+    .test-stars { color: #facc15; font-size: 0.85rem; margin-bottom: 0.75rem; }
+    .test-text { font-size: 0.95rem; color: rgba(255,255,255,0.7); line-height: 1.7; margin-bottom: 0.75rem; font-style: italic; }
+    .test-name { font-size: 0.85rem; font-weight: 600; color: #fff; }
+    .test-co { font-size: 0.75rem; color: rgba(255,255,255,0.4); }
+
+    /* Pricing */
+    .pricing-card { max-width: 28rem; margin: 0 auto 2rem; background: rgba(255,255,255,0.05); border: 1px solid #10b981; border-radius: 1.25rem; padding: 2rem; text-align: center; }
+    .pricing-card .price { font-size: 2.5rem; font-weight: 800; color: #fff; }
+    .pricing-card .cadence { font-size: 0.85rem; color: rgba(255,255,255,0.4); margin-bottom: 0.5rem; }
+    .pricing-card .name { font-size: 1.2rem; font-weight: 600; color: #fff; margin-bottom: 1rem; }
+    .pricing-card ul { list-style: none; text-align: left; margin-bottom: 1.5rem; }
+    .pricing-card ul li { font-size: 0.85rem; color: rgba(255,255,255,0.65); margin-bottom: 0.5rem; display: flex; gap: 0.5rem; }
+    .pricing-card ul li::before { content: "\2713"; color: #34d399; font-weight: 700; flex-shrink: 0; }
+    .pricing-card .pkg-cta { display: inline-block; background: #10b981; color: #020817; font-weight: 700; padding: 0.85rem 2rem; border-radius: 0.75rem; font-size: 1rem; }
+    .pricing-card .pkg-cta:hover { background: #34d399; text-decoration: none; }
+
+    /* FAQ */
+    .faq { max-width: 42rem; margin: 0 auto; }
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.1); padding: 1.25rem 0; }
+    .faq-item summary { cursor: pointer; font-weight: 600; color: #fff; font-size: 1rem; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after { content: "+"; color: #34d399; font-size: 1.25rem; }
+    .faq-item[open] summary::after { content: "\2212"; }
+    .faq-item p { margin-top: 0.75rem; color: rgba(255,255,255,0.6); font-size: 0.9rem; }
+
+    /* Final CTA */
+    .final-cta { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 1.5rem; padding: 3rem 2rem; text-align: center; margin: 2rem 0; }
+    .final-cta h2 { margin-bottom: 0.75rem; font-size: 1.75rem; font-weight: 700; color: #fff; }
+    .final-cta p { color: rgba(255,255,255,0.6); margin-bottom: 1.5rem; max-width: 32rem; margin-left: auto; margin-right: auto; }
+
+    /* Blog link */
+    .blog-link { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 1rem; padding: 1rem 1.5rem; margin-top: 1rem; font-size: 0.9rem; transition: border-color 0.2s; }
+    .blog-link:hover { border-color: #10b981; text-decoration: none; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.1); padding: 2.5rem 1rem; text-align: center; font-size: 0.875rem; color: rgba(255,255,255,0.4); }
+    footer a { color: rgba(255,255,255,0.4); margin: 0 0.5rem; } footer a:hover { color: #fff; }
+
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 1.75rem; }
+      .problems, .included-grid, .steps { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <div class="header-inner">
+      <div style="display:flex;align-items:center;gap:2rem;">
+        <a href="/" class="logo">Steve's IT Pro</a>
+        <nav class="nav-links">
+          <a href="https://stevemoynihan.com" target="_blank" rel="noreferrer">About Steve</a>
+          <a href="/blog/">Blog</a>
+        </nav>
+      </div>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLScGj_hocIEBDevsfLjQlSHTX74xX78hrLmz2TUejaFRTTBkvQ/viewform?usp=header" target="_blank" rel="noreferrer" class="cta-btn">Book a free consult &rarr;</a>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="badge">Email Security &middot; Google Workspace</div>
+    <h1>Your Emails Are Landing in Spam. <span>Let's Fix That.</span></h1>
+    <p class="sub">A complete email security audit for Google Workspace: SPF, DKIM, DMARC configuration, deliverability testing, and domain spoofing prevention. Fixed-price, done in days.</p>
+    <a href="https://buy.stripe.com/5kQ28tcnn95wb3X0Wh8k800" target="_blank" rel="noreferrer" class="cta-primary" onclick="gtag('event','email_audit_hero_cta');">Get the Starter Setup &mdash; $749 &rarr;</a>
+    <p class="cta-note">One-time fee. Includes full audit, configuration, and documentation.</p>
+  </section>
+
+  <!-- The Problem -->
+  <section class="section">
+    <h2>Sound Familiar?</h2>
+    <p class="section-sub">These email problems cost businesses real money every day.</p>
+    <div class="problems">
+      <div class="problem-card"><p><span class="x">&#10007;</span> Your invoices and proposals land in clients' spam folders</p></div>
+      <div class="problem-card"><p><span class="x">&#10007;</span> Gmail shows "Be careful with this message" warnings on your emails</p></div>
+      <div class="problem-card"><p><span class="x">&#10007;</span> Someone spoofed your domain and sent phishing emails to your contacts</p></div>
+      <div class="problem-card"><p><span class="x">&#10007;</span> You set up Google Workspace but never configured email authentication</p></div>
+      <div class="problem-card"><p><span class="x">&#10007;</span> Your marketing emails have low open rates despite good content</p></div>
+      <div class="problem-card"><p><span class="x">&#10007;</span> You have no idea if SPF, DKIM, or DMARC are set up correctly (or at all)</p></div>
+    </div>
+    <p style="text-align:center;color:rgba(255,255,255,0.5);font-size:0.9rem;">Without proper email authentication, anyone can send emails that look like they came from your domain. Google, Microsoft, and Yahoo now <strong style="color:#fff;">require</strong> SPF, DKIM, and DMARC for reliable delivery.</p>
+  </section>
+
+  <!-- What's Included -->
+  <section class="section">
+    <h2>What's Included in the Audit</h2>
+    <p class="section-sub">Everything you need to lock down your email — nothing you don't.</p>
+    <div class="included-grid">
+      <div class="included-item">
+        <h3><span class="check">&#10003;</span> SPF Record Audit &amp; Fix</h3>
+        <p>Review your current SPF record, identify missing authorized senders, fix syntax errors, and ensure it passes validation for all major providers.</p>
+      </div>
+      <div class="included-item">
+        <h3><span class="check">&#10003;</span> DKIM Key Configuration</h3>
+        <p>Generate and publish your DKIM signing keys in Google Admin. Verify propagation and test that outgoing emails are properly signed.</p>
+      </div>
+      <div class="included-item">
+        <h3><span class="check">&#10003;</span> DMARC Policy Setup</h3>
+        <p>Create a DMARC policy that starts with monitoring, then moves to enforcement. Set up aggregate reporting so you can see who's sending as your domain.</p>
+      </div>
+      <div class="included-item">
+        <h3><span class="check">&#10003;</span> Deliverability Testing</h3>
+        <p>Send test emails to Gmail, Outlook, Yahoo, and Apple Mail. Verify headers, check spam scores, and confirm your emails reach the inbox.</p>
+      </div>
+      <div class="included-item">
+        <h3><span class="check">&#10003;</span> DNS Record Review</h3>
+        <p>Full review of your domain's DNS for email-related records. Identify conflicts, outdated entries, and anything that could hurt deliverability.</p>
+      </div>
+      <div class="included-item">
+        <h3><span class="check">&#10003;</span> Third-Party Sender Audit</h3>
+        <p>Identify all services sending email as your domain (Mailchimp, HubSpot, etc.) and ensure they are properly authorized in your SPF and DKIM records.</p>
+      </div>
+      <div class="included-item">
+        <h3><span class="check">&#10003;</span> Documentation &amp; Runbook</h3>
+        <p>Written documentation of every change made, plus a runbook for your team so you know exactly what's configured and how to maintain it.</p>
+      </div>
+      <div class="included-item">
+        <h3><span class="check">&#10003;</span> 2 Hours Admin Coaching</h3>
+        <p>Live walkthrough of your Google Admin console. Learn how to monitor email authentication, read DMARC reports, and spot issues early.</p>
+      </div>
+    </div>
+    <div style="text-align:center;">
+      <a href="/blog/spf-dkim-dmarc-google-workspace.html" class="blog-link">Learn more: How to Set Up SPF, DKIM, and DMARC for Google Workspace &rarr;</a>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="section">
+    <h2>How It Works</h2>
+    <p class="section-sub">Three steps. No jargon. No surprises.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Discovery Call</h3>
+        <p>Free 30-minute call. We review your current email setup, identify what's missing, and confirm the Starter Setup is the right fit.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>Audit &amp; Configure</h3>
+        <p>I audit your DNS, configure SPF/DKIM/DMARC, test deliverability across major providers, and document everything. Typically done in 2-3 business days.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>Handoff &amp; Coaching</h3>
+        <p>You get full documentation, a handoff video, and 2 hours of admin coaching. Your team knows exactly what changed and how to maintain it.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonial -->
+  <section class="section">
+    <div class="test-card">
+      <div class="test-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <p class="test-text">"Steve set up SPF/DKIM/DMARC properly after another consultant left it half-done. Our emails stopped going to spam within 48 hours, and he explained everything in plain English."</p>
+      <div class="test-name">Priya N.</div>
+      <div class="test-co">CEO, Nova Health Consulting</div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section class="section">
+    <h2>Transparent Pricing</h2>
+    <p class="section-sub">One fixed price. No hourly billing. No surprises.</p>
+    <div class="pricing-card">
+      <div class="price">$749</div>
+      <div class="cadence">one-time</div>
+      <div class="name">Starter Setup</div>
+      <ul>
+        <li>Full SPF / DKIM / DMARC audit &amp; configuration</li>
+        <li>Deliverability testing across major providers</li>
+        <li>Third-party sender authorization</li>
+        <li>DNS record review &amp; cleanup</li>
+        <li>Written documentation &amp; runbook</li>
+        <li>2 hours admin coaching</li>
+        <li>Handoff video walkthrough</li>
+      </ul>
+      <a href="https://buy.stripe.com/5kQ28tcnn95wb3X0Wh8k800" target="_blank" rel="noreferrer" class="pkg-cta" onclick="gtag('event','email_audit_pricing_cta');">Get Started &rarr;</a>
+    </div>
+    <p style="text-align:center;color:rgba(255,255,255,0.4);font-size:0.85rem;">Need ongoing support? Check out the <a href="/get-started/">Pro Support plan</a> for monthly monitoring.</p>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section">
+    <h2>Frequently Asked Questions</h2>
+    <p class="section-sub">Common questions about the email security audit.</p>
+    <div class="faq">
+      <details class="faq-item">
+        <summary>How long does the audit take?</summary>
+        <p>Most audits are completed within 2-3 business days. DNS changes can take up to 48 hours to fully propagate, so I schedule a follow-up check to confirm everything is working.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Will this fix my emails going to spam?</summary>
+        <p>In most cases, yes. Missing or misconfigured SPF, DKIM, and DMARC records are the number one reason business emails land in spam. If there's an additional issue (like blocklist placement), I'll identify it during the audit and recommend next steps.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Do I need to give you admin access?</summary>
+        <p>I'll need temporary access to your Google Admin console and your domain's DNS settings (usually through your registrar like GoDaddy, Cloudflare, or Namecheap). I'll walk you through exactly what to share. All access is revoked after the engagement.</p>
+      </details>
+      <details class="faq-item">
+        <summary>What if I also need help with Shared Drives, security settings, or other Workspace setup?</summary>
+        <p>The Starter Setup package covers email authentication plus basic Workspace cleanup and a Shared Drives blueprint. If you need more extensive work, we can scope that during the free discovery call. Check out the <a href="/services/google-workspace-setup.html">full Workspace setup service</a> for details.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="section">
+    <div class="final-cta">
+      <h2>Ready to Fix Your Email?</h2>
+      <p>Book a free 30-minute discovery call. I'll review your current email authentication setup and tell you exactly what needs fixing — no commitment, no sales pressure.</p>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLScGj_hocIEBDevsfLjQlSHTX74xX78hrLmz2TUejaFRTTBkvQ/viewform?usp=header" target="_blank" rel="noreferrer" class="cta-primary" onclick="gtag('event','email_audit_bottom_cta');">Book a Free Discovery Call &rarr;</a>
+      <p class="cta-note">Or email directly: steve@stevesitpro.com</p>
+    </div>
+  </section>
+
+  <footer>
+    <div style="margin-bottom:0.75rem;">
+      <a href="/terms.html">Terms</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="/refunds.html">Refunds</a>
+      <a href="https://stevemoynihan.com" target="_blank" rel="noreferrer">About Steve</a>
+      <a href="/blog/">Blog</a>
+    </div>
+    <div>&copy; 2026 Steve's IT Pro &middot; Google Workspace Consulting &middot; San Diego, CA</div>
+  </footer>
+
+  <script src="/chat-widget.js" defer></script>
+</body>
+</html>

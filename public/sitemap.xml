@@ -4,22 +4,22 @@
   <!-- Homepage -->
   <url>
     <loc>https://stevesitpro.com/</loc>
-    <lastmod>2026-03-12</lastmod>
+    <lastmod>2026-03-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
 
   <!-- Blog Index -->
   <url>
-    <loc>https://stevesitpro.com/#blog</loc>
-    <lastmod>2026-03-12</lastmod>
+    <loc>https://stevesitpro.com/blog/</loc>
+    <lastmod>2026-03-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <!-- Blog Post 1 -->
   <url>
-    <loc>https://stevesitpro.com/#spf-dkim-dmarc-google-workspace</loc>
+    <loc>https://stevesitpro.com/blog/spf-dkim-dmarc-google-workspace.html</loc>
     <lastmod>2026-03-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -27,7 +27,7 @@
 
   <!-- Blog Post 2 -->
   <url>
-    <loc>https://stevesitpro.com/#apps-script-vs-zapier-google-workspace</loc>
+    <loc>https://stevesitpro.com/blog/apps-script-vs-zapier-google-workspace.html</loc>
     <lastmod>2026-03-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -35,10 +35,18 @@
 
   <!-- Blog Post 3 -->
   <url>
-    <loc>https://stevesitpro.com/#google-workspace-shared-drive-setup</loc>
+    <loc>https://stevesitpro.com/blog/google-workspace-shared-drive-setup.html</loc>
     <lastmod>2026-03-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+  </url>
+
+  <!-- Consultation Page -->
+  <url>
+    <loc>https://stevesitpro.com/consultation/</loc>
+    <lastmod>2026-03-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
 
 </urlset>

@@ -1,4 +1,4 @@
-import React, { useMemo, useState, useEffect } from “react”;
+import React, { useMemo, useState, useEffect } from "react";
 import {
 Check,
 Zap,
@@ -11,35 +11,35 @@ Sparkles,
 BadgeCheck,
 ArrowLeft,
 Star,
-} from “lucide-react”;
+} from "lucide-react";
 
 /* ––––– Config ––––– */
-const CONTACT_EMAIL = “steve@stevesitpro.com”;
+const CONTACT_EMAIL = "steve@stevesitpro.com";
 
 const INTAKE_FORM_URL =
-“https://docs.google.com/forms/d/e/1FAIpQLScGj_hocIEBDevsfLjQlSHTX74xX78hrLmz2TUejaFRTTBkvQ/viewform?usp=header”;
+"https://docs.google.com/forms/d/e/1FAIpQLScGj_hocIEBDevsfLjQlSHTX74xX78hrLmz2TUejaFRTTBkvQ/viewform?usp=header";
 
 const WEB_APP_URL =
-“https://script.google.com/macros/s/AKfycbyevJvyyUv4wDkbCJuHkMJ18iRICrEyLpMtJ5x7r0U9-OG7ntO7tsNgFWAE_0sKN0KM/exec”;
+"https://script.google.com/macros/s/AKfycbyevJvyyUv4wDkbCJuHkMJ18iRICrEyLpMtJ5x7r0U9-OG7ntO7tsNgFWAE_0sKN0KM/exec";
 
 const STRIPE_LINKS = {
-starter: “https://buy.stripe.com/5kQ28tcnn95wb3X0Wh8k800”,
-automation: “https://buy.stripe.com/28E3cx2MNgxY0pjgVf8k802”,
-proSupport: “https://buy.stripe.com/9B67sNaffgxYb3XeN78k803”,
-consult95: “https://buy.stripe.com/aFa8wR3QR4Pgdc5fRb8k804”,
-advanced125: “https://buy.stripe.com/00w4gBcnnftU0pj9sN8k805”,
+starter: "https://buy.stripe.com/5kQ28tcnn95wb3X0Wh8k800",
+automation: "https://buy.stripe.com/28E3cx2MNgxY0pjgVf8k802",
+proSupport: "https://buy.stripe.com/9B67sNaffgxYb3XeN78k803",
+consult95: "https://buy.stripe.com/aFa8wR3QR4Pgdc5fRb8k804",
+advanced125: "https://buy.stripe.com/00w4gBcnnftU0pj9sN8k805",
 };
 
 const LEGAL = {
-terms: “/terms.html”,
-privacy: “/privacy.html”,
-refunds: “/refunds.html”,
+terms: "/terms.html",
+privacy: "/privacy.html",
+refunds: "/refunds.html",
 };
 
 /* ––––– Helpers ––––– */
 function track(event, params = {}) {
-if (typeof window !== “undefined” && window.gtag) {
-window.gtag(“event”, event, params);
+if (typeof window !== "undefined" && window.gtag) {
+window.gtag("event", event, params);
 }
 }
 
@@ -48,21 +48,21 @@ TESTIMONIALS DATA
 ============================================================ */
 const TESTIMONIALS = [
 {
-name: “Maria T.”,
-company: “Founder, Coastal Design Co.”,
-text: “Steve set up our entire Google Workspace in two days — email auth, Shared Drives, the works. We went from chaotic to completely organized. Worth every penny of the Starter package.”,
+name: "Maria T.",
+company: "Founder, Coastal Design Co.",
+text: "Steve set up our entire Google Workspace in two days — email auth, Shared Drives, the works. We went from chaotic to completely organized. Worth every penny of the Starter package.",
 stars: 5,
 },
 {
-name: “James R.”,
-company: “Operations Manager, Pacific Build Group”,
-text: “The automation sprint he built replaced a 3-hour manual process our team ran every Monday. It now runs itself. I wish we’d done this two years ago.”,
+name: "James R.",
+company: "Operations Manager, Pacific Build Group",
+text: "The automation sprint he built replaced a 3-hour manual process our team ran every Monday. It now runs itself. I wish we'd done this two years ago.",
 stars: 5,
 },
 {
-name: “Priya N.”,
-company: “CEO, Nova Health Consulting”,
-text: “Steve speaks plain English, delivers on time, and documents everything clearly. He set up SPF/DKIM/DMARC properly after another consultant left it half-done. Highly recommend.”,
+name: "Priya N.",
+company: "CEO, Nova Health Consulting",
+text: "Steve speaks plain English, delivers on time, and documents everything clearly. He set up SPF/DKIM/DMARC properly after another consultant left it half-done. Highly recommend.",
 stars: 5,
 },
 ];
@@ -80,7 +80,6 @@ How to Set Up SPF, DKIM, and DMARC for Google Workspace (2026 Guide)
 </h1>
 <p className="text-white/40 text-sm mb-8">By Steve · Google Workspace Consultant · 8 min read</p>
 
-```
   <p className="text-lg leading-relaxed mb-8">
     If your business runs on Google Workspace and you haven't configured SPF, DKIM, and DMARC,
     your emails are vulnerable. Bad actors can spoof your domain, send phishing emails that look
@@ -189,7 +188,6 @@ How to Set Up SPF, DKIM, and DMARC for Google Workspace (2026 Guide)
     </a>
   </div>
 </article>
-```
 
 );
 }
@@ -203,7 +201,6 @@ Apps Script vs. Zapier: Which Automation Is Right for Your Google Workspace?
 </h1>
 <p className="text-white/40 text-sm mb-8">By Steve · Google Workspace Consultant · 7 min read</p>
 
-```
   <p className="text-lg leading-relaxed mb-8">
     If your team is doing repetitive work in Google Sheets, Forms, Drive, or Gmail — there's
     a better way. But the tool you choose matters. Apps Script and Zapier are both powerful,
@@ -252,7 +249,6 @@ Apps Script vs. Zapier: Which Automation Is Right for Your Google Workspace?
     </a>
   </div>
 </article>
-```
 
 );
 }
@@ -266,7 +262,6 @@ Google Workspace Shared Drive Setup: Best Practices for Small Business Teams
 </h1>
 <p className="text-white/40 text-sm mb-8">By Steve · Google Workspace Consultant · 9 min read</p>
 
-```
   <p className="text-lg leading-relaxed mb-8">
     "My Drive" is a trap. When every employee stores files in their personal Drive, you're one
     resignation away from losing critical company files forever. Google Workspace Shared Drives
@@ -288,7 +283,6 @@ Google Workspace Shared Drive Setup: Best Practices for Small Business Teams
     </a>
   </div>
 </article>
-```
 
 );
 }
@@ -298,32 +292,32 @@ BLOG INDEX
 ============================================================ */
 const BLOG_POSTS = [
 {
-slug: “spf-dkim-dmarc-google-workspace”,
-category: “Email Security”,
-title: “How to Set Up SPF, DKIM, and DMARC for Google Workspace (2026 Guide)”,
-excerpt: “Your emails are vulnerable without SPF, DKIM, and DMARC. This step-by-step guide shows you how to lock down your Google Workspace email authentication — and why it matters for your business.”,
-readTime: “8 min read”,
+slug: "spf-dkim-dmarc-google-workspace",
+category: "Email Security",
+title: "How to Set Up SPF, DKIM, and DMARC for Google Workspace (2026 Guide)",
+excerpt: "Your emails are vulnerable without SPF, DKIM, and DMARC. This step-by-step guide shows you how to lock down your Google Workspace email authentication — and why it matters for your business.",
+readTime: "8 min read",
 component: BlogPostSPF,
 },
 {
-slug: “apps-script-vs-zapier-google-workspace”,
-category: “Automation”,
-title: “Apps Script vs. Zapier: Which Automation Is Right for Your Google Workspace?”,
-excerpt: “Both tools automate Google Workspace — but they solve different problems. Learn which one saves your business the most time and money based on your actual workflows.”,
-readTime: “7 min read”,
+slug: "apps-script-vs-zapier-google-workspace",
+category: "Automation",
+title: "Apps Script vs. Zapier: Which Automation Is Right for Your Google Workspace?",
+excerpt: "Both tools automate Google Workspace — but they solve different problems. Learn which one saves your business the most time and money based on your actual workflows.",
+readTime: "7 min read",
 component: BlogPostAppsScript,
 },
 {
-slug: “google-workspace-shared-drive-setup”,
-category: “Google Workspace”,
-title: “Google Workspace Shared Drive Setup: Best Practices for Small Business Teams”,
-excerpt: “My Drive is a trap. Learn how to set up Shared Drives with the right structure, permissions, and naming conventions so your team’s files are always organized and secure.”,
-readTime: “9 min read”,
+slug: "google-workspace-shared-drive-setup",
+category: "Google Workspace",
+title: "Google Workspace Shared Drive Setup: Best Practices for Small Business Teams",
+excerpt: "My Drive is a trap. Learn how to set up Shared Drives with the right structure, permissions, and naming conventions so your team's files are always organized and secure.",
+readTime: "9 min read",
 component: BlogPostSharedDrives,
 },
 ];
 
-function BlogIndex({ onSelectPost }) {
+function BlogIndex() {
 return (
 <main className="max-w-4xl mx-auto px-4 py-20">
 <div className="mb-12">
@@ -335,16 +329,16 @@ Practical guides on Google Workspace setup, email security, and automation — w
 </div>
 <div className="space-y-5">
 {BLOG_POSTS.map((post) => (
-<button
+<a
 key={post.slug}
-onClick={() => onSelectPost(post.slug)}
-className=“w-full text-left bg-white/5 border border-white/10 hover:border-emerald-500 rounded-3xl p-7 transition-colors group”
+href={`/blog/${post.slug}.html`}
+className="block w-full text-left bg-white/5 border border-white/10 hover:border-emerald-500 rounded-3xl p-7 transition-colors group no-underline"
 >
 <span className="text-xs font-semibold text-emerald-400 uppercase tracking-widest">{post.category}</span>
 <h2 className="text-xl font-bold text-white mt-2 mb-3 group-hover:text-emerald-400 transition-colors">{post.title}</h2>
 <p className="text-white/50 text-sm leading-relaxed mb-3">{post.excerpt}</p>
 <span className="text-white/30 text-xs">{post.readTime}</span>
-</button>
+</a>
 ))}
 </div>
 </main>
@@ -369,7 +363,7 @@ return (
 <Star key={j} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
 ))}
 </div>
-<p className="text-white/70 text-sm leading-relaxed flex-1">”{t.text}”</p>
+<p className="text-white/70 text-sm leading-relaxed flex-1">"{t.text}"</p>
 <div>
 <p className="text-white font-semibold text-sm">{t.name}</p>
 <p className="text-white/40 text-xs">{t.company}</p>
@@ -386,14 +380,14 @@ MAIN APP
 ============================================================ */
 
 const features = [
-{ icon: <Zap className="w-5 h-5 text-emerald-400" />, title: “Automation, Fast”, text: “Apps Script workflows that remove busywork in days, not months.” },
-{ icon: <Shield className="w-5 h-5 text-sky-400" />, title: “Secure by Default”, text: “SPF, DKIM, DMARC, least-privilege access, and clean admin policy design.” },
-{ icon: <Clock className="w-5 h-5 text-yellow-400" />, title: “On-Time Delivery”, text: “Clear scope, milestones, documentation, and handoff videos.” },
+{ icon: <Zap className="w-5 h-5 text-emerald-400" />, title: "Automation, Fast", text: "Apps Script workflows that remove busywork in days, not months." },
+{ icon: <Shield className="w-5 h-5 text-sky-400" />, title: "Secure by Default", text: "SPF, DKIM, DMARC, least-privilege access, and clean admin policy design." },
+{ icon: <Clock className="w-5 h-5 text-yellow-400" />, title: "On-Time Delivery", text: "Clear scope, milestones, documentation, and handoff videos." },
 ];
 
 export default function App() {
-// “home” | “blog” | post slug string
-const [view, setView] = useState(“home”);
+// "home" | "blog" | post slug string
+const [view, setView] = useState("home");
 
 // Scroll to top on view change
 useEffect(() => {
@@ -402,64 +396,64 @@ window.scrollTo(0, 0);
 
 const tiers = useMemo(() => [
 {
-key: “starter”,
-name: “Starter Setup”,
-price: “$749”,
-cadence: “one-time”,
+key: "starter",
+name: "Starter Setup",
+price: "$749",
+cadence: "one-time",
 stripe: STRIPE_LINKS.starter,
 points: [
-“Workspace setup or cleanup”,
-“SPF / DKIM / DMARC config”,
-“Shared Drives blueprint”,
-“2 hours admin coaching”,
+"Workspace setup or cleanup",
+"SPF / DKIM / DMARC config",
+"Shared Drives blueprint",
+"2 hours admin coaching",
 ],
 },
 {
-key: “automation”,
-name: “Automation Sprint”,
-price: “$1,499”,
-cadence: “1–2 weeks”,
+key: "automation",
+name: "Automation Sprint",
+price: "$1,499",
+cadence: "1–2 weeks",
 stripe: STRIPE_LINKS.automation,
 popular: true,
 points: [
-“One scoped Apps Script workflow”,
-“Forms + Sheets + approvals”,
-“Automated notifications”,
-“Full handoff video”,
+"One scoped Apps Script workflow",
+"Forms + Sheets + approvals",
+"Automated notifications",
+"Full handoff video",
 ],
 },
 {
-key: “pro”,
-name: “Pro Support”,
-price: “$799”,
-cadence: “/month”,
+key: "pro",
+name: "Pro Support",
+price: "$799",
+cadence: "/month",
 stripe: STRIPE_LINKS.proSupport,
 points: [
-“Up to 8 hrs/month on-demand”,
-“Admin changes & fixes”,
-“Quarterly security review”,
-“Priority response”,
+"Up to 8 hrs/month on-demand",
+"Admin changes & fixes",
+"Quarterly security review",
+"Priority response",
 ],
 },
 ], []);
 
-const [form, setForm] = useState({ name: “”, email: “”, company: “”, message: “”, website: “” });
-const [status, setStatus] = useState(“idle”);
+const [form, setForm] = useState({ name: "", email: "", company: "", message: "", website: "" });
+const [status, setStatus] = useState("idle");
 
 const submit = async () => {
 if (form.website) return; // honeypot
 if (!form.name || !form.email || !form.message) return;
-setStatus(“sending”);
+setStatus("sending");
 try {
 await fetch(WEB_APP_URL, {
-method: “POST”,
-headers: { “Content-Type”: “text/plain;charset=utf-8” },
-body: JSON.stringify({ …form, source: “stevesitpro.com” }),
+method: "POST",
+headers: { "Content-Type": "text/plain;charset=utf-8" },
+body: JSON.stringify({ ...form, source: "stevesitpro.com" }),
 });
-setStatus(“ok”);
-setForm({ name: “”, email: “”, company: “”, message: “”, website: “” });
+setStatus("ok");
+setForm({ name: "", email: "", company: "", message: "", website: "" });
 } catch {
-setStatus(“error”);
+setStatus("error");
 }
 };
 
@@ -469,7 +463,6 @@ const activeBlogPost = BLOG_POSTS.find((p) => p.slug === view);
 return (
 <main className="min-h-screen bg-slate-950 text-white">
 
-```
   {/* ── SEO: Static noscript fallback for crawlers ── */}
   <noscript>
     <div style={{ padding: "2rem", fontFamily: "sans-serif", color: "#fff", background: "#020817" }}>
@@ -507,12 +500,12 @@ return (
           >
             About Steve
           </a>
-          <button
-            onClick={() => setView("blog")}
+          <a
+            href="/blog/"
             className="text-sm text-white/50 hover:text-white transition"
           >
             Blog
-          </button>
+          </a>
         </nav>
       </div>
 
@@ -534,22 +527,12 @@ return (
 
   {/* Blog Index */}
   {view === "blog" && (
-    <BlogIndex onSelectPost={(slug) => setView(slug)} />
+    <BlogIndex />
   )}
 
-  {/* Individual Blog Post */}
+  {/* Individual Blog Post — redirect to static page */}
   {activeBlogPost && (
-    <div>
-      <div className="max-w-3xl mx-auto px-4 pt-8">
-        <button
-          onClick={() => setView("blog")}
-          className="flex items-center gap-2 text-white/50 hover:text-white transition text-sm"
-        >
-          <ArrowLeft className="w-4 h-4" /> Back to Blog
-        </button>
-      </div>
-      <activeBlogPost.component />
-    </div>
+    <script dangerouslySetInnerHTML={{__html: `window.location.href="/blog/${activeBlogPost.slug}.html";`}} />
   )}
 
   {/* Home Page */}
@@ -769,7 +752,7 @@ return (
                   disabled={status === "sending"}
                   className="bg-emerald-500 text-slate-950 rounded-xl py-2.5 font-bold hover:bg-emerald-400 transition disabled:opacity-50"
                 >
-                  {status === "sending" ? "Sending…" : "Send message →"}
+                  {status === "sending" ? "Sending..." : "Send message →"}
                 </button>
                 {status === "error" && (
                   <p className="text-red-400 text-sm text-center">Something went wrong. Try emailing directly.</p>
@@ -789,12 +772,11 @@ return (
       <a href={LEGAL.privacy} className="hover:text-white transition">Privacy</a>
       <a href={LEGAL.refunds} className="hover:text-white transition">Refunds</a>
       <a href="https://stevemoynihan.com" target="_blank" rel="noreferrer" className="hover:text-white transition">About Steve</a>
-      <button onClick={() => setView("blog")} className="hover:text-white transition">Blog</button>
+      <a href="/blog/" className="hover:text-white transition">Blog</a>
     </div>
     <div>© {new Date().getFullYear()} Steve's IT Pro · Google Workspace Consulting · San Diego, CA</div>
   </footer>
 </main>
-```
 
 );
 }

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Apps Script vs. Zapier: Which Automation Is Right for Your Google Workspace? | Steve's IT Pro</title>
+  <meta name="description" content="Both tools automate Google Workspace — but they solve different problems. Learn which one saves your business the most time and money based on your actual workflows." />
+  <meta name="author" content="Steve Moynihan" />
+  <link rel="canonical" href="https://stevesitpro.com/blog/apps-script-vs-zapier-google-workspace.html" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Apps Script vs. Zapier: Which Automation Is Right for Your Google Workspace?" />
+  <meta property="og:description" content="Both tools automate Google Workspace — but they solve different problems. Learn which one saves your business the most time and money." />
+  <meta property="og:url" content="https://stevesitpro.com/blog/apps-script-vs-zapier-google-workspace.html" />
+  <meta property="og:site_name" content="Steve's IT Pro" />
+  <meta property="og:image" content="https://stevesitpro.com/og-image.png" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Apps Script vs. Zapier: Which Automation Is Right for Your Google Workspace?" />
+  <meta name="twitter:description" content="Both tools automate Google Workspace — but they solve different problems. Learn which one saves your business the most time and money." />
+  <meta name="twitter:image" content="https://stevesitpro.com/og-image.png" />
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Apps Script vs. Zapier: Which Automation Is Right for Your Google Workspace?",
+    "description": "Both tools automate Google Workspace — but they solve different problems. Learn which one saves your business the most time and money.",
+    "author": {
+      "@type": "Person",
+      "name": "Steve Moynihan",
+      "url": "https://stevemoynihan.com"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Steve's IT Pro",
+      "url": "https://stevesitpro.com"
+    },
+    "datePublished": "2026-03-12",
+    "dateModified": "2026-03-12"
+  }
+  </script>
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-B1SMKSG54N"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-B1SMKSG54N');</script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #020817; color: rgba(255,255,255,0.8); line-height: 1.7; }
+    a { color: #34d399; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .header { position: sticky; top: 0; z-index: 30; background: rgba(2,8,23,0.8); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .header-inner { max-width: 72rem; margin: 0 auto; padding: 0.75rem 1.5rem; display: flex; justify-content: space-between; align-items: center; }
+    .logo { font-weight: 700; color: #38bdf8; }
+    .logo:hover { color: #7dd3fc; text-decoration: none; }
+    .nav-links { display: flex; align-items: center; gap: 1.5rem; }
+    .nav-links a { font-size: 0.875rem; color: rgba(255,255,255,0.5); }
+    .nav-links a:hover { color: #fff; text-decoration: none; }
+    .cta-btn { padding: 0.5rem 1.25rem; border-radius: 0.75rem; background: #10b981; color: #020817; font-weight: 600; font-size: 0.875rem; }
+    .cta-btn:hover { background: #34d399; text-decoration: none; }
+    article { max-width: 48rem; margin: 0 auto; padding: 2rem 1rem 4rem; }
+    .back-link { display: inline-flex; align-items: center; gap: 0.5rem; color: rgba(255,255,255,0.5); font-size: 0.875rem; margin-bottom: 2rem; }
+    .back-link:hover { color: #fff; text-decoration: none; }
+    .category { font-size: 0.75rem; font-weight: 600; color: #34d399; text-transform: uppercase; letter-spacing: 0.1em; }
+    h1 { font-size: 2rem; font-weight: 800; color: #fff; margin: 0.75rem 0; line-height: 1.2; }
+    .byline { color: rgba(255,255,255,0.4); font-size: 0.875rem; margin-bottom: 2rem; }
+    .lead { font-size: 1.125rem; line-height: 1.7; margin-bottom: 2rem; }
+    h2 { font-size: 1.5rem; font-weight: 700; color: #fff; margin: 2.5rem 0 1rem; }
+    h3 { font-size: 1.25rem; font-weight: 600; color: #34d399; margin-bottom: 0.75rem; }
+    p { margin-bottom: 1rem; line-height: 1.7; }
+    strong { color: #fff; }
+    .compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 2.5rem; }
+    .compare-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 1rem; padding: 1.25rem; }
+    .compare-card h3 { color: #fff; font-size: 1.125rem; margin-bottom: 0.5rem; }
+    .compare-card p { color: rgba(255,255,255,0.6); font-size: 0.875rem; }
+    .section-item { margin-bottom: 2rem; }
+    .verdict { background: rgba(255,255,255,0.05); border-left: 4px solid; border-radius: 0 1rem 1rem 0; padding: 1rem; font-size: 0.875rem; margin-top: 0.75rem; }
+    .verdict-emerald { border-color: #34d399; }
+    .verdict-sky { border-color: #38bdf8; }
+    .cta-box { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 1.5rem; padding: 2rem; text-align: center; margin-top: 3rem; }
+    .cta-box h2 { margin-top: 0; }
+    .cta-box p { color: rgba(255,255,255,0.6); margin-bottom: 1.5rem; }
+    .cta-box .btn { display: inline-block; background: #10b981; color: #020817; font-weight: 700; padding: 0.75rem 2rem; border-radius: 0.75rem; }
+    .cta-box .btn:hover { background: #34d399; text-decoration: none; }
+    footer { border-top: 1px solid rgba(255,255,255,0.1); padding: 2.5rem 1rem; text-align: center; font-size: 0.875rem; color: rgba(255,255,255,0.4); }
+    footer a { color: rgba(255,255,255,0.4); margin: 0 0.5rem; }
+    footer a:hover { color: #fff; }
+    @media (max-width: 640px) { h1 { font-size: 1.5rem; } .compare-grid { grid-template-columns: 1fr; } .nav-links { display: none; } }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <div class="header-inner">
+      <div style="display:flex;align-items:center;gap:2rem;">
+        <a href="/" class="logo">Steve's IT Pro</a>
+        <nav class="nav-links">
+          <a href="https://stevemoynihan.com" target="_blank" rel="noreferrer">About Steve</a>
+          <a href="/blog/">Blog</a>
+        </nav>
+      </div>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLScGj_hocIEBDevsfLjQlSHTX74xX78hrLmz2TUejaFRTTBkvQ/viewform?usp=header" target="_blank" rel="noreferrer" class="cta-btn">Book a free consult &rarr;</a>
+    </div>
+  </header>
+
+  <article>
+    <a href="/blog/" class="back-link">&larr; Back to Blog</a>
+
+    <span class="category">Automation</span>
+    <h1>Apps Script vs. Zapier: Which Automation Is Right for Your Google Workspace?</h1>
+    <p class="byline">By Steve &middot; Google Workspace Consultant &middot; 7 min read</p>
+
+    <p class="lead">
+      If your team is doing repetitive work in Google Sheets, Forms, Drive, or Gmail — there's
+      a better way. But the tool you choose matters. Apps Script and Zapier are both powerful,
+      but they solve different problems. Picking the wrong one costs you time, money, or both.
+    </p>
+
+    <h2>The Difference in Plain English</h2>
+    <p>
+      Think of Zapier like a pre-built highway between apps — fast to set up, lots of on-ramps,
+      but you're limited to the routes that already exist. Apps Script is more like hiring a
+      contractor to build a custom road exactly where you need it — more planning upfront, but
+      it goes exactly where you want with no monthly tolls.
+    </p>
+
+    <div class="compare-grid">
+      <div class="compare-card">
+        <h3>&#9889; Google Apps Script</h3>
+        <p>JavaScript-based automation built directly into Google Workspace. Runs inside Sheets, Docs, Forms, Gmail, and Drive. Completely free — no per-task pricing.</p>
+      </div>
+      <div class="compare-card">
+        <h3>&#128279; Zapier</h3>
+        <p>No-code automation platform connecting 6,000+ apps through a visual interface. Fast to set up. Paid plans required for multi-step or high-volume workflows.</p>
+      </div>
+    </div>
+
+    <h2>Head-to-Head Comparison</h2>
+
+    <div class="section-item">
+      <h3>&#128176; Cost</h3>
+      <p>Apps Script is completely free — included with every Google Workspace account. Zapier's free plan caps at 100 tasks/month. Most real business workflows require a paid plan starting around $20–$50/month, and costs scale fast with volume.</p>
+      <div class="verdict verdict-emerald"><strong>Verdict:</strong> Apps Script wins on cost for Google-only workflows.</div>
+    </div>
+
+    <div class="section-item">
+      <h3>&#9201;&#65039; Speed to Build</h3>
+      <p>Zapier is dramatically faster for simple workflows. Connecting a Google Form to a Slack notification takes 5 minutes with no coding. Apps Script requires writing JavaScript — a simple workflow might take 30 minutes, complex ones take days. But once built, they run silently forever.</p>
+      <div class="verdict verdict-sky"><strong>Verdict:</strong> Zapier wins for speed. Apps Script is a bigger upfront investment.</div>
+    </div>
+
+    <div class="section-item">
+      <h3>&#128295; Flexibility &amp; Power</h3>
+      <p>Apps Script dominates here. Because it's real code, you can build logic Zapier can't replicate — conditional branching, dynamically generated PDFs, bulk operations across thousands of rows, deep Google API access. Zapier is powerful within its constraints, but you can't go beyond what each connector supports.</p>
+      <div class="verdict verdict-emerald"><strong>Verdict:</strong> Apps Script wins for complex, Google-native workflows.</div>
+    </div>
+
+    <div class="section-item">
+      <h3>&#127760; App Coverage</h3>
+      <p>Need to connect Google Sheets to Salesforce, HubSpot, Stripe, or QuickBooks? Zapier has 6,000+ pre-built connectors. Apps Script can technically reach any API, but you have to write that connection yourself.</p>
+      <div class="verdict verdict-sky"><strong>Verdict:</strong> Zapier wins when connecting Google to non-Google tools.</div>
+    </div>
+
+    <div class="cta-box">
+      <h2>Want Busywork Removed From Your Team's Day?</h2>
+      <p>I build custom Apps Script workflows for small businesses — scoped, documented, and delivered in 1–2 weeks. Starting at $1,499.</p>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLScGj_hocIEBDevsfLjQlSHTX74xX78hrLmz2TUejaFRTTBkvQ/viewform?usp=header" target="_blank" rel="noreferrer" class="btn">Start an Automation Sprint &rarr;</a>
+    </div>
+  </article>
+
+  <footer>
+    <div style="margin-bottom:0.75rem;">
+      <a href="/terms.html">Terms</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="/refunds.html">Refunds</a>
+      <a href="https://stevemoynihan.com" target="_blank" rel="noreferrer">About Steve</a>
+      <a href="/blog/">Blog</a>
+    </div>
+    <div>&copy; 2026 Steve's IT Pro &middot; Google Workspace Consulting &middot; San Diego, CA</div>
+  </footer>
+
+</body>
+</html>

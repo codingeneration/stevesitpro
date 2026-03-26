@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How to Offboard an Employee in Google Workspace Without Losing Data | Steve's IT Pro</title>
+  <meta name="description" content="Step-by-step guide to offboarding employees from Google Workspace. Transfer files, reassign email, revoke access, and protect company data when someone leaves." />
+  <meta name="author" content="Steve Moynihan" />
+  <link rel="canonical" href="https://stevesitpro.com/blog/employee-offboarding-google-workspace.html" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="How to Offboard an Employee in Google Workspace Without Losing Data" />
+  <meta property="og:description" content="Step-by-step guide to offboarding employees from Google Workspace. Transfer files, reassign email, revoke access, and protect company data." />
+  <meta property="og:url" content="https://stevesitpro.com/blog/employee-offboarding-google-workspace.html" />
+  <meta property="og:site_name" content="Steve's IT Pro" />
+  <meta property="og:image" content="https://stevesitpro.com/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="How to Offboard an Employee in Google Workspace Without Losing Data" />
+  <meta name="twitter:description" content="Don't delete that account yet. Here's how to offboard employees from Google Workspace properly." />
+  <meta name="twitter:image" content="https://stevesitpro.com/og-image.png" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "How to Offboard an Employee in Google Workspace Without Losing Data",
+    "description": "Step-by-step guide to offboarding employees from Google Workspace without losing company data.",
+    "author": { "@type": "Person", "name": "Steve Moynihan", "url": "https://stevemoynihan.com" },
+    "publisher": { "@type": "Organization", "name": "Steve's IT Pro", "url": "https://stevesitpro.com" },
+    "datePublished": "2026-03-25",
+    "dateModified": "2026-03-25"
+  }
+  </script>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-B1SMKSG54N"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-B1SMKSG54N');</script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #020817; color: rgba(255,255,255,0.8); line-height: 1.7; }
+    a { color: #34d399; text-decoration: none; } a:hover { text-decoration: underline; }
+    .header { position: sticky; top: 0; z-index: 30; background: rgba(2,8,23,0.8); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .header-inner { max-width: 72rem; margin: 0 auto; padding: 0.75rem 1.5rem; display: flex; justify-content: space-between; align-items: center; }
+    .logo { font-weight: 700; color: #38bdf8; } .logo:hover { color: #7dd3fc; text-decoration: none; }
+    .nav-links { display: flex; align-items: center; gap: 1.5rem; }
+    .nav-links a { font-size: 0.875rem; color: rgba(255,255,255,0.5); } .nav-links a:hover { color: #fff; text-decoration: none; }
+    .cta-btn { padding: 0.5rem 1.25rem; border-radius: 0.75rem; background: #10b981; color: #020817; font-weight: 600; font-size: 0.875rem; }
+    .cta-btn:hover { background: #34d399; text-decoration: none; }
+    article { max-width: 48rem; margin: 0 auto; padding: 2rem 1rem 4rem; }
+    .back-link { display: inline-flex; align-items: center; gap: 0.5rem; color: rgba(255,255,255,0.5); font-size: 0.875rem; margin-bottom: 2rem; } .back-link:hover { color: #fff; text-decoration: none; }
+    .category { font-size: 0.75rem; font-weight: 600; color: #34d399; text-transform: uppercase; letter-spacing: 0.1em; }
+    h1 { font-size: 2rem; font-weight: 800; color: #fff; margin: 0.75rem 0; line-height: 1.2; }
+    .byline { color: rgba(255,255,255,0.4); font-size: 0.875rem; margin-bottom: 2rem; }
+    .lead { font-size: 1.125rem; line-height: 1.7; margin-bottom: 2rem; }
+    h2 { font-size: 1.5rem; font-weight: 700; color: #fff; margin: 2.5rem 0 1rem; }
+    p { margin-bottom: 1rem; line-height: 1.7; }
+    strong { color: #fff; }
+    .step { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 1rem; padding: 1.25rem; margin-bottom: 1rem; }
+    .step-header { display: flex; gap: 0.75rem; align-items: flex-start; margin-bottom: 0.5rem; }
+    .step-num { background: #10b981; color: #020817; font-weight: 700; font-size: 0.8rem; width: 1.75rem; height: 1.75rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 0.1rem; }
+    .step-title { color: #fff; font-weight: 600; font-size: 1.05rem; }
+    .step p { font-size: 0.9rem; color: rgba(255,255,255,0.65); margin-bottom: 0.5rem; }
+    .step code { background: rgba(255,255,255,0.1); padding: 0.1rem 0.3rem; border-radius: 0.25rem; color: #6ee7b7; font-size: 0.85rem; }
+    .warning { background: rgba(248,113,113,0.1); border: 1px solid rgba(248,113,113,0.3); border-radius: 1rem; padding: 1.25rem; margin-bottom: 2rem; font-size: 0.875rem; }
+    .warning strong { color: #f87171; }
+    .callout { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 1rem; padding: 1.25rem; margin-bottom: 2rem; font-size: 0.875rem; }
+    .callout strong { color: #34d399; }
+    .timeline { display: flex; gap: 0.75rem; margin-bottom: 2rem; flex-wrap: wrap; }
+    .timeline-item { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 1rem; padding: 1rem; flex: 1; min-width: 200px; text-align: center; }
+    .timeline-item .when { color: #34d399; font-weight: 600; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.25rem; }
+    .timeline-item .what { color: rgba(255,255,255,0.7); font-size: 0.85rem; }
+    .cta-box { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 1.5rem; padding: 2rem; text-align: center; margin-top: 3rem; }
+    .cta-box h2 { margin-top: 0; }
+    .cta-box p { color: rgba(255,255,255,0.6); margin-bottom: 1.5rem; }
+    .cta-box .btn { display: inline-block; background: #10b981; color: #020817; font-weight: 700; padding: 0.75rem 2rem; border-radius: 0.75rem; }
+    .cta-box .btn:hover { background: #34d399; text-decoration: none; }
+    footer { border-top: 1px solid rgba(255,255,255,0.1); padding: 2.5rem 1rem; text-align: center; font-size: 0.875rem; color: rgba(255,255,255,0.4); }
+    footer a { color: rgba(255,255,255,0.4); margin: 0 0.5rem; } footer a:hover { color: #fff; }
+    @media (max-width: 640px) { h1 { font-size: 1.5rem; } .nav-links { display: none; } .timeline { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <div class="header-inner">
+      <div style="display:flex;align-items:center;gap:2rem;">
+        <a href="/" class="logo">Steve's IT Pro</a>
+        <nav class="nav-links">
+          <a href="https://stevemoynihan.com" target="_blank" rel="noreferrer">About Steve</a>
+          <a href="/blog/">Blog</a>
+        </nav>
+      </div>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLScGj_hocIEBDevsfLjQlSHTX74xX78hrLmz2TUejaFRTTBkvQ/viewform?usp=header" target="_blank" rel="noreferrer" class="cta-btn">Book a free consult &rarr;</a>
+    </div>
+  </header>
+
+  <article>
+    <a href="/blog/" class="back-link">&larr; Back to Blog</a>
+
+    <span class="category">Admin Guide</span>
+    <h1>How to Offboard an Employee in Google Workspace Without Losing Data</h1>
+    <p class="byline">By Steve &middot; Google Workspace Consultant &middot; 8 min read</p>
+
+    <p class="lead">
+      An employee gives their two weeks. Your instinct is to delete their Google Workspace account on
+      their last day. Don't. If you delete the account before transferring their data, you lose
+      everything in their My Drive, their email history, their calendar &mdash; permanently. Here's
+      the step-by-step process I use with every client to offboard cleanly.
+    </p>
+
+    <div class="warning">
+      <strong>Common disaster scenario:</strong> An admin deletes a departing employee's account on a Friday.
+      On Monday, the sales team realizes that employee had the only copy of a critical client proposal in
+      their My Drive. Google can recover deleted accounts within 20 days, but only if you act fast &mdash;
+      and the recovery process isn't instant.
+    </div>
+
+    <h2>The Timeline</h2>
+    <p>Offboarding isn't a single event. It's a sequence that starts before the employee's last day:</p>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="when">Day of notice</div>
+        <div class="what">Audit files &amp; access</div>
+      </div>
+      <div class="timeline-item">
+        <div class="when">Last day</div>
+        <div class="what">Transfer data, suspend account</div>
+      </div>
+      <div class="timeline-item">
+        <div class="when">+30 days</div>
+        <div class="what">Verify &amp; delete account</div>
+      </div>
+    </div>
+
+    <h2>Step-by-Step Offboarding Process</h2>
+
+    <div class="step">
+      <div class="step-header">
+        <span class="step-num">1</span>
+        <span class="step-title">Reset the employee's password and revoke app tokens</span>
+      </div>
+      <p>On their last day, go to <code>Admin Console &rarr; Users &rarr; [employee]</code>. Reset their password and check "Require password change at next sign-in." Then go to <code>Security &rarr; Sign-in cookies</code> and click "Reset." This signs them out of all devices and sessions immediately.</p>
+      <p>Next, go to <code>Security &rarr; Connected applications</code> and revoke access to all third-party apps. This prevents any app that had access via their account from continuing to pull data.</p>
+    </div>
+
+    <div class="step">
+      <div class="step-header">
+        <span class="step-num">2</span>
+        <span class="step-title">Transfer My Drive files to their manager</span>
+      </div>
+      <p>Go to <code>Admin Console &rarr; Users &rarr; [employee] &rarr; More &rarr; Transfer ownership</code>. Transfer all Drive files to their direct manager or a designated team member. This moves every file from their My Drive to the new owner's My Drive.</p>
+      <p>If the employee was using Shared Drives properly, most company files are already safe. This step catches anything that stayed in their personal Drive.</p>
+    </div>
+
+    <div class="step">
+      <div class="step-header">
+        <span class="step-num">3</span>
+        <span class="step-title">Set up email forwarding or auto-reply</span>
+      </div>
+      <p>Clients and partners will keep emailing the departed employee. Set up email routing so messages to their address forward to the right person. Go to <code>Admin Console &rarr; Apps &rarr; Gmail &rarr; Routing</code> and add a rule. Alternatively, set up a vacation auto-reply that redirects senders to the new contact.</p>
+    </div>
+
+    <div class="step">
+      <div class="step-header">
+        <span class="step-num">4</span>
+        <span class="step-title">Transfer calendar ownership</span>
+      </div>
+      <p>If the employee managed shared calendars (team meetings, client appointments, booking rooms), transfer ownership before suspending. Go to their Google Calendar settings and reassign ownership of any shared calendars they created.</p>
+    </div>
+
+    <div class="step">
+      <div class="step-header">
+        <span class="step-num">5</span>
+        <span class="step-title">Remove from Google Groups and Shared Drives</span>
+      </div>
+      <p>Remove the employee from all Google Groups (which may control access to Shared Drives, mailing lists, and other resources). Check each Shared Drive they had access to and remove their membership. If they were a Manager on any Shared Drive, reassign that role first.</p>
+    </div>
+
+    <div class="step">
+      <div class="step-header">
+        <span class="step-num">6</span>
+        <span class="step-title">Suspend the account (don't delete yet)</span>
+      </div>
+      <p>Go to <code>Admin Console &rarr; Users &rarr; [employee] &rarr; Suspend user</code>. Suspension blocks all sign-ins but preserves the account and its data. This gives you a 30-day safety net to catch anything you missed. The account still counts toward your license total, but it's worth the cost for the insurance.</p>
+    </div>
+
+    <div class="step">
+      <div class="step-header">
+        <span class="step-num">7</span>
+        <span class="step-title">After 30 days: review and delete</span>
+      </div>
+      <p>After a month, confirm that no one needs anything from the suspended account. Check with the employee's manager and team. If everything is transferred and email routing is working, delete the account to free up the license.</p>
+    </div>
+
+    <h2>Pro Tips</h2>
+
+    <div class="callout">
+      <strong>Use Shared Drives from the start:</strong> The #1 way to prevent data loss during offboarding is to store
+      company files in Shared Drives, not My Drive. Files in Shared Drives belong to the organization, not the
+      individual. When an employee leaves, those files stay automatically.
+      <a href="/blog/google-workspace-shared-drive-setup.html">Read my Shared Drive setup guide</a>.
+    </div>
+
+    <div class="callout">
+      <strong>Document the process:</strong> Create a simple offboarding checklist in a Google Doc and store it in
+      your Operations Shared Drive. Every time someone leaves, follow the same steps. Consistency prevents mistakes
+      when you're moving fast.
+    </div>
+
+    <div class="callout">
+      <strong>Don't forget external tools:</strong> Google Workspace offboarding is only part of the picture. Also
+      revoke access to Slack, Notion, CRM, banking, and any other SaaS tools the employee used. Keep a master list
+      of all tools and their access owners.
+    </div>
+
+    <div class="cta-box">
+      <h2>Need Help Building an Offboarding Process?</h2>
+      <p>The Starter Setup ($749) includes Shared Drive architecture, admin coaching, and a documented offboarding checklist tailored to your team's tools and workflows.</p>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLScGj_hocIEBDevsfLjQlSHTX74xX78hrLmz2TUejaFRTTBkvQ/viewform?usp=header" target="_blank" rel="noreferrer" class="btn">View Starter Setup &rarr;</a>
+    </div>
+  </article>
+
+  <footer>
+    <div style="margin-bottom:0.75rem;">
+      <a href="/terms.html">Terms</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="/refunds.html">Refunds</a>
+      <a href="https://stevemoynihan.com" target="_blank" rel="noreferrer">About Steve</a>
+      <a href="/blog/">Blog</a>
+    </div>
+    <div>&copy; 2026 Steve's IT Pro &middot; Google Workspace Consulting &middot; San Diego, CA</div>
+  </footer>
+
+</body>
+</html>

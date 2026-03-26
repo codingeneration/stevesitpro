@@ -564,12 +564,12 @@ return (
         <div>
           {/* Social proof hook above the fold */}
           <div className="flex items-center gap-2 mb-4">
-            <div className="flex -space-x-1">
-              {["M","J","P"].map((l,i) => (
-                <div key={i} className="w-7 h-7 rounded-full bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center text-xs font-bold text-emerald-400">{l}</div>
+            <div className="flex gap-0.5">
+              {Array.from({ length: 5 }).map((_, i) => (
+                <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
               ))}
             </div>
-            <span className="text-white/50 text-sm">Trusted by 20+ small businesses</span>
+            <span className="text-white/50 text-sm">5-star reviews from 20+ small businesses</span>
           </div>
 
           <h1 className="text-4xl md:text-5xl font-extrabold leading-tight">

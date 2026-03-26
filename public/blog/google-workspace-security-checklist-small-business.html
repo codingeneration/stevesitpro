@@ -61,9 +61,15 @@
     .checklist .content { flex: 1; }
     .checklist .title { color: #fff; font-weight: 600; display: block; margin-bottom: 0.25rem; }
     .checklist .desc { font-size: 0.875rem; color: rgba(255,255,255,0.6); }
-    .risk-high { border-left: 3px solid #f87171; }
-    .risk-med { border-left: 3px solid #facc15; }
-    .risk-low { border-left: 3px solid #34d399; }
+    .risk-high { border-left: 4px solid #f87171; background: rgba(248,113,113,0.07); }
+    .risk-high .num { color: #f87171; }
+    .risk-high .title::after { content: "CRITICAL"; margin-left: 0.6rem; font-size: 0.65rem; font-weight: 700; color: #f87171; background: rgba(248,113,113,0.15); padding: 0.15rem 0.5rem; border-radius: 0.35rem; vertical-align: middle; letter-spacing: 0.04em; }
+    .risk-med { border-left: 4px solid #facc15; background: rgba(250,204,21,0.05); }
+    .risk-med .num { color: #facc15; }
+    .risk-med .title::after { content: "IMPORTANT"; margin-left: 0.6rem; font-size: 0.65rem; font-weight: 700; color: #facc15; background: rgba(250,204,21,0.12); padding: 0.15rem 0.5rem; border-radius: 0.35rem; vertical-align: middle; letter-spacing: 0.04em; }
+    .risk-low { border-left: 4px solid #34d399; background: rgba(52,211,153,0.05); }
+    .risk-low .num { color: #34d399; }
+    .risk-low .title::after { content: "BEST PRACTICE"; margin-left: 0.6rem; font-size: 0.65rem; font-weight: 700; color: #34d399; background: rgba(52,211,153,0.12); padding: 0.15rem 0.5rem; border-radius: 0.35rem; vertical-align: middle; letter-spacing: 0.04em; }
     .callout { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 1rem; padding: 1.25rem; margin-bottom: 2rem; font-size: 0.875rem; }
     .callout strong { color: #34d399; }
     .cta-box { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 1.5rem; padding: 2rem; text-align: center; margin-top: 3rem; }

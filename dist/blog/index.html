@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Google Workspace Guides &amp; Blog | Steve's IT Pro</title>
+  <meta name="description" content="Practical guides on Google Workspace setup, email security, and automation — written for small business owners and IT admins by Steve's IT Pro." />
+  <meta name="author" content="Steve Moynihan" />
+  <link rel="canonical" href="https://stevesitpro.com/blog/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Google Workspace Guides & Blog | Steve's IT Pro" />
+  <meta property="og:description" content="Practical guides on Google Workspace setup, email security, and automation — written for small business owners and IT admins." />
+  <meta property="og:url" content="https://stevesitpro.com/blog/" />
+  <meta property="og:site_name" content="Steve's IT Pro" />
+  <meta property="og:image" content="https://stevesitpro.com/og-image.png" />
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-B1SMKSG54N"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-B1SMKSG54N');</script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #020817; color: rgba(255,255,255,0.8); line-height: 1.7; }
+    a { color: #34d399; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .header { position: sticky; top: 0; z-index: 30; background: rgba(2,8,23,0.8); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .header-inner { max-width: 72rem; margin: 0 auto; padding: 0.75rem 1.5rem; display: flex; justify-content: space-between; align-items: center; }
+    .logo { font-weight: 700; color: #38bdf8; }
+    .logo:hover { color: #7dd3fc; text-decoration: none; }
+    .nav-links { display: flex; align-items: center; gap: 1.5rem; }
+    .nav-links a { font-size: 0.875rem; color: rgba(255,255,255,0.5); }
+    .nav-links a:hover { color: #fff; text-decoration: none; }
+    .cta-btn { padding: 0.5rem 1.25rem; border-radius: 0.75rem; background: #10b981; color: #020817; font-weight: 600; font-size: 0.875rem; }
+    .cta-btn:hover { background: #34d399; text-decoration: none; }
+    main { max-width: 56rem; margin: 0 auto; padding: 5rem 1rem; }
+    .category { font-size: 0.75rem; font-weight: 600; color: #34d399; text-transform: uppercase; letter-spacing: 0.1em; }
+    h1 { font-size: 2.25rem; font-weight: 800; color: #fff; margin: 0.75rem 0 1rem; }
+    .subtitle { color: rgba(255,255,255,0.6); font-size: 1.125rem; margin-bottom: 3rem; }
+    .post-list { display: flex; flex-direction: column; gap: 1.25rem; }
+    .post-card { display: block; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 1.5rem; padding: 1.75rem; transition: border-color 0.2s; }
+    .post-card:hover { border-color: #10b981; text-decoration: none; }
+    .post-card .cat { font-size: 0.75rem; font-weight: 600; color: #34d399; text-transform: uppercase; letter-spacing: 0.1em; }
+    .post-card h2 { font-size: 1.25rem; font-weight: 700; color: #fff; margin: 0.5rem 0 0.75rem; transition: color 0.2s; }
+    .post-card:hover h2 { color: #34d399; }
+    .post-card p { color: rgba(255,255,255,0.5); font-size: 0.875rem; line-height: 1.6; margin-bottom: 0.75rem; }
+    .post-card .meta { color: rgba(255,255,255,0.3); font-size: 0.75rem; }
+    footer { border-top: 1px solid rgba(255,255,255,0.1); padding: 2.5rem 1rem; text-align: center; font-size: 0.875rem; color: rgba(255,255,255,0.4); }
+    footer a { color: rgba(255,255,255,0.4); margin: 0 0.5rem; }
+    footer a:hover { color: #fff; }
+    @media (max-width: 640px) { h1 { font-size: 1.75rem; } .nav-links { display: none; } }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <div class="header-inner">
+      <div style="display:flex;align-items:center;gap:2rem;">
+        <a href="/" class="logo">Steve's IT Pro</a>
+        <nav class="nav-links">
+          <a href="https://stevemoynihan.com" target="_blank" rel="noreferrer">About Steve</a>
+          <a href="/blog/">Blog</a>
+        </nav>
+      </div>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLScGj_hocIEBDevsfLjQlSHTX74xX78hrLmz2TUejaFRTTBkvQ/viewform?usp=header" target="_blank" rel="noreferrer" class="cta-btn">Book a free consult &rarr;</a>
+    </div>
+  </header>
+
+  <main>
+    <span class="category">Resources</span>
+    <h1>Google Workspace Guides</h1>
+    <p class="subtitle">Practical guides on Google Workspace setup, email security, and automation — written for small business owners and IT admins.</p>
+
+    <div class="post-list">
+
+      <a href="/blog/spf-dkim-dmarc-google-workspace.html" class="post-card">
+        <span class="cat">Email Security</span>
+        <h2>How to Set Up SPF, DKIM, and DMARC for Google Workspace (2026 Guide)</h2>
+        <p>Your emails are vulnerable without SPF, DKIM, and DMARC. This step-by-step guide shows you how to lock down your Google Workspace email authentication — and why it matters for your business.</p>
+        <span class="meta">8 min read</span>
+      </a>
+
+      <a href="/blog/apps-script-vs-zapier-google-workspace.html" class="post-card">
+        <span class="cat">Automation</span>
+        <h2>Apps Script vs. Zapier: Which Automation Is Right for Your Google Workspace?</h2>
+        <p>Both tools automate Google Workspace — but they solve different problems. Learn which one saves your business the most time and money based on your actual workflows.</p>
+        <span class="meta">7 min read</span>
+      </a>
+
+      <a href="/blog/google-workspace-shared-drive-setup.html" class="post-card">
+        <span class="cat">Google Workspace</span>
+        <h2>Google Workspace Shared Drive Setup: Best Practices for Small Business Teams</h2>
+        <p>My Drive is a trap. Learn how to set up Shared Drives with the right structure, permissions, and naming conventions so your team's files are always organized and secure.</p>
+        <span class="meta">9 min read</span>
+      </a>
+
+      <a href="/blog/google-workspace-vs-microsoft-365-small-business.html" class="post-card">
+        <span class="cat">Comparison</span>
+        <h2>Google Workspace vs. Microsoft 365 for Small Business: An Honest Comparison (2026)</h2>
+        <p>Google Workspace or Microsoft 365? This honest comparison breaks down cost, collaboration, email, admin, and security for small businesses with 5-50 employees.</p>
+        <span class="meta">10 min read</span>
+      </a>
+
+      <a href="/blog/google-workspace-security-checklist-small-business.html" class="post-card">
+        <span class="cat">Security</span>
+        <h2>Google Workspace Security Checklist for Small Business (2026)</h2>
+        <p>A 15-point security checklist covering 2FA, admin roles, email authentication, sharing policies, and monitoring. The same audit I run with every new client.</p>
+        <span class="meta">11 min read</span>
+      </a>
+
+      <a href="/blog/employee-offboarding-google-workspace.html" class="post-card">
+        <span class="cat">Admin Guide</span>
+        <h2>How to Offboard an Employee in Google Workspace Without Losing Data</h2>
+        <p>Don't delete that account yet. Step-by-step guide to transferring files, reassigning email, revoking access, and protecting company data when someone leaves.</p>
+        <span class="meta">8 min read</span>
+      </a>
+
+    </div>
+  </main>
+
+  <footer>
+    <div style="margin-bottom:0.75rem;">
+      <a href="/terms.html">Terms</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="/refunds.html">Refunds</a>
+      <a href="https://stevemoynihan.com" target="_blank" rel="noreferrer">About Steve</a>
+      <a href="/blog/">Blog</a>
+    </div>
+    <div>&copy; 2026 Steve's IT Pro &middot; Google Workspace Consulting &middot; San Diego, CA</div>
+  </footer>
+
+<script src="/chat-widget.js" defer></script>
+</body>
+</html>

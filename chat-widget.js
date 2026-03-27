@@ -127,7 +127,7 @@
     <div id="sitp-chat-header">
       <div>
         <h3>Steve's IT Pro</h3>
-        <span>Ask me about Google Workspace</span>
+        <span>Google Workspace & Shadow IT Bot</span>
       </div>
       <button id="sitp-chat-close" aria-label="Close chat">&times;</button>
     </div>
@@ -166,7 +166,7 @@
     panel.classList.toggle("open", isOpen);
     if (isOpen && messages.length === 0) {
       addBotMessage(
-        "Hi! I'm the Steve's IT Pro assistant. I can answer questions about Google Workspace, our services, or help you figure out which package is right for your business. What can I help with?"
+        "Hi! I'm the Steve's IT Pro assistant. I can answer questions about Google Workspace, Shadow IT Bot, our services, or help you figure out which package is right for your business. What can I help with?"
       );
     }
     if (isOpen) input.focus();

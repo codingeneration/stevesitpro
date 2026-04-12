@@ -11,6 +11,8 @@ Sparkles,
 BadgeCheck,
 ArrowLeft,
 Star,
+Menu,
+X,
 } from "lucide-react";
 
 /* ––––– Config ––––– */
@@ -409,6 +411,7 @@ const features = [
 export default function App() {
 // "home" | "blog" | post slug string
 const [view, setView] = useState("home");
+const [menuOpen, setMenuOpen] = useState(false);
 
 // Scroll to top on view change
 useEffect(() => {
@@ -507,7 +510,7 @@ return (
       {/* Left: logo + nav links */}
       <div className="flex items-center gap-8">
         <button
-          onClick={() => setView("home")}
+          onClick={() => { setView("home"); setMenuOpen(false); }}
           className="font-bold text-sky-400 hover:text-sky-300 transition whitespace-nowrap"
         >
           Steve's IT Pro
@@ -530,8 +533,8 @@ return (
         </nav>
       </div>
 
-      {/* Right: divider + CTA */}
-      <div className="flex items-center gap-6">
+      {/* Right: CTA + hamburger */}
+      <div className="flex items-center gap-3">
         <div className="hidden sm:block w-px h-5 bg-white/10" />
         <a
           href={INTAKE_FORM_URL}
@@ -542,8 +545,48 @@ return (
         >
           Book a free consult →
         </a>
+        {/* Mobile hamburger — only visible below sm breakpoint */}
+        <button
+          className="sm:hidden p-2 rounded-lg text-white/60 hover:text-white hover:bg-white/10 transition"
+          onClick={() => setMenuOpen((prev) => !prev)}
+          aria-label={menuOpen ? "Close menu" : "Open menu"}
+          aria-expanded={menuOpen}
+        >
+          {menuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+        </button>
       </div>
     </div>
+
+    {/* Mobile nav drawer */}
+    {menuOpen && (
+      <nav className="sm:hidden border-t border-white/10 bg-slate-950 px-6 py-4 flex flex-col gap-1">
+        <a
+          href="https://stevemoynihan.com"
+          target="_blank"
+          rel="noreferrer"
+          className="text-sm text-white/70 hover:text-white transition py-2"
+          onClick={() => setMenuOpen(false)}
+        >
+          About Steve
+        </a>
+        <a
+          href="/blog/"
+          className="text-sm text-white/70 hover:text-white transition py-2"
+          onClick={() => setMenuOpen(false)}
+        >
+          Blog
+        </a>
+        <a
+          href={INTAKE_FORM_URL}
+          target="_blank"
+          rel="noreferrer"
+          className="text-sm font-semibold text-emerald-400 hover:text-emerald-300 transition py-2"
+          onClick={() => setMenuOpen(false)}
+        >
+          Book a free consult →
+        </a>
+      </nav>
+    )}
   </header>
 
   {/* Blog Index */}
@@ -733,26 +776,34 @@ return (
               </div>
             ) : (
               <div className="grid gap-3">
+                <label htmlFor="contact-name" className="sr-only">Your name (required)</label>
                 <input
+                  id="contact-name"
                   className="bg-slate-900 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white placeholder-white/30 focus:outline-none focus:border-emerald-500 transition"
                   placeholder="Your name *"
                   value={form.name}
                   onChange={(e) => setForm({ ...form, name: e.target.value })}
                 />
+                <label htmlFor="contact-email" className="sr-only">Email address (required)</label>
                 <input
+                  id="contact-email"
                   className="bg-slate-900 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white placeholder-white/30 focus:outline-none focus:border-emerald-500 transition"
                   placeholder="Email address *"
                   type="email"
                   value={form.email}
                   onChange={(e) => setForm({ ...form, email: e.target.value })}
                 />
+                <label htmlFor="contact-company" className="sr-only">Company (optional)</label>
                 <input
+                  id="contact-company"
                   className="bg-slate-900 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white placeholder-white/30 focus:outline-none focus:border-emerald-500 transition"
                   placeholder="Company (optional)"
                   value={form.company}
                   onChange={(e) => setForm({ ...form, company: e.target.value })}
                 />
+                <label htmlFor="contact-message" className="sr-only">What do you need help with? (required)</label>
                 <textarea
+                  id="contact-message"
                   className="bg-slate-900 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white placeholder-white/30 focus:outline-none focus:border-emerald-500 transition resize-none"
                   rows={4}
                   placeholder="What do you need help with? *"
@@ -767,6 +818,7 @@ return (
                   onChange={(e) => setForm({ ...form, website: e.target.value })}
                   tabIndex={-1}
                   autoComplete="off"
+                  aria-hidden="true"
                 />
                 <button
                   onClick={submit}

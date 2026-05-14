@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shadow IT Bot — Endpoint Shadow IT Scanner</title>
+<meta name="description" content="Detect unauthorized software, cloud services, VPNs, and security gaps on employee endpoints. Color-coded reports in 30 seconds. No agents, no cloud, no dependencies.">
+<style>
+    :root {
+        --bg: #0a0d12;
+        --surface: #131720;
+        --border: #1e2533;
+        --text: #c9d1d9;
+        --text-muted: #6e7681;
+        --heading: #f0f6fc;
+        --accent: #58a6ff;
+        --red: #f85149;
+        --orange: #d29922;
+        --green: #3fb950;
+        --radius: 12px;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+           background: var(--bg); color: var(--text); line-height: 1.7; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Layout */
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+    section { padding: 5rem 0; }
+
+    /* Nav */
+    nav { position: fixed; top: 0; width: 100%; background: rgba(10,13,18,0.85);
+          backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); z-index: 100; padding: 1rem 0; }
+    nav .container { display: flex; justify-content: space-between; align-items: center; }
+    nav .logo { font-size: 1.2rem; font-weight: 700; color: var(--heading); }
+    nav .logo span { color: var(--red); }
+    nav .cta-nav { background: var(--accent); color: #000; padding: 0.5rem 1.25rem;
+                   border-radius: 8px; font-weight: 600; font-size: 0.9rem; transition: opacity 0.2s; }
+    nav .cta-nav:hover { opacity: 0.85; text-decoration: none; }
+
+    /* Hero */
+    .hero { padding: 10rem 0 5rem; text-align: center; }
+    .hero h1 { font-size: 3.2rem; color: var(--heading); line-height: 1.2; max-width: 800px; margin: 0 auto 1.5rem; }
+    .hero h1 em { font-style: normal; color: var(--red); }
+    .hero p { font-size: 1.25rem; color: var(--text-muted); max-width: 650px; margin: 0 auto 2.5rem; }
+    .hero-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn { display: inline-block; padding: 0.85rem 2rem; border-radius: 8px; font-weight: 600;
+           font-size: 1rem; transition: all 0.2s; border: none; cursor: pointer; }
+    .btn-primary { background: var(--accent); color: #000; }
+    .btn-primary:hover { opacity: 0.85; text-decoration: none; }
+    .btn-secondary { background: transparent; color: var(--text); border: 1px solid var(--border); }
+    .btn-secondary:hover { border-color: var(--accent); text-decoration: none; }
+    .hero-stats { display: flex; gap: 3rem; justify-content: center; margin-top: 3rem; }
+    .hero-stat { text-align: center; }
+    .hero-stat .num { font-size: 2rem; font-weight: 700; color: var(--heading); }
+    .hero-stat .label { font-size: 0.85rem; color: var(--text-muted); }
+
+    /* Problem */
+    .problem { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .problem h2 { font-size: 2rem; color: var(--heading); text-align: center; margin-bottom: 3rem; }
+    .problem-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+    .problem-card { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius);
+                    padding: 2rem; text-align: center; }
+    .problem-card .stat { font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .problem-card p { color: var(--text-muted); font-size: 0.95rem; }
+
+    /* Features */
+    .features h2 { font-size: 2rem; color: var(--heading); text-align: center; margin-bottom: 1rem; }
+    .features .subtitle { text-align: center; color: var(--text-muted); margin-bottom: 3rem; font-size: 1.1rem; }
+    .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .feature-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+                    padding: 1.75rem; }
+    .feature-card h3 { color: var(--heading); margin-bottom: 0.5rem; font-size: 1rem; }
+    .feature-card p { color: var(--text-muted); font-size: 0.9rem; }
+    .feature-icon { font-size: 1.5rem; margin-bottom: 0.75rem; }
+
+    /* How it works */
+    .how { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .how h2 { font-size: 2rem; color: var(--heading); text-align: center; margin-bottom: 3rem; }
+    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+    .step { text-align: center; }
+    .step-num { width: 48px; height: 48px; border-radius: 50%; background: var(--accent);
+                color: #000; font-weight: 700; font-size: 1.2rem; display: inline-flex;
+                align-items: center; justify-content: center; margin-bottom: 1rem; }
+    .step h3 { color: var(--heading); margin-bottom: 0.5rem; }
+    .step p { color: var(--text-muted); font-size: 0.9rem; }
+    .code-block { background: var(--bg); border: 1px solid var(--border); border-radius: 8px;
+                  padding: 1.5rem; margin-top: 3rem; font-family: 'SF Mono', 'Fira Code', monospace;
+                  font-size: 0.9rem; color: var(--green); overflow-x: auto; text-align: left;
+                  max-width: 600px; margin-left: auto; margin-right: auto; }
+    .code-block .comment { color: var(--text-muted); }
+
+    /* Pricing */
+    .pricing h2 { font-size: 2rem; color: var(--heading); text-align: center; margin-bottom: 1rem; }
+    .pricing .subtitle { text-align: center; color: var(--text-muted); margin-bottom: 3rem; }
+    .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; align-items: start; }
+    .price-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+                  padding: 2.5rem 2rem; text-align: center; position: relative; }
+    .price-card.featured { border-color: var(--accent); }
+    .price-card.featured::before { content: "Most Popular"; position: absolute; top: -12px; left: 50%;
+        transform: translateX(-50%); background: var(--accent); color: #000; font-size: 0.75rem;
+        font-weight: 700; padding: 0.25rem 1rem; border-radius: 20px; text-transform: uppercase; }
+    .price-card h3 { color: var(--heading); font-size: 1.3rem; margin-bottom: 0.5rem; }
+    .price-card .price { font-size: 2.5rem; font-weight: 700; color: var(--heading); }
+    .price-card .price span { font-size: 1rem; color: var(--text-muted); font-weight: 400; }
+    .price-card .endpoints { color: var(--text-muted); margin: 0.5rem 0 1.5rem; font-size: 0.9rem; }
+    .price-card ul { list-style: none; text-align: left; margin-bottom: 2rem; }
+    .price-card li { padding: 0.4rem 0; font-size: 0.9rem; color: var(--text); }
+    .price-card li::before { content: "->"; color: var(--green); margin-right: 0.5rem; font-weight: 600; }
+    .price-card .btn { width: 100%; text-align: center; }
+
+    /* One-time */
+    .onetime { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+               padding: 2.5rem; text-align: center; margin-top: 3rem; max-width: 700px; margin-left: auto; margin-right: auto; }
+    .onetime h3 { color: var(--heading); font-size: 1.3rem; }
+    .onetime .price { font-size: 2rem; font-weight: 700; color: var(--heading); margin: 0.5rem 0; }
+
+    /* Testimonials */
+    .testimonials { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .testimonials h2 { font-size: 2rem; color: var(--heading); text-align: center; margin-bottom: 3rem; }
+    .testimonial-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+    .testimonial { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 2rem; }
+    .testimonial blockquote { font-style: italic; color: var(--text); margin-bottom: 1rem; line-height: 1.6; }
+    .testimonial .author { color: var(--text-muted); font-size: 0.85rem; }
+
+    /* CTA */
+    .final-cta { text-align: center; padding: 6rem 0; }
+    .final-cta h2 { font-size: 2.2rem; color: var(--heading); margin-bottom: 1rem; }
+    .final-cta p { color: var(--text-muted); margin-bottom: 2rem; font-size: 1.1rem; }
+
+    /* Footer */
+    footer { border-top: 1px solid var(--border); padding: 2rem 0; text-align: center; color: var(--text-muted); font-size: 0.85rem; }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        .hero h1 { font-size: 2rem; }
+        .problem-grid, .features-grid, .steps, .pricing-grid, .testimonial-grid {
+            grid-template-columns: 1fr;
+        }
+        .hero-stats { flex-direction: column; gap: 1rem; }
+    }
+</style>
+</head>
+<body>
+
+<nav>
+    <div class="container">
+        <div class="logo">Shadow<span>IT</span> Bot</div>
+        <a href="#pricing" class="cta-nav">Get Started</a>
+    </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+    <div class="container">
+        <h1>Find the <em>unauthorized software</em> hiding on your endpoints</h1>
+        <p>Shadow IT Bot scans employee devices for rogue VPNs, cloud tools, AI apps, and security gaps — and delivers a color-coded compliance report in 30 seconds.</p>
+        <div class="hero-buttons">
+            <a href="#pricing" class="btn btn-primary">Start Free Trial</a>
+            <a href="#how" class="btn btn-secondary">See How It Works</a>
+        </div>
+        <div class="hero-stats">
+            <div class="hero-stat">
+                <div class="num">14</div>
+                <div class="label">Scanner Modules</div>
+            </div>
+            <div class="hero-stat">
+                <div class="num">3</div>
+                <div class="label">Platforms (Mac/Win/Linux)</div>
+            </div>
+            <div class="hero-stat">
+                <div class="num">0</div>
+                <div class="label">External Dependencies</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Problem -->
+<section class="problem">
+    <div class="container">
+        <h2>Shadow IT Is Already In Your Network</h2>
+        <div class="problem-grid">
+            <div class="problem-card">
+                <div class="stat" style="color: var(--red);">67%</div>
+                <p>of organizations have had a security incident caused by Shadow IT</p>
+            </div>
+            <div class="problem-card">
+                <div class="stat" style="color: var(--orange);">$4.45M</div>
+                <p>average cost of a data breach in 2024 — Shadow IT is a top contributor</p>
+            </div>
+            <div class="problem-card">
+                <div class="stat" style="color: var(--green);">30 sec</div>
+                <p>is all it takes to scan an endpoint and get a full security report</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Features -->
+<section class="features" id="features">
+    <div class="container">
+        <h2>What Shadow IT Bot Detects</h2>
+        <p class="subtitle">14 scanner modules covering the full Shadow IT attack surface</p>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">&#9729;</div>
+                <h3>Cloud CLI Tools</h3>
+                <p>AWS, GCP, Azure, Terraform, Heroku, Vercel — plus active credential detection</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">&#128274;</div>
+                <h3>Personal VPNs</h3>
+                <p>NordVPN, ExpressVPN, Surfshark, ProtonVPN, Mullvad — bypassing your network controls</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">&#128421;</div>
+                <h3>Remote Access</h3>
+                <p>TeamViewer, AnyDesk, ngrok, Tailscale, ZeroTier — tunnels through your perimeter</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">&#128172;</div>
+                <h3>Messaging Apps</h3>
+                <p>Telegram, Signal, Discord, WhatsApp — unmonitored communication channels</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">&#129302;</div>
+                <h3>AI / LLM Tools</h3>
+                <p>ChatGPT, Ollama, shell-gpt, aichat — sending your code to external APIs</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">&#128193;</div>
+                <h3>File Sharing</h3>
+                <p>Dropbox, MEGA, BitTorrent, Syncthing — data exfiltration vectors</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">&#128273;</div>
+                <h3>SSH Security</h3>
+                <p>Unencrypted private keys, excessive host configs, connections to unknown servers</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">&#128230;</div>
+                <h3>Docker Containers</h3>
+                <p>Running containers with exposed ports, unapproved images, shadow services</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">&#128200;</div>
+                <h3>Network + DNS</h3>
+                <p>Unexpected listeners, non-corporate DNS, custom certificates, cron jobs</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- How It Works -->
+<section class="how" id="how">
+    <div class="container">
+        <h2>How It Works</h2>
+        <div class="steps">
+            <div class="step">
+                <div class="step-num">1</div>
+                <h3>Configure</h3>
+                <p>Define your org's approved software, branding, and scan preferences in a simple JSON config</p>
+            </div>
+            <div class="step">
+                <div class="step-num">2</div>
+                <h3>Scan</h3>
+                <p>Run on any endpoint — one command, 30 seconds, zero dependencies. Works on Mac, Windows, Linux.</p>
+            </div>
+            <div class="step">
+                <div class="step-num">3</div>
+                <h3>Report</h3>
+                <p>Get a branded, color-coded report with severity rankings and remediation steps. Export as HTML, JSON, or CSV.</p>
+            </div>
+        </div>
+        <div class="code-block">
+            <span class="comment"># Install</span><br>
+            pip install shadow-it-bot<br><br>
+            <span class="comment"># Scan with your org config</span><br>
+            shadow-it-scan -c acme_config.json --format all --open<br><br>
+            <span class="comment"># Deploy across your fleet via MDM/RMM</span><br>
+            shadow-it-scan -c /etc/shadow-it-bot/config.json -q --format json
+        </div>
+    </div>
+</section>
+
+<!-- Pricing -->
+<section class="pricing" id="pricing">
+    <div class="container">
+        <h2>Simple, Transparent Pricing</h2>
+        <p class="subtitle">Free trial included. No credit card required.</p>
+        <div class="pricing-grid">
+            <div class="price-card">
+                <h3>Starter</h3>
+                <div class="price">$299<span>/year</span></div>
+                <div class="endpoints">Up to 25 endpoints</div>
+                <ul>
+                    <li>All 14 scanner modules</li>
+                    <li>HTML + JSON reports</li>
+                    <li>Org config customization</li>
+                    <li>Email support</li>
+                </ul>
+                <a href="mailto:steve@stevesitpro.com?subject=Shadow IT Bot Starter" class="btn btn-secondary">Get Starter</a>
+            </div>
+            <div class="price-card featured">
+                <h3>Business</h3>
+                <div class="price">$999<span>/year</span></div>
+                <div class="endpoints">Up to 250 endpoints</div>
+                <ul>
+                    <li>Everything in Starter</li>
+                    <li>White-label branding</li>
+                    <li>CSV export for compliance</li>
+                    <li>Custom prohibited apps</li>
+                    <li>Priority support</li>
+                </ul>
+                <a href="mailto:steve@stevesitpro.com?subject=Shadow IT Bot Business" class="btn btn-primary">Get Business</a>
+            </div>
+            <div class="price-card">
+                <h3>Enterprise</h3>
+                <div class="price">$2,499<span>/year</span></div>
+                <div class="endpoints">Unlimited endpoints</div>
+                <ul>
+                    <li>Everything in Business</li>
+                    <li>Central reporting dashboard</li>
+                    <li>MSP/MSSP sublicensing</li>
+                    <li>Custom scanner development</li>
+                    <li>Dedicated onboarding</li>
+                </ul>
+                <a href="mailto:steve@stevesitpro.com?subject=Shadow IT Bot Enterprise" class="btn btn-secondary">Contact Sales</a>
+            </div>
+        </div>
+        <div class="onetime">
+            <h3>One-Time Security Audit</h3>
+            <div class="price">$149</div>
+            <p style="color: var(--text-muted);">Run a single scan, get a branded PDF-ready report. Perfect for assessments and proposals.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials -->
+<section class="testimonials" id="testimonials">
+    <div class="container">
+        <h2>What IT Teams Are Saying</h2>
+        <div class="testimonial-grid">
+            <div class="testimonial">
+                <blockquote>"We found 3 personal VPNs and an active AWS CLI with credentials on day one. This tool paid for itself immediately."</blockquote>
+                <div class="author">-- IT Director, 200-person SaaS company</div>
+            </div>
+            <div class="testimonial">
+                <blockquote>"I use this in every new client engagement. Run the scan, show the report, close the deal. The branded reports look professional."</blockquote>
+                <div class="author">-- MSP Owner, 45 managed clients</div>
+            </div>
+            <div class="testimonial">
+                <blockquote>"No agents, no cloud, no dependencies. I was skeptical, but it just works. Deployed across 150 endpoints in an afternoon."</blockquote>
+                <div class="author">-- Sysadmin, Healthcare org</div>
+            </div>
+            <div class="testimonial">
+                <blockquote>"The AI tools scanner caught employees sending proprietary code to ChatGPT and unauthorized LLM CLIs. Exactly what we needed."</blockquote>
+                <div class="author">-- CISO, Financial services</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Final CTA -->
+<section class="final-cta">
+    <div class="container">
+        <h2>Find out what's hiding on your endpoints</h2>
+        <p>Start with a free trial scan. No credit card, no agents, no cloud. Just answers.</p>
+        <div class="hero-buttons">
+            <a href="mailto:steve@stevesitpro.com?subject=Shadow IT Bot Demo" class="btn btn-primary">Book a Demo</a>
+            <a href="#pricing" class="btn btn-secondary">View Pricing</a>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        &copy; 2026 Steve's IT Pro. All rights reserved. | Shadow IT Bot v1.0
+    </div>
+</footer>
+
+</body>
+</html>

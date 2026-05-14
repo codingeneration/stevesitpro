@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Google Workspace Shared Drive Setup: Best Practices for Small Business Teams | Steve's IT Pro</title>
+  <meta name="description" content="My Drive is a trap. Learn how to set up Shared Drives with the right structure, permissions, and naming conventions so your team's files are always organized and secure." />
+  <meta name="author" content="Steve Moynihan" />
+  <link rel="canonical" href="https://stevesitpro.com/blog/google-workspace-shared-drive-setup.html" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Google Workspace Shared Drive Setup: Best Practices for Small Business Teams" />
+  <meta property="og:description" content="My Drive is a trap. Learn how to set up Shared Drives with the right structure, permissions, and naming conventions so your team's files stay organized." />
+  <meta property="og:url" content="https://stevesitpro.com/blog/google-workspace-shared-drive-setup.html" />
+  <meta property="og:site_name" content="Steve's IT Pro" />
+  <meta property="og:image" content="https://stevesitpro.com/og-image.png" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Google Workspace Shared Drive Setup: Best Practices for Small Business Teams" />
+  <meta name="twitter:description" content="My Drive is a trap. Learn how to set up Shared Drives with the right structure, permissions, and naming conventions so your team's files stay organized." />
+  <meta name="twitter:image" content="https://stevesitpro.com/og-image.png" />
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Google Workspace Shared Drive Setup: Best Practices for Small Business Teams",
+    "description": "My Drive is a trap. Learn how to set up Shared Drives with the right structure, permissions, and naming conventions so your team's files stay organized.",
+    "author": {
+      "@type": "Person",
+      "name": "Steve Moynihan",
+      "url": "https://stevemoynihan.com"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Steve's IT Pro",
+      "url": "https://stevesitpro.com"
+    },
+    "datePublished": "2026-03-12",
+    "dateModified": "2026-03-12"
+  }
+  </script>
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-B1SMKSG54N"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-B1SMKSG54N');</script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #020817; color: rgba(255,255,255,0.8); line-height: 1.7; }
+    a { color: #34d399; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .header { position: sticky; top: 0; z-index: 30; background: rgba(2,8,23,0.8); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .header-inner { max-width: 72rem; margin: 0 auto; padding: 0.75rem 1.5rem; display: flex; justify-content: space-between; align-items: center; }
+    .logo { font-weight: 700; color: #38bdf8; }
+    .logo:hover { color: #7dd3fc; text-decoration: none; }
+    .nav-links { display: flex; align-items: center; gap: 1.5rem; }
+    .nav-links a { font-size: 0.875rem; color: rgba(255,255,255,0.5); }
+    .nav-links a:hover { color: #fff; text-decoration: none; }
+    .cta-btn { padding: 0.5rem 1.25rem; border-radius: 0.75rem; background: #10b981; color: #020817; font-weight: 600; font-size: 0.875rem; }
+    .cta-btn:hover { background: #34d399; text-decoration: none; }
+    article { max-width: 48rem; margin: 0 auto; padding: 2rem 1rem 4rem; }
+    .back-link { display: inline-flex; align-items: center; gap: 0.5rem; color: rgba(255,255,255,0.5); font-size: 0.875rem; margin-bottom: 2rem; }
+    .back-link:hover { color: #fff; text-decoration: none; }
+    .category { font-size: 0.75rem; font-weight: 600; color: #34d399; text-transform: uppercase; letter-spacing: 0.1em; }
+    h1 { font-size: 2rem; font-weight: 800; color: #fff; margin: 0.75rem 0; line-height: 1.2; }
+    .byline { color: rgba(255,255,255,0.4); font-size: 0.875rem; margin-bottom: 2rem; }
+    .lead { font-size: 1.125rem; line-height: 1.7; margin-bottom: 2rem; }
+    h2 { font-size: 1.5rem; font-weight: 700; color: #fff; margin: 2.5rem 0 1rem; }
+    p { margin-bottom: 1rem; line-height: 1.7; }
+    strong { color: #fff; }
+    .cta-box { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 1.5rem; padding: 2rem; text-align: center; margin-top: 3rem; }
+    .cta-box h2 { margin-top: 0; }
+    .cta-box p { color: rgba(255,255,255,0.6); margin-bottom: 1.5rem; }
+    .cta-box .btn { display: inline-block; background: #10b981; color: #020817; font-weight: 700; padding: 0.75rem 2rem; border-radius: 0.75rem; }
+    .cta-box .btn:hover { background: #34d399; text-decoration: none; }
+    footer { border-top: 1px solid rgba(255,255,255,0.1); padding: 2.5rem 1rem; text-align: center; font-size: 0.875rem; color: rgba(255,255,255,0.4); }
+    footer a { color: rgba(255,255,255,0.4); margin: 0 0.5rem; }
+    footer a:hover { color: #fff; }
+    @media (max-width: 640px) { h1 { font-size: 1.5rem; } .nav-links { display: none; } }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <div class="header-inner">
+      <div style="display:flex;align-items:center;gap:2rem;">
+        <a href="/" class="logo">Steve's IT Pro</a>
+        <nav class="nav-links">
+          <a href="https://stevemoynihan.com" target="_blank" rel="noreferrer">About Steve</a>
+          <a href="/blog/">Blog</a>
+        </nav>
+      </div>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLScGj_hocIEBDevsfLjQlSHTX74xX78hrLmz2TUejaFRTTBkvQ/viewform?usp=header" target="_blank" rel="noreferrer" class="cta-btn">Book a free consult &rarr;</a>
+    </div>
+  </header>
+
+  <article>
+    <a href="/blog/" class="back-link">&larr; Back to Blog</a>
+
+    <span class="category">Google Workspace</span>
+    <h1>Google Workspace Shared Drive Setup: Best Practices for Small Business Teams</h1>
+    <p class="byline">By Steve &middot; Google Workspace Consultant &middot; 9 min read</p>
+
+    <p class="lead">
+      "My Drive" is a trap. When every employee stores files in their personal Drive, you're one
+      resignation away from losing critical company files forever. Google Workspace Shared Drives
+      solve this — but only if you set them up correctly from the start.
+    </p>
+
+    <h2>My Drive vs. Shared Drives</h2>
+    <p>
+      Think of My Drive like a personal filing cabinet that goes home with the employee — when they leave,
+      the cabinet leaves too. Shared Drives are filing cabinets bolted to the office wall. They belong
+      to the company, not the person.
+    </p>
+
+    <h2>Why This Matters for Small Businesses</h2>
+    <p>
+      When an employee leaves and their Google Workspace account is deleted, everything in their My Drive
+      goes with it — unless an admin manually transfers ownership first. With Shared Drives, files belong
+      to the organization. People come and go; the files stay.
+    </p>
+
+    <h2>How to Structure Shared Drives</h2>
+    <p>
+      Don't create one giant Shared Drive and dump everything in it. Instead, create one Shared Drive per
+      department or function:
+    </p>
+    <ul style="list-style:none;padding:0;margin-bottom:1.5rem;">
+      <li style="display:flex;gap:0.75rem;margin-bottom:0.75rem;"><span style="color:#34d399;flex-shrink:0;">&rarr;</span> <div><strong>Operations</strong> — SOPs, vendor contracts, internal docs</div></li>
+      <li style="display:flex;gap:0.75rem;margin-bottom:0.75rem;"><span style="color:#34d399;flex-shrink:0;">&rarr;</span> <div><strong>Sales</strong> — Proposals, client agreements, CRM exports</div></li>
+      <li style="display:flex;gap:0.75rem;margin-bottom:0.75rem;"><span style="color:#34d399;flex-shrink:0;">&rarr;</span> <div><strong>Finance</strong> — Invoices, receipts, tax documents</div></li>
+      <li style="display:flex;gap:0.75rem;margin-bottom:0.75rem;"><span style="color:#34d399;flex-shrink:0;">&rarr;</span> <div><strong>Marketing</strong> — Brand assets, campaign files, analytics reports</div></li>
+    </ul>
+
+    <h2>Permission Best Practices</h2>
+    <p>
+      Use Google Groups to manage access instead of adding individuals one by one. Create a group like
+      <code style="background:rgba(255,255,255,0.1);padding:0.1rem 0.3rem;border-radius:0.25rem;color:#6ee7b7;">sales-team@yourcompany.com</code>
+      and grant that group access to the Sales Shared Drive. When someone joins or leaves the team, you
+      update the group — not every Drive individually.
+    </p>
+
+    <h2>Naming Conventions That Scale</h2>
+    <p>Establish a naming convention from day one. A simple pattern that works:</p>
+    <div style="background:#0f172a;border:1px solid rgba(255,255,255,0.1);border-radius:1rem;padding:1.25rem;font-family:monospace;font-size:0.875rem;color:#6ee7b7;margin-bottom:1.5rem;">
+      <div>[Department] - [Category] - [Description]</div>
+      <div style="color:rgba(255,255,255,0.3);margin-top:0.5rem;">Example: Sales - Proposals - Acme Corp Q1 2026</div>
+    </div>
+
+    <h2>Common Mistakes</h2>
+    <ul style="list-style:none;padding:0;margin-bottom:2rem;">
+      <li style="display:flex;gap:0.75rem;margin-bottom:0.75rem;"><span style="color:#f87171;font-weight:700;flex-shrink:0;">&#10007;</span> <span><strong>One giant Shared Drive for everything:</strong> It becomes unsearchable and permissions get messy.</span></li>
+      <li style="display:flex;gap:0.75rem;margin-bottom:0.75rem;"><span style="color:#f87171;font-weight:700;flex-shrink:0;">&#10007;</span> <span><strong>Giving everyone Manager access:</strong> Managers can delete the entire Drive. Use Content Manager for most people.</span></li>
+      <li style="display:flex;gap:0.75rem;margin-bottom:0.75rem;"><span style="color:#f87171;font-weight:700;flex-shrink:0;">&#10007;</span> <span><strong>No folder structure:</strong> Establish 2–3 levels of folders maximum. Deeper nesting makes things harder to find, not easier.</span></li>
+      <li style="display:flex;gap:0.75rem;margin-bottom:0.75rem;"><span style="color:#f87171;font-weight:700;flex-shrink:0;">&#10007;</span> <span><strong>Not migrating existing My Drive files:</strong> If critical files are still in individual My Drives, they're still at risk.</span></li>
+    </ul>
+
+    <div class="cta-box">
+      <h2>Want a Shared Drive Blueprint Built for Your Business?</h2>
+      <p>The Starter Setup ($749) includes a full Shared Drive blueprint — structure, naming conventions, permission setup, and 2 hours of admin coaching.</p>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLScGj_hocIEBDevsfLjQlSHTX74xX78hrLmz2TUejaFRTTBkvQ/viewform?usp=header" target="_blank" rel="noreferrer" class="btn">View Starter Setup &rarr;</a>
+    </div>
+  </article>
+
+  <footer>
+    <div style="margin-bottom:0.75rem;">
+      <a href="/terms.html">Terms</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="/refunds.html">Refunds</a>
+      <a href="https://stevemoynihan.com" target="_blank" rel="noreferrer">About Steve</a>
+      <a href="/blog/">Blog</a>
+    </div>
+    <div>&copy; 2026 Steve's IT Pro &middot; Google Workspace Consulting &middot; San Diego, CA</div>
+  </footer>
+
+<script src="/chat-widget.js" defer></script>
+</body>
+</html>

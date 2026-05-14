@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How to Set Up SPF, DKIM, and DMARC for Google Workspace (2026 Guide) | Steve's IT Pro</title>
+  <meta name="description" content="Your emails are vulnerable without SPF, DKIM, and DMARC. This step-by-step guide shows you how to lock down your Google Workspace email authentication — and why it matters for your business." />
+  <meta name="author" content="Steve Moynihan" />
+  <link rel="canonical" href="https://stevesitpro.com/blog/spf-dkim-dmarc-google-workspace.html" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="How to Set Up SPF, DKIM, and DMARC for Google Workspace (2026 Guide)" />
+  <meta property="og:description" content="Your emails are vulnerable without SPF, DKIM, and DMARC. This step-by-step guide shows you how to lock down your Google Workspace email authentication." />
+  <meta property="og:url" content="https://stevesitpro.com/blog/spf-dkim-dmarc-google-workspace.html" />
+  <meta property="og:site_name" content="Steve's IT Pro" />
+  <meta property="og:image" content="https://stevesitpro.com/og-image.png" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="How to Set Up SPF, DKIM, and DMARC for Google Workspace (2026 Guide)" />
+  <meta name="twitter:description" content="Your emails are vulnerable without SPF, DKIM, and DMARC. This step-by-step guide shows you how to lock down your Google Workspace email authentication." />
+  <meta name="twitter:image" content="https://stevesitpro.com/og-image.png" />
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "How to Set Up SPF, DKIM, and DMARC for Google Workspace (2026 Guide)",
+    "description": "Your emails are vulnerable without SPF, DKIM, and DMARC. This step-by-step guide shows you how to lock down your Google Workspace email authentication.",
+    "author": {
+      "@type": "Person",
+      "name": "Steve Moynihan",
+      "url": "https://stevemoynihan.com"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Steve's IT Pro",
+      "url": "https://stevesitpro.com"
+    },
+    "datePublished": "2026-03-12",
+    "dateModified": "2026-03-12"
+  }
+  </script>
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-B1SMKSG54N"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-B1SMKSG54N');</script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #020817; color: rgba(255,255,255,0.8); line-height: 1.7; }
+    a { color: #34d399; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .header { position: sticky; top: 0; z-index: 30; background: rgba(2,8,23,0.8); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .header-inner { max-width: 72rem; margin: 0 auto; padding: 0.75rem 1.5rem; display: flex; justify-content: space-between; align-items: center; }
+    .logo { font-weight: 700; color: #38bdf8; }
+    .logo:hover { color: #7dd3fc; text-decoration: none; }
+    .nav-links { display: flex; align-items: center; gap: 1.5rem; }
+    .nav-links a { font-size: 0.875rem; color: rgba(255,255,255,0.5); }
+    .nav-links a:hover { color: #fff; text-decoration: none; }
+    .cta-btn { padding: 0.5rem 1.25rem; border-radius: 0.75rem; background: #10b981; color: #020817; font-weight: 600; font-size: 0.875rem; }
+    .cta-btn:hover { background: #34d399; text-decoration: none; }
+    article { max-width: 48rem; margin: 0 auto; padding: 2rem 1rem 4rem; }
+    .back-link { display: inline-flex; align-items: center; gap: 0.5rem; color: rgba(255,255,255,0.5); font-size: 0.875rem; margin-bottom: 2rem; }
+    .back-link:hover { color: #fff; text-decoration: none; }
+    .category { font-size: 0.75rem; font-weight: 600; color: #34d399; text-transform: uppercase; letter-spacing: 0.1em; }
+    h1 { font-size: 2rem; font-weight: 800; color: #fff; margin: 0.75rem 0; line-height: 1.2; }
+    .byline { color: rgba(255,255,255,0.4); font-size: 0.875rem; margin-bottom: 2rem; }
+    .lead { font-size: 1.125rem; line-height: 1.7; margin-bottom: 2rem; }
+    h2 { font-size: 1.5rem; font-weight: 700; color: #fff; margin: 2.5rem 0 1rem; }
+    p { margin-bottom: 1rem; line-height: 1.7; }
+    ul, ol { margin-bottom: 1.5rem; padding-left: 0; list-style: none; }
+    ul li, ol li { display: flex; gap: 0.75rem; margin-bottom: 0.75rem; }
+    .arrow { color: #34d399; flex-shrink: 0; margin-top: 0.15rem; }
+    .x-mark { color: #f87171; font-weight: 700; flex-shrink: 0; }
+    strong { color: #fff; }
+    .callout { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 1rem; padding: 1.25rem; margin-bottom: 2.5rem; font-size: 0.875rem; }
+    .callout strong { color: #34d399; }
+    .code-block { background: #0f172a; border: 1px solid rgba(255,255,255,0.1); border-radius: 1rem; padding: 1.25rem; font-family: 'SF Mono', Monaco, monospace; font-size: 0.875rem; color: #6ee7b7; margin-bottom: 1rem; }
+    .code-block .comment { color: rgba(255,255,255,0.3); margin-bottom: 0.5rem; }
+    .warn { color: rgba(255,255,255,0.4); font-size: 0.875rem; margin-bottom: 2.5rem; }
+    .policy-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; margin-bottom: 2.5rem; }
+    .policy-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 1rem; padding: 1rem; text-align: center; }
+    .policy-card .mono { color: #34d399; font-family: monospace; font-size: 0.75rem; margin-bottom: 0.25rem; }
+    .policy-card .label { color: #fff; font-weight: 600; font-size: 0.875rem; }
+    .policy-card .desc { color: rgba(255,255,255,0.4); font-size: 0.75rem; margin-top: 0.25rem; }
+    .cta-box { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 1.5rem; padding: 2rem; text-align: center; margin-top: 3rem; }
+    .cta-box h2 { margin-top: 0; }
+    .cta-box p { color: rgba(255,255,255,0.6); margin-bottom: 1.5rem; }
+    .cta-box .btn { display: inline-block; background: #10b981; color: #020817; font-weight: 700; padding: 0.75rem 2rem; border-radius: 0.75rem; }
+    .cta-box .btn:hover { background: #34d399; text-decoration: none; }
+    footer { border-top: 1px solid rgba(255,255,255,0.1); padding: 2.5rem 1rem; text-align: center; font-size: 0.875rem; color: rgba(255,255,255,0.4); }
+    footer a { color: rgba(255,255,255,0.4); margin: 0 0.5rem; }
+    footer a:hover { color: #fff; }
+    @media (max-width: 640px) { h1 { font-size: 1.5rem; } .policy-grid { grid-template-columns: 1fr; } .nav-links { display: none; } }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <div class="header-inner">
+      <div style="display:flex;align-items:center;gap:2rem;">
+        <a href="/" class="logo">Steve's IT Pro</a>
+        <nav class="nav-links">
+          <a href="https://stevemoynihan.com" target="_blank" rel="noreferrer">About Steve</a>
+          <a href="/blog/">Blog</a>
+        </nav>
+      </div>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLScGj_hocIEBDevsfLjQlSHTX74xX78hrLmz2TUejaFRTTBkvQ/viewform?usp=header" target="_blank" rel="noreferrer" class="cta-btn">Book a free consult &rarr;</a>
+    </div>
+  </header>
+
+  <article>
+    <a href="/blog/" class="back-link">&larr; Back to Blog</a>
+
+    <span class="category">Email Security</span>
+    <h1>How to Set Up SPF, DKIM, and DMARC for Google Workspace (2026 Guide)</h1>
+    <p class="byline">By Steve &middot; Google Workspace Consultant &middot; 8 min read</p>
+
+    <p class="lead">
+      If your business runs on Google Workspace and you haven't configured SPF, DKIM, and DMARC,
+      your emails are vulnerable. Bad actors can spoof your domain, send phishing emails that look
+      like they came from you, and damage your sender reputation — all without ever touching your
+      account. This guide walks you through exactly how to fix that.
+    </p>
+
+    <h2>What Are SPF, DKIM, and DMARC?</h2>
+    <p>
+      Think of these three protocols as a three-layer lock on your business email. Each one does
+      something different, but together they make it nearly impossible for anyone to impersonate
+      your domain.
+    </p>
+    <ul>
+      <li><span class="arrow">&rarr;</span> <div><strong>SPF (Sender Policy Framework):</strong> Tells receiving mail servers which IP addresses are allowed to send email on behalf of your domain. Unauthorized senders get flagged.</div></li>
+      <li><span class="arrow">&rarr;</span> <div><strong>DKIM (DomainKeys Identified Mail):</strong> Adds a cryptographic signature to every email you send so receiving servers can verify the message wasn't tampered with in transit.</div></li>
+      <li><span class="arrow">&rarr;</span> <div><strong>DMARC (Domain-based Message Authentication):</strong> The policy layer. It tells receiving servers what to do when SPF or DKIM checks fail — monitor, quarantine, or reject.</div></li>
+    </ul>
+
+    <div class="callout">
+      <strong>Real-world impact:</strong> Without DMARC, anyone can send emails from your domain to your clients. They won't know it's fake. This is one of the most common ways small businesses lose client trust overnight.
+    </div>
+
+    <h2>Step 1: Set Up SPF</h2>
+    <p>Log in to your domain registrar (GoDaddy, Cloudflare, Namecheap, etc.) and add this TXT record:</p>
+    <div class="code-block">
+      <div class="comment">// DNS TXT Record</div>
+      <div>Name: @</div>
+      <div>Value: v=spf1 include:_spf.google.com ~all</div>
+      <div>TTL: 3600</div>
+    </div>
+    <p>The <code style="background:rgba(255,255,255,0.1);padding:0.1rem 0.3rem;border-radius:0.25rem;color:#6ee7b7;">~all</code> means "soft fail" — unauthorized senders get flagged but not outright rejected. Once verified, switch to <code style="background:rgba(255,255,255,0.1);padding:0.1rem 0.3rem;border-radius:0.25rem;color:#6ee7b7;">-all</code> for strict enforcement.</p>
+    <p class="warn">&#9888;&#65039; You can only have one SPF record per domain. If you use Mailchimp, HubSpot, etc., combine them all into one record.</p>
+
+    <h2>Step 2: Enable DKIM in Google Workspace</h2>
+    <ol>
+      <li><span class="arrow" style="font-weight:700;width:1.25rem;flex-shrink:0;">1.</span> <span>Log in to admin.google.com</span></li>
+      <li><span class="arrow" style="font-weight:700;width:1.25rem;flex-shrink:0;">2.</span> <span>Go to Apps &rarr; Google Workspace &rarr; Gmail &rarr; Authenticate email</span></li>
+      <li><span class="arrow" style="font-weight:700;width:1.25rem;flex-shrink:0;">3.</span> <span>Select your domain and click Generate new record</span></li>
+      <li><span class="arrow" style="font-weight:700;width:1.25rem;flex-shrink:0;">4.</span> <span>Copy the TXT record (it starts with "v=DKIM1")</span></li>
+      <li><span class="arrow" style="font-weight:700;width:1.25rem;flex-shrink:0;">5.</span> <span>Add that TXT record in your DNS provider</span></li>
+      <li><span class="arrow" style="font-weight:700;width:1.25rem;flex-shrink:0;">6.</span> <span>Wait 24–48 hours, then return and click Start authentication</span></li>
+    </ol>
+
+    <h2>Step 3: Add a DMARC Policy</h2>
+    <p>Start with a monitor-only policy so you can observe before enforcing:</p>
+    <div class="code-block">
+      <div class="comment">// DNS TXT Record</div>
+      <div>Name: _dmarc</div>
+      <div>Value: v=DMARC1; p=none; rua=mailto:dmarc@yourdomain.com</div>
+      <div>TTL: 3600</div>
+    </div>
+    <p>After 2–4 weeks of reviewing reports, escalate your policy:</p>
+    <div class="policy-grid">
+      <div class="policy-card">
+        <div class="mono">p=none</div>
+        <div class="label">Monitor</div>
+        <div class="desc">Collect data only</div>
+      </div>
+      <div class="policy-card">
+        <div class="mono">p=quarantine</div>
+        <div class="label">Quarantine</div>
+        <div class="desc">Suspicious mail &rarr; spam</div>
+      </div>
+      <div class="policy-card">
+        <div class="mono">p=reject</div>
+        <div class="label">Reject</div>
+        <div class="desc">Block unauthorized email</div>
+      </div>
+    </div>
+
+    <h2>Common Mistakes to Avoid</h2>
+    <ul>
+      <li><span class="x-mark">&#10007;</span> <span><strong>Multiple SPF records:</strong> You can only have one. Combine all services into a single record.</span></li>
+      <li><span class="x-mark">&#10007;</span> <span><strong>Jumping straight to p=reject:</strong> Always start with p=none and monitor first or you risk blocking legitimate email.</span></li>
+      <li><span class="x-mark">&#10007;</span> <span><strong>Forgetting subdomains:</strong> If you send from subdomains, they need their own DMARC coverage.</span></li>
+      <li><span class="x-mark">&#10007;</span> <span><strong>No rua address:</strong> Without an aggregate report address you can't see who's spoofing you.</span></li>
+    </ul>
+
+    <div class="cta-box">
+      <h2>Not Sure If Your Setup Is Correct?</h2>
+      <p>A misconfigured record can silently break email deliverability for weeks. Book a free consult and I'll audit your full Google Workspace email security — at no charge.</p>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLScGj_hocIEBDevsfLjQlSHTX74xX78hrLmz2TUejaFRTTBkvQ/viewform?usp=header" target="_blank" rel="noreferrer" class="btn">Book a Free Consult &rarr;</a>
+    </div>
+  </article>
+
+  <footer>
+    <div style="margin-bottom:0.75rem;">
+      <a href="/terms.html">Terms</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="/refunds.html">Refunds</a>
+      <a href="https://stevemoynihan.com" target="_blank" rel="noreferrer">About Steve</a>
+      <a href="/blog/">Blog</a>
+    </div>
+    <div>&copy; 2026 Steve's IT Pro &middot; Google Workspace Consulting &middot; San Diego, CA</div>
+  </footer>
+
+<script src="/chat-widget.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Google Workspace Automation — Custom Apps Script Workflows | Steve's IT Pro</title>
+  <meta name="description" content="Stop wasting hours on repetitive tasks. Custom Google Apps Script automation for your Workspace — form processing, approval workflows, auto-notifications, and report generation. Fixed-price sprints." />
+  <meta name="author" content="Steve Moynihan" />
+  <meta name="keywords" content="google apps script developer, google workspace automation service, automate google sheets, apps script consultant, google workspace workflow automation" />
+  <link rel="canonical" href="https://stevesitpro.com/services/google-workspace-automation.html" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Google Workspace Automation — Custom Apps Script Workflows | Steve's IT Pro" />
+  <meta property="og:description" content="Stop wasting hours on repetitive tasks. Custom Apps Script automation for Google Workspace — delivered in a fixed-price 1-2 week sprint." />
+  <meta property="og:url" content="https://stevesitpro.com/services/google-workspace-automation.html" />
+  <meta property="og:site_name" content="Steve's IT Pro" />
+  <meta property="og:image" content="https://stevesitpro.com/og-image.png" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Google Workspace Automation — Custom Apps Script Workflows | Steve's IT Pro" />
+  <meta name="twitter:description" content="Stop wasting hours on repetitive tasks. Custom Apps Script automation for Google Workspace." />
+  <meta name="twitter:image" content="https://stevesitpro.com/og-image.png" />
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Google Workspace Automation — Custom Apps Script Workflows",
+    "description": "Custom Google Apps Script development for Workspace automation. Form processing, approval workflows, auto-notifications, report generation, and more.",
+    "provider": {
+      "@type": "Organization",
+      "name": "Steve's IT Pro",
+      "url": "https://stevesitpro.com"
+    },
+    "serviceType": "Workflow Automation Consulting",
+    "areaServed": "US",
+    "offers": {
+      "@type": "Offer",
+      "price": "1499",
+      "priceCurrency": "USD",
+      "description": "Automation Sprint — one scoped Apps Script workflow delivered in 1-2 weeks"
+    }
+  }
+  </script>
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-B1SMKSG54N"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-B1SMKSG54N');</script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #020817; color: rgba(255,255,255,0.85); line-height: 1.7; }
+    a { color: #34d399; text-decoration: none; } a:hover { text-decoration: underline; }
+
+    /* Header */
+    .header { position: sticky; top: 0; z-index: 30; background: rgba(2,8,23,0.8); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .header-inner { max-width: 72rem; margin: 0 auto; padding: 0.75rem 1.5rem; display: flex; justify-content: space-between; align-items: center; }
+    .logo { font-weight: 700; color: #38bdf8; } .logo:hover { color: #7dd3fc; text-decoration: none; }
+    .nav-links { display: flex; align-items: center; gap: 1.5rem; }
+    .nav-links a { font-size: 0.875rem; color: rgba(255,255,255,0.5); } .nav-links a:hover { color: #fff; text-decoration: none; }
+    .cta-btn { padding: 0.5rem 1.25rem; border-radius: 0.75rem; background: #10b981; color: #020817; font-weight: 600; font-size: 0.875rem; }
+    .cta-btn:hover { background: #34d399; text-decoration: none; }
+
+    /* Hero */
+    .hero { max-width: 52rem; margin: 0 auto; padding: 4rem 1.5rem 3rem; text-align: center; }
+    .hero .badge { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.3); border-radius: 2rem; padding: 0.35rem 1rem; font-size: 0.8rem; color: #34d399; font-weight: 600; margin-bottom: 1.5rem; }
+    .hero h1 { font-size: 2.5rem; font-weight: 800; color: #fff; line-height: 1.2; margin-bottom: 1rem; }
+    .hero h1 span { color: #34d399; }
+    .hero .sub { font-size: 1.15rem; color: rgba(255,255,255,0.6); max-width: 38rem; margin: 0 auto 2rem; }
+    .cta-primary { display: inline-block; background: #10b981; color: #020817; font-weight: 700; padding: 1rem 2.5rem; border-radius: 1rem; font-size: 1.05rem; transition: background 0.2s; }
+    .cta-primary:hover { background: #34d399; text-decoration: none; }
+    .cta-note { color: rgba(255,255,255,0.35); font-size: 0.8rem; margin-top: 0.75rem; }
+
+    /* Sections */
+    .section { max-width: 52rem; margin: 0 auto; padding: 2.5rem 1.5rem; }
+    .section h2 { font-size: 1.75rem; font-weight: 700; color: #fff; text-align: center; margin-bottom: 0.5rem; }
+    .section .section-sub { text-align: center; color: rgba(255,255,255,0.5); margin-bottom: 2rem; }
+
+    /* Use-case cards */
+    .use-cases { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 2rem; }
+    .use-case { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 1rem; padding: 1.25rem; }
+    .use-case h3 { color: #fff; font-size: 1rem; margin-bottom: 0.35rem; }
+    .use-case p { font-size: 0.85rem; color: rgba(255,255,255,0.55); }
+    .use-case .time-saved { display: inline-block; margin-top: 0.5rem; background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.2); border-radius: 0.5rem; padding: 0.2rem 0.6rem; font-size: 0.75rem; color: #34d399; font-weight: 600; }
+
+    /* Included list */
+    .included-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 2rem; }
+    .included-item { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 1rem; padding: 1.25rem; }
+    .included-item h3 { color: #fff; font-size: 1rem; margin-bottom: 0.35rem; display: flex; align-items: center; gap: 0.5rem; }
+    .included-item h3 .check { color: #34d399; font-weight: 700; }
+    .included-item p { font-size: 0.85rem; color: rgba(255,255,255,0.55); }
+
+    /* Steps */
+    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-bottom: 2rem; }
+    .step { text-align: center; }
+    .step-num { width: 2.5rem; height: 2.5rem; border-radius: 50%; background: rgba(16,185,129,0.15); color: #34d399; font-weight: 700; display: inline-flex; align-items: center; justify-content: center; margin-bottom: 0.75rem; }
+    .step h3 { color: #fff; font-size: 1rem; margin-bottom: 0.35rem; }
+    .step p { font-size: 0.85rem; color: rgba(255,255,255,0.5); }
+
+    /* Testimonial */
+    .test-card { max-width: 36rem; margin: 0 auto 2rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 1rem; padding: 1.5rem; text-align: center; }
+    .test-stars { color: #facc15; font-size: 0.85rem; margin-bottom: 0.75rem; }
+    .test-text { font-size: 0.95rem; color: rgba(255,255,255,0.7); line-height: 1.7; margin-bottom: 0.75rem; font-style: italic; }
+    .test-name { font-size: 0.85rem; font-weight: 600; color: #fff; }
+    .test-co { font-size: 0.75rem; color: rgba(255,255,255,0.4); }
+
+    /* Pricing */
+    .pricing-card { max-width: 28rem; margin: 0 auto 2rem; background: rgba(255,255,255,0.05); border: 1px solid #10b981; border-radius: 1.25rem; padding: 2rem; text-align: center; }
+    .pricing-card .pop-badge { font-size: 0.7rem; color: #34d399; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem; }
+    .pricing-card .price { font-size: 2.5rem; font-weight: 800; color: #fff; }
+    .pricing-card .cadence { font-size: 0.85rem; color: rgba(255,255,255,0.4); margin-bottom: 0.5rem; }
+    .pricing-card .name { font-size: 1.2rem; font-weight: 600; color: #fff; margin-bottom: 1rem; }
+    .pricing-card ul { list-style: none; text-align: left; margin-bottom: 1.5rem; }
+    .pricing-card ul li { font-size: 0.85rem; color: rgba(255,255,255,0.65); margin-bottom: 0.5rem; display: flex; gap: 0.5rem; }
+    .pricing-card ul li::before { content: "\2713"; color: #34d399; font-weight: 700; flex-shrink: 0; }
+    .pricing-card .pkg-cta { display: inline-block; background: #10b981; color: #020817; font-weight: 700; padding: 0.85rem 2rem; border-radius: 0.75rem; font-size: 1rem; }
+    .pricing-card .pkg-cta:hover { background: #34d399; text-decoration: none; }
+
+    /* FAQ */
+    .faq { max-width: 42rem; margin: 0 auto; }
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.1); padding: 1.25rem 0; }
+    .faq-item summary { cursor: pointer; font-weight: 600; color: #fff; font-size: 1rem; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after { content: "+"; color: #34d399; font-size: 1.25rem; }
+    .faq-item[open] summary::after { content: "\2212"; }
+    .faq-item p { margin-top: 0.75rem; color: rgba(255,255,255,0.6); font-size: 0.9rem; }
+
+    /* Final CTA */
+    .final-cta { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 1.5rem; padding: 3rem 2rem; text-align: center; margin: 2rem 0; }
+    .final-cta h2 { margin-bottom: 0.75rem; font-size: 1.75rem; font-weight: 700; color: #fff; }
+    .final-cta p { color: rgba(255,255,255,0.6); margin-bottom: 1.5rem; max-width: 32rem; margin-left: auto; margin-right: auto; }
+
+    /* Blog link */
+    .blog-link { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 1rem; padding: 1rem 1.5rem; margin-top: 1rem; font-size: 0.9rem; transition: border-color 0.2s; }
+    .blog-link:hover { border-color: #10b981; text-decoration: none; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.1); padding: 2.5rem 1rem; text-align: center; font-size: 0.875rem; color: rgba(255,255,255,0.4); }
+    footer a { color: rgba(255,255,255,0.4); margin: 0 0.5rem; } footer a:hover { color: #fff; }
+
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 1.75rem; }
+      .use-cases, .included-grid, .steps { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <div class="header-inner">
+      <div style="display:flex;align-items:center;gap:2rem;">
+        <a href="/" class="logo">Steve's IT Pro</a>
+        <nav class="nav-links">
+          <a href="https://stevemoynihan.com" target="_blank" rel="noreferrer">About Steve</a>
+          <a href="/blog/">Blog</a>
+        </nav>
+      </div>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLScGj_hocIEBDevsfLjQlSHTX74xX78hrLmz2TUejaFRTTBkvQ/viewform?usp=header" target="_blank" rel="noreferrer" class="cta-btn">Book a free consult &rarr;</a>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="badge">Automation &middot; Google Workspace</div>
+    <h1>Stop Doing Manually What <span>Apps Script Can Do for You</span></h1>
+    <p class="sub">Custom Google Workspace automation built in a 1-2 week sprint. Form processing, approval workflows, auto-notifications, report generation — all tailored to how your team actually works.</p>
+    <a href="https://buy.stripe.com/28E3cx2MNgxY0pjgVf8k802" target="_blank" rel="noreferrer" class="cta-primary" onclick="gtag('event','automation_hero_cta');">Get the Automation Sprint &mdash; $1,499 &rarr;</a>
+    <p class="cta-note">Fixed price. One scoped workflow. Delivered in 1-2 weeks with full documentation.</p>
+  </section>
+
+  <!-- Common Automations -->
+  <section class="section">
+    <h2>Automations That Save Real Time</h2>
+    <p class="section-sub">Here are the workflows I build most often for small business teams.</p>
+    <div class="use-cases">
+      <div class="use-case">
+        <h3>Form-to-Sheet Processing</h3>
+        <p>Google Form submissions automatically parsed, validated, and routed to the right team members with formatted email notifications.</p>
+        <span class="time-saved">Saves 3-5 hrs/week</span>
+      </div>
+      <div class="use-case">
+        <h3>Approval Workflows</h3>
+        <p>Multi-step approval chains triggered by form submissions or spreadsheet entries. Managers get email prompts; status updates automatically in Sheets.</p>
+        <span class="time-saved">Saves 4-6 hrs/week</span>
+      </div>
+      <div class="use-case">
+        <h3>Auto-Notifications &amp; Reminders</h3>
+        <p>Scheduled email or Chat alerts based on spreadsheet data — overdue tasks, expiring contracts, upcoming renewals, missing fields.</p>
+        <span class="time-saved">Saves 2-3 hrs/week</span>
+      </div>
+      <div class="use-case">
+        <h3>Report Generation</h3>
+        <p>Weekly or monthly reports auto-generated from Sheets data and emailed as formatted PDFs or Google Docs to stakeholders.</p>
+        <span class="time-saved">Saves 3-4 hrs/week</span>
+      </div>
+      <div class="use-case">
+        <h3>Onboarding / Offboarding</h3>
+        <p>New hire triggers a checklist: create accounts, share folders, send welcome emails, add to groups. Offboarding reverses it all.</p>
+        <span class="time-saved">Saves 2-3 hrs/employee</span>
+      </div>
+      <div class="use-case">
+        <h3>Data Sync &amp; Cleanup</h3>
+        <p>Keep multiple Sheets in sync, deduplicate entries, format data consistently, and archive old records automatically on a schedule.</p>
+        <span class="time-saved">Saves 3-5 hrs/week</span>
+      </div>
+    </div>
+    <p style="text-align:center;color:rgba(255,255,255,0.5);font-size:0.9rem;">One client replaced a <strong style="color:#fff;">3-hour manual Monday process</strong> with an automation that now runs itself. That's 150+ hours saved per year.</p>
+  </section>
+
+  <!-- What's Included -->
+  <section class="section">
+    <h2>What's Included in the Sprint</h2>
+    <p class="section-sub">Everything needed to ship a production-ready automation.</p>
+    <div class="included-grid">
+      <div class="included-item">
+        <h3><span class="check">&#10003;</span> Workflow Design</h3>
+        <p>We map out your current manual process step-by-step, then design the automated version together. No surprises during development.</p>
+      </div>
+      <div class="included-item">
+        <h3><span class="check">&#10003;</span> Custom Apps Script Code</h3>
+        <p>Clean, well-commented Google Apps Script built specifically for your workflow. No third-party dependencies or recurring platform fees.</p>
+      </div>
+      <div class="included-item">
+        <h3><span class="check">&#10003;</span> Testing &amp; QA</h3>
+        <p>Thorough testing with real data before launch. Edge cases handled. Error notifications built in so issues don't go unnoticed.</p>
+      </div>
+      <div class="included-item">
+        <h3><span class="check">&#10003;</span> Full Documentation</h3>
+        <p>Written docs covering how the automation works, how to modify it, and how to troubleshoot common issues. Your team owns the code.</p>
+      </div>
+      <div class="included-item">
+        <h3><span class="check">&#10003;</span> Handoff Video</h3>
+        <p>A recorded walkthrough of the automation: what it does, how it triggers, and where to look if something needs attention.</p>
+      </div>
+      <div class="included-item">
+        <h3><span class="check">&#10003;</span> 30-Day Bug Fix Guarantee</h3>
+        <p>If anything breaks within 30 days of delivery, I fix it at no extra charge. No questions asked.</p>
+      </div>
+    </div>
+    <div style="text-align:center;">
+      <a href="/blog/apps-script-vs-zapier-google-workspace.html" class="blog-link">Read: Apps Script vs. Zapier — Which Is Right for Your Workspace? &rarr;</a>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="section">
+    <h2>How It Works</h2>
+    <p class="section-sub">A focused sprint, not a never-ending project.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Discovery Call</h3>
+        <p>Free 30-minute call. Walk me through the manual process you want to automate. I'll confirm the scope and timeline before you pay anything.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>Build &amp; Test</h3>
+        <p>I build the automation in 1-2 weeks, testing against real scenarios. You get a mid-sprint check-in to review progress and give feedback.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>Launch &amp; Handoff</h3>
+        <p>Automation goes live. You get full documentation, a handoff video, and 30 days of bug-fix support. Your team is fully self-sufficient.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonial -->
+  <section class="section">
+    <div class="test-card">
+      <div class="test-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <p class="test-text">"The automation sprint replaced a 3-hour manual process our team ran every Monday. It now runs itself. I wish we'd done this two years ago."</p>
+      <div class="test-name">James R.</div>
+      <div class="test-co">Operations Manager, Pacific Build Group</div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section class="section">
+    <h2>Transparent Pricing</h2>
+    <p class="section-sub">One fixed price per workflow. No hourly billing. No platform fees.</p>
+    <div class="pricing-card">
+      <div class="pop-badge">Most Popular</div>
+      <div class="price">$1,499</div>
+      <div class="cadence">1-2 week sprint</div>
+      <div class="name">Automation Sprint</div>
+      <ul>
+        <li>One scoped Apps Script workflow</li>
+        <li>Forms + Sheets + Gmail integration</li>
+        <li>Approval chains &amp; auto-notifications</li>
+        <li>Error handling &amp; monitoring</li>
+        <li>Full documentation &amp; handoff video</li>
+        <li>30-day bug fix guarantee</li>
+      </ul>
+      <a href="https://buy.stripe.com/28E3cx2MNgxY0pjgVf8k802" target="_blank" rel="noreferrer" class="pkg-cta" onclick="gtag('event','automation_pricing_cta');">Get Started &rarr;</a>
+    </div>
+    <p style="text-align:center;color:rgba(255,255,255,0.4);font-size:0.85rem;">Need multiple automations? Book a <a href="https://docs.google.com/forms/d/e/1FAIpQLScGj_hocIEBDevsfLjQlSHTX74xX78hrLmz2TUejaFRTTBkvQ/viewform?usp=header" target="_blank" rel="noreferrer">free discovery call</a> and we'll scope a custom engagement.</p>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section">
+    <h2>Frequently Asked Questions</h2>
+    <p class="section-sub">Common questions about the Automation Sprint.</p>
+    <div class="faq">
+      <details class="faq-item">
+        <summary>Why Apps Script instead of Zapier or Make?</summary>
+        <p>Apps Script runs natively inside Google Workspace — no third-party platform fees, no per-task pricing, and no data leaving Google's ecosystem. For most Workspace-centric workflows, it's faster, cheaper, and more reliable long-term. Read the <a href="/blog/apps-script-vs-zapier-google-workspace.html">full comparison</a> on our blog.</p>
+      </details>
+      <details class="faq-item">
+        <summary>What if my automation needs more than one workflow?</summary>
+        <p>The Sprint is scoped to one workflow to keep timelines predictable. If you need multiple automations, we can run consecutive sprints or scope a custom engagement during the discovery call. Many clients start with one and add more after seeing the results.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Do I own the code?</summary>
+        <p>Yes, 100%. The Apps Script code lives in your Google Workspace account. You get full documentation explaining how it works. There are no licensing fees, no vendor lock-in, and no recurring charges from me.</p>
+      </details>
+      <details class="faq-item">
+        <summary>What happens if something breaks after 30 days?</summary>
+        <p>The code is documented well enough for any Apps Script developer to maintain. If you want ongoing support, the <a href="/get-started/">Pro Support plan</a> ($799/month) includes up to 8 hours of on-demand maintenance, fixes, and new features.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="section">
+    <div class="final-cta">
+      <h2>Ready to Automate?</h2>
+      <p>Book a free 30-minute discovery call. Walk me through the process you want to automate, and I'll tell you exactly what's possible, what it will cost, and how long it will take.</p>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLScGj_hocIEBDevsfLjQlSHTX74xX78hrLmz2TUejaFRTTBkvQ/viewform?usp=header" target="_blank" rel="noreferrer" class="cta-primary" onclick="gtag('event','automation_bottom_cta');">Book a Free Discovery Call &rarr;</a>
+      <p class="cta-note">Or email directly: steve@stevesitpro.com</p>
+    </div>
+  </section>
+
+  <footer>
+    <div style="margin-bottom:0.75rem;">
+      <a href="/terms.html">Terms</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="/refunds.html">Refunds</a>
+      <a href="https://stevemoynihan.com" target="_blank" rel="noreferrer">About Steve</a>
+      <a href="/blog/">Blog</a>
+    </div>
+    <div>&copy; 2026 Steve's IT Pro &middot; Google Workspace Consulting &middot; San Diego, CA</div>
+  </footer>
+
+  <script src="/chat-widget.js" defer></script>
+</body>
+</html>

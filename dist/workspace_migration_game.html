@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workspace Migration Challenge</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .feedback-animation {
+            animation: pop-in 0.3s ease-out;
+        }
+        @keyframes pop-in {
+            0% { transform: scale(0.8); opacity: 0; }
+            80% { transform: scale(1.05); opacity: 1; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        .category-checkbox:checked + label {
+            border-color: #3B82F6;
+            background-color: #EFF6FF;
+        }
+        .modal-backdrop {
+            background-color: rgba(0,0,0,0.5);
+        }
+        .answer-btn {
+            transition: all 0.2s ease-in-out;
+        }
+        .answer-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen p-4">
+    <div id="game-container" class="w-full max-w-4xl mx-auto">
+        <div class="text-center mb-6">
+            <h1 class="text-4xl font-bold text-gray-800">Workspace Migration Challenge</h1>
+            <p id="subtitle" class="text-gray-600 mt-2">Select the categories you want to practice.</p>
+        </div>
+
+        <!-- Game Setup Screen -->
+        <div id="game-setup" class="bg-white rounded-lg shadow-xl p-6">
+            <h2 class="text-2xl font-bold text-center mb-4">Choose Your Challenge</h2>
+            <div id="category-selection" class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-6">
+                <!-- Categories will be dynamically inserted here -->
+            </div>
+            <div class="flex justify-center items-center gap-4">
+                 <button id="start-button" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-8 rounded-lg shadow-md transition-transform transform hover:scale-105">Start Timed Challenge</button>
+                 <button id="leaderboard-button" class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-3 px-8 rounded-lg shadow-md transition-transform transform hover:scale-105">View Leaderboard</button>
+            </div>
+             <p id="selection-error" class="text-red-500 text-center mt-4 hidden">Please select at least one category to practice.</p>
+        </div>
+        
+        <!-- Game UI -->
+        <div id="game-ui" class="bg-white rounded-lg shadow-xl p-6 relative hidden">
+            <div class="flex justify-between items-start mb-4 border-b pb-4">
+                <div class="w-full">
+                    <p class="font-bold text-blue-700">Question:</p>
+                    <p id="question-text" class="text-2xl font-semibold text-gray-800 mt-1">What is the Google Workspace equivalent of <span class="text-blue-600">Outlook</span>?</p>
+                </div>
+                 <div class="text-right ml-4 flex-shrink-0 space-y-2">
+                    <div>
+                        <div class="text-sm text-gray-500">PROGRESS</div>
+                        <div id="progress" class="text-3xl font-bold text-gray-800">0/10</div>
+                    </div>
+                    <div>
+                        <div class="text-sm text-gray-500">TIME</div>
+                        <div id="timer" class="text-3xl font-bold text-gray-800">0.0s</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Answer Options -->
+            <div id="answer-options" class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6">
+                <!-- Answer buttons will be dynamically inserted here -->
+            </div>
+
+            <!-- Feedback Overlay -->
+            <div id="feedback-overlay" class="absolute inset-0 bg-white bg-opacity-90 flex-col items-center justify-center rounded-lg text-center p-8 hidden">
+                <div id="feedback-icon" class="text-6xl mb-4"></div>
+                <div id="feedback-text" class="text-3xl font-bold"></div>
+                <div id="feedback-hint" class="text-lg text-gray-600 mt-2"></div>
+            </div>
+        </div>
+
+        <!-- End Game Screen -->
+        <div id="end-game-screen" class="bg-white rounded-lg shadow-xl p-8 text-center hidden">
+            <h2 id="end-game-title" class="text-3xl font-bold text-gray-800 mb-2">Challenge Complete!</h2>
+            <p id="end-game-score" class="text-xl text-gray-600 mb-6">Your time: 12.3s</p>
+            <div class="flex justify-center items-center gap-4">
+                <button id="play-again-button" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-8 rounded-lg shadow-md transition-transform transform hover:scale-105">Play Again</button>
+                <button id="show-leaderboard-end-button" class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-3 px-8 rounded-lg shadow-md transition-transform transform hover:scale-105">View Leaderboard</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Leaderboard Modal -->
+    <div id="leaderboard-modal" class="fixed inset-0 modal-backdrop flex items-center justify-center p-4 hidden">
+        <div class="bg-white rounded-lg shadow-2xl w-full max-w-lg">
+            <div class="flex justify-between items-center border-b p-4">
+                <h3 class="text-2xl font-bold">Top 10 Players</h3>
+                <button id="close-leaderboard-button" class="text-gray-500 hover:text-gray-800 text-3xl leading-none">&times;</button>
+            </div>
+            <div class="p-6">
+                <table class="w-full text-left">
+                    <thead>
+                        <tr>
+                            <th class="p-2">Rank</th>
+                            <th class="p-2">Name</th>
+                            <th class="p-2">Time (s)</th>
+                        </tr>
+                    </thead>
+                    <tbody id="leaderboard-body"></tbody>
+                </table>
+                <p id="leaderboard-loading" class="text-center text-gray-500 mt-4">Loading...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Submit Score Modal -->
+    <div id="submit-score-modal" class="fixed inset-0 modal-backdrop flex items-center justify-center p-4 hidden">
+        <div class="bg-white rounded-lg shadow-2xl w-full max-w-sm p-6 text-center">
+            <h3 class="text-2xl font-bold mb-2">New Best Time!</h3>
+            <p class="text-gray-600 mb-4">Enter your name to join the leaderboard.</p>
+            <input type="text" id="player-name-input" placeholder="Your Name" class="w-full border-2 border-gray-300 rounded-md p-2 mb-4 focus:border-blue-500 focus:outline-none">
+            <p id="player-name-error" class="text-red-500 text-sm mb-2 hidden">Please enter a name.</p>
+            <button id="submit-score-button" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-6 rounded-lg w-full">Submit Score</button>
+            <button id="cancel-submit-button" class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-6 rounded-lg w-full mt-2">Cancel</button>
+        </div>
+    </div>
+    
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, collection, addDoc, getDocs, serverTimestamp, setLogLevel } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        document.addEventListener('DOMContentLoaded', async () => {
+            // --- Firebase Setup ---
+            const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+            let db, auth;
+            try {
+                const firebaseConfig = JSON.parse(__firebase_config);
+                const app = initializeApp(firebaseConfig);
+                db = getFirestore(app);
+                auth = getAuth(app);
+                setLogLevel('debug');
+
+                if (typeof __initial_auth_token !== 'undefined') {
+                    await signInWithCustomToken(auth, __initial_auth_token);
+                } else {
+                    await signInAnonymously(auth);
+                }
+            } catch (error) {
+                console.error("Firebase initialization failed:", error);
+            }
+
+            // --- DOM Elements ---
+            const questionText = document.getElementById('question-text');
+            const progressEl = document.getElementById('progress');
+            const timerEl = document.getElementById('timer');
+            const startButton = document.getElementById('start-button');
+            const playAgainButton = document.getElementById('play-again-button');
+            const feedbackOverlay = document.getElementById('feedback-overlay');
+            const feedbackIcon = document.getElementById('feedback-icon');
+            const feedbackText = document.getElementById('feedback-text');
+            const feedbackHint = document.getElementById('feedback-hint');
+            const gameSetup = document.getElementById('game-setup');
+            const gameUi = document.getElementById('game-ui');
+            const subtitle = document.getElementById('subtitle');
+            const categorySelectionContainer = document.getElementById('category-selection');
+            const selectionError = document.getElementById('selection-error');
+            const answerOptionsContainer = document.getElementById('answer-options');
+            const endGameScreen = document.getElementById('end-game-screen');
+            const endGameTitle = document.getElementById('end-game-title');
+            const endGameScore = document.getElementById('end-game-score');
+            const showLeaderboardEndButton = document.getElementById('show-leaderboard-end-button');
+            
+            // Leaderboard elements
+            const leaderboardButton = document.getElementById('leaderboard-button');
+            const leaderboardModal = document.getElementById('leaderboard-modal');
+            const closeLeaderboardButton = document.getElementById('close-leaderboard-button');
+            const leaderboardBody = document.getElementById('leaderboard-body');
+            const leaderboardLoading = document.getElementById('leaderboard-loading');
+            
+            // Submit score elements
+            const submitScoreModal = document.getElementById('submit-score-modal');
+            const playerNameInput = document.getElementById('player-name-input');
+            const playerNameError = document.getElementById('player-name-error');
+            const submitScoreButton = document.getElementById('submit-score-button');
+            const cancelSubmitButton = document.getElementById('cancel-submit-button');
+
+            // --- Game State ---
+            let bestTime = null;
+            let activeChallenge = null;
+            let gameActive = false;
+            let challenges = [];
+            let timerInterval = null;
+            let startTime = 0;
+            let completedChallenges = 0;
+            let lastGameTime = 0;
+            const CHALLENGE_COUNT = 10;
+
+            // --- Game Data ---
+            const allEquivalents = [
+                { m365: 'Outlook', workspace: 'Gmail', category: 'Email & Chat', distractors: ['Google Docs', 'Google Chat', 'Google Drive'] },
+                { m365: 'Outlook Calendar', workspace: 'Google Calendar', category: 'Productivity', distractors: ['Google Sheets', 'Google Keep', 'Google Tasks'] },
+                { m365: 'OneDrive', workspace: 'Google Drive', category: 'Storage', distractors: ['Gmail', 'Google Sites', 'Google Photos'] },
+                { m365: 'Word', workspace: 'Google Docs', category: 'Documents', distractors: ['Google Sheets', 'Google Slides', 'Google Keep'] },
+                { m365: 'Excel', workspace: 'Google Sheets', category: 'Documents', distractors: ['Google Docs', 'Google Forms', 'Google Data Studio'] },
+                { m365: 'PowerPoint', workspace: 'Google Slides', category: 'Documents', distractors: ['Google Drawings', 'Jamboard', 'Google Sites'] },
+                { m365: 'Teams', workspace: 'Google Chat & Meet', category: 'Email & Chat', distractors: ['Gmail', 'Google Groups', 'Google Voice'] },
+                { m365: 'SharePoint', workspace: 'Google Sites & Shared Drives', category: 'Storage', distractors: ['Google Drive', 'Google Groups', 'Google Docs'] },
+                { m365: 'OneNote', workspace: 'Google Keep', category: 'Productivity', distractors: ['Google Docs', 'Google Tasks', 'Jamboard'] },
+                { m365: 'To Do', workspace: 'Google Tasks', category: 'Productivity', distractors: ['Google Keep', 'Google Calendar', 'Google Sheets'] },
+                { m365: 'Outlook Rule', workspace: 'Gmail Filter', category: 'Email & Chat', distractors: ['Gmail Label', 'Gmail Snooze', 'Gmail Archive'] },
+                { m365: 'Outlook Folder', workspace: 'Gmail Label', category: 'Email & Chat', distractors: ['Gmail Category', 'Gmail Filter', 'Gmail Folder'] }
+            ];
+
+            const categories = [...new Set(allEquivalents.map(item => item.category))];
+
+            // --- Initial Setup ---
+            const initializeSetup = () => {
+                loadBestTime();
+                categorySelectionContainer.innerHTML = '';
+                categories.forEach((cat, index) => {
+                    const div = document.createElement('div');
+                    const input = document.createElement('input');
+                    input.type = 'checkbox';
+                    input.id = `cat-${index}`;
+                    input.value = cat;
+                    input.checked = true;
+                    input.className = 'hidden category-checkbox';
+                    
+                    const label = document.createElement('label');
+                    label.htmlFor = `cat-${index}`;
+                    label.className = 'block border-2 border-gray-300 rounded-lg p-4 text-center cursor-pointer transition-all duration-200 h-full font-semibold';
+                    label.textContent = cat;
+                    
+                    div.appendChild(input);
+                    div.appendChild(label);
+                    categorySelectionContainer.appendChild(div);
+                });
+            };
+
+            const loadBestTime = () => {
+                bestTime = localStorage.getItem('workspaceMigrationBestTime');
+            };
+            
+            // --- Game Logic ---
+            const startGame = () => {
+                const selectedCategories = Array.from(categorySelectionContainer.querySelectorAll('input:checked')).map(cb => cb.value);
+                if (selectedCategories.length === 0) {
+                    selectionError.classList.remove('hidden');
+                    return;
+                }
+                selectionError.classList.add('hidden');
+
+                const availableQuestions = allEquivalents.filter(q => selectedCategories.includes(q.category));
+                challenges = [];
+                for(let i = 0; i < CHALLENGE_COUNT; i++) {
+                    challenges.push(availableQuestions[Math.floor(Math.random() * availableQuestions.length)]);
+                }
+
+                gameActive = true;
+                completedChallenges = 0;
+                updateProgress();
+                
+                gameSetup.classList.add('hidden');
+                gameUi.classList.remove('hidden');
+                endGameScreen.classList.add('hidden');
+                subtitle.textContent = "Select the correct Google Workspace equivalent.";
+
+                startTime = Date.now();
+                timerInterval = setInterval(() => {
+                    const elapsed = (Date.now() - startTime) / 1000;
+                    timerEl.textContent = `${elapsed.toFixed(1)}s`;
+                }, 100);
+
+                nextChallenge();
+            };
+
+            const nextChallenge = () => {
+                if (completedChallenges >= CHALLENGE_COUNT) {
+                    endGame();
+                    return;
+                }
+                completedChallenges++;
+                updateProgress();
+
+                activeChallenge = challenges[completedChallenges - 1];
+                questionText.innerHTML = `What is the Google Workspace equivalent of <span class="text-blue-600 font-bold">${activeChallenge.m365}</span>?`;
+
+                const options = [activeChallenge.workspace, ...activeChallenge.distractors].sort(() => Math.random() - 0.5);
+                answerOptionsContainer.innerHTML = '';
+                options.forEach(option => {
+                    const button = document.createElement('button');
+                    button.className = 'answer-btn bg-white border-2 border-gray-300 hover:border-blue-500 text-gray-800 font-semibold py-4 px-6 rounded-lg shadow-sm';
+                    button.textContent = option;
+                    button.addEventListener('click', () => handleAnswer(option));
+                    answerOptionsContainer.appendChild(button);
+                });
+            };
+
+            const handleAnswer = (selectedOption) => {
+                if (!gameActive) return;
+                gameActive = false; // Prevent multiple clicks
+                if (selectedOption === activeChallenge.workspace) {
+                    handleCorrectAnswer();
+                } else {
+                    handleWrongAnswer(selectedOption);
+                }
+            };
+            
+            const endGame = () => {
+                clearInterval(timerInterval);
+                const finalTime = (Date.now() - startTime) / 1000;
+                lastGameTime = finalTime;
+                
+                gameUi.classList.add('hidden');
+                endGameScreen.classList.remove('hidden');
+
+                endGameTitle.textContent = "Challenge Complete!";
+                endGameScore.textContent = `Your time: ${finalTime.toFixed(1)} seconds`;
+
+                if (bestTime === null || finalTime < parseFloat(bestTime)) {
+                    bestTime = finalTime.toFixed(1);
+                    localStorage.setItem('workspaceMigrationBestTime', bestTime);
+                    endGameTitle.textContent = '🎉 New Best Time! 🎉';
+                    submitScoreModal.classList.remove('hidden');
+                }
+                
+                subtitle.textContent = "Great job! Click 'Play Again' to try and beat your best time.";
+            };
+
+            const resetToSetup = () => {
+                endGameScreen.classList.add('hidden');
+                gameSetup.classList.remove('hidden');
+                subtitle.textContent = 'Select the categories you want to practice.';
+                timerEl.textContent = "0.0s";
+                completedChallenges = 0;
+                updateProgress();
+            };
+
+            const handleCorrectAnswer = () => {
+                showFeedback(true);
+                setTimeout(() => {
+                    feedbackOverlay.classList.add('hidden');
+                    gameActive = true;
+                    nextChallenge();
+                }, 800);
+            };
+
+            const handleWrongAnswer = () => {
+                showFeedback(false);
+                setTimeout(() => {
+                    feedbackOverlay.classList.add('hidden');
+                    gameActive = true;
+                    nextChallenge();
+                }, 1500);
+            };
+
+            const showFeedback = (isCorrect) => {
+                feedbackOverlay.classList.remove('hidden');
+                feedbackOverlay.classList.add('flex', 'feedback-animation');
+                if (isCorrect) {
+                    feedbackIcon.innerHTML = '✅';
+                    feedbackIcon.style.color = '#10B981';
+                    feedbackText.textContent = 'Correct!';
+                    feedbackHint.innerHTML = '';
+                } else {
+                    feedbackIcon.innerHTML = '❌';
+                    feedbackIcon.style.color = '#EF4444';
+                    feedbackText.textContent = 'Not quite!';
+                    feedbackHint.innerHTML = `The correct answer is <span class="font-bold">${activeChallenge.workspace}</span>.`;
+                }
+            };
+            
+            const updateProgress = () => {
+                progressEl.textContent = `${completedChallenges}/${CHALLENGE_COUNT}`;
+            };
+            
+            // --- Leaderboard Logic ---
+            const showLeaderboard = async () => {
+                leaderboardModal.classList.remove('hidden');
+                leaderboardLoading.classList.remove('hidden');
+                leaderboardBody.innerHTML = '';
+
+                try {
+                    const leaderboardCol = collection(db, `/artifacts/${appId}/public/data/leaderboard-workspace`);
+                    const snapshot = await getDocs(leaderboardCol);
+                    const scores = snapshot.docs.map(doc => doc.data());
+                    scores.sort((a, b) => a.time - b.time);
+                    const top10 = scores.slice(0, 10);
+                    
+                    leaderboardBody.innerHTML = top10.map((score, index) => `
+                        <tr class="border-b">
+                            <td class="p-2 font-bold">${index + 1}</td>
+                            <td class="p-2">${score.name}</td>
+                            <td class="p-2">${score.time.toFixed(1)}</td>
+                        </tr>
+                    `).join('');
+                } catch (err) {
+                    console.error("Error fetching leaderboard: ", err);
+                    leaderboardBody.innerHTML = `<tr><td colspan="3" class="text-center p-4">Could not load leaderboard.</td></tr>`;
+                } finally {
+                    leaderboardLoading.classList.add('hidden');
+                }
+            };
+
+            const submitScore = async () => {
+                const playerName = playerNameInput.value.trim();
+                playerNameError.classList.add('hidden');
+                if (!playerName) {
+                    playerNameError.classList.remove('hidden');
+                    return;
+                }
+
+                submitScoreButton.disabled = true;
+                submitScoreButton.textContent = "Submitting...";
+                
+                try {
+                    const leaderboardCol = collection(db, `/artifacts/${appId}/public/data/leaderboard-workspace`);
+                    await addDoc(leaderboardCol, {
+                        name: playerName,
+                        time: lastGameTime,
+                        createdAt: serverTimestamp()
+                    });
+                } catch(err) {
+                    console.error("Error submitting score: ", err);
+                } finally {
+                    submitScoreModal.classList.add('hidden');
+                    submitScoreButton.disabled = false;
+                    submitScoreButton.textContent = "Submit Score";
+                    playerNameInput.value = '';
+                }
+            };
+
+            // --- Event Listeners ---
+            startButton.addEventListener('click', startGame);
+            playAgainButton.addEventListener('click', resetToSetup);
+            leaderboardButton.addEventListener('click', showLeaderboard);
+            showLeaderboardEndButton.addEventListener('click', showLeaderboard);
+            closeLeaderboardButton.addEventListener('click', () => leaderboardModal.classList.add('hidden'));
+            submitScoreButton.addEventListener('click', submitScore);
+            cancelSubmitButton.addEventListener('click', () => {
+                submitScoreModal.classList.add('hidden');
+                playerNameError.classList.add('hidden');
+            });
+
+            initializeSetup();
+        });
+    </script>
+</body>
+</html>

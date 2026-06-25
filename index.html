@@ -31,6 +31,49 @@
 
     <!-- Sitemap hint -->
     <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
+
+    <!-- Structured data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Steve's IT Pro",
+      "description": "Fixed-price Google Workspace consulting for small businesses. Setup, automation, security hardening, and ongoing support.",
+      "url": "https://stevesitpro.com",
+      "email": "steve@stevesitpro.com",
+      "areaServed": {
+        "@type": "Place",
+        "name": "San Diego, CA"
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Google Workspace Services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "name": "Starter Setup",
+            "description": "Google Workspace setup or cleanup, SPF/DKIM/DMARC config, Shared Drives blueprint, 2 hours admin coaching.",
+            "price": "749",
+            "priceCurrency": "USD"
+          },
+          {
+            "@type": "Offer",
+            "name": "Automation Sprint",
+            "description": "One scoped Apps Script workflow built in 1–2 weeks, including Forms, Sheets, approvals, and a full handoff video.",
+            "price": "1499",
+            "priceCurrency": "USD"
+          },
+          {
+            "@type": "Offer",
+            "name": "Pro Support",
+            "description": "Up to 8 hours per month on-demand admin changes, fixes, quarterly security review, and priority response.",
+            "price": "799",
+            "priceCurrency": "USD"
+          }
+        ]
+      }
+    }
+    </script>
   </head>
   <body>
     <div id="root"></div>

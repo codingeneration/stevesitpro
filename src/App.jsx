@@ -23,7 +23,6 @@ const WEB_APP_URL =
 const STRIPE_LINKS = {
   starter: "https://buy.stripe.com/5kQ28tcnn95wb3X0Wh8k800",
   automation: "https://buy.stripe.com/28E3cx2MNgxY0pjgVf8k802",
-  proSupport: "https://buy.stripe.com/9B67sNaffgxYb3XeN78k803",
   consult95: "https://buy.stripe.com/aFa8wR3QR4Pgdc5fRb8k804",
   advanced125: "https://buy.stripe.com/00w4gBcnnftU0pj9sN8k805",
   advisory: "https://buy.stripe.com/6oU5kFfzz5Tk0pjfRb8k80c",
@@ -491,19 +490,6 @@ export default function App() {
         "Full handoff video",
       ],
     },
-    {
-      key: "pro",
-      name: "Pro Support",
-      price: "$799",
-      cadence: "/month",
-      stripe: STRIPE_LINKS.proSupport,
-      points: [
-        "Up to 8 hrs/month on-demand",
-        "Admin changes & fixes",
-        "Quarterly security review",
-        "Priority response",
-      ],
-    },
   ], []);
 
   const retainerTiers = useMemo(() => [
@@ -589,12 +575,11 @@ export default function App() {
       <noscript>
         <div style={{ padding: "2rem", fontFamily: "sans-serif", color: "#fff", background: "#020817" }}>
           <h1>Steve's IT Pro – Google Workspace Consulting & Automation</h1>
-          <p>Fixed-price Google Workspace consulting for small businesses. Setup, automation, security hardening, and ongoing support. Based in San Diego.</p>
+          <p>Fixed-price Google Workspace consulting for small businesses. Setup, automation, security hardening, and ongoing support. Based in Riverside County, CA.</p>
           <h2>Services</h2>
           <ul>
             <li>Starter Setup ($749) – Workspace setup, SPF/DKIM/DMARC, Shared Drives, coaching</li>
             <li>Automation Sprint ($1,499) – Custom Apps Script workflow built in 1–2 weeks</li>
-            <li>Pro Support ($799/mo) – Up to 8 hrs/month, admin changes, security reviews</li>
           </ul>
           <h2>Retainer Plans</h2>
           <ul>
@@ -752,9 +737,9 @@ export default function App() {
             <div className="mb-8">
               <span className="text-xs font-semibold text-emerald-400 uppercase tracking-widest">Transparent Pricing</span>
               <h2 className="text-2xl font-bold text-white mt-2">Fixed-price packages. No surprises.</h2>
-              <p className="text-white/50 mt-1 text-sm">Every engagement includes documentation and a handoff video so your team stays self-sufficient.</p>
+              <p className="text-white/50 mt-1 text-sm">Every engagement includes documentation and a handoff video so your team stays self-sufficient. Need ongoing support instead? See <a href="#retainers" className="text-emerald-400 hover:underline">Monthly Retainer Plans</a> below.</p>
             </div>
-            <div className="grid md:grid-cols-3 gap-6">
+            <div className="grid md:grid-cols-2 gap-6 max-w-3xl">
               {tiers.map((t) => (
                 <div key={t.key} className={`bg-white/5 border ${t.popular ? "border-emerald-500" : "border-white/10"} rounded-3xl p-6 flex flex-col`}>
                   {t.popular && (
@@ -904,7 +889,7 @@ export default function App() {
           <a href="https://stevemoynihan.com" target="_blank" rel="noreferrer" className="hover:text-white transition">About Steve</a>
           <a href="/blog/" className="hover:text-white transition">Blog</a>
         </div>
-        <div>© {new Date().getFullYear()} Steve's IT Pro · Google Workspace Consulting · San Diego, CA</div>
+        <div>© {new Date().getFullYear()} Steve's IT Pro · Google Workspace Consulting · Riverside County, CA</div>
       </footer>
     </main>
   );

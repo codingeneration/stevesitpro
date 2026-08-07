@@ -600,9 +600,16 @@ export default function App() {
           <div className="flex items-center gap-8">
             <button
               onClick={() => setView("home")}
-              className="font-bold text-sky-400 hover:text-sky-300 transition whitespace-nowrap"
+              className="flex items-center gap-2.5 hover:opacity-80 transition whitespace-nowrap"
             >
-              Steve's IT Pro
+              <img
+                src="/logo-mark.png"
+                alt="Steve's IT Pro logo"
+                className="w-8 h-8 rounded-lg shrink-0"
+                width={32}
+                height={32}
+              />
+              <span className="font-bold text-sky-400">Steve's IT Pro</span>
             </button>
             <nav className="hidden sm:flex items-center gap-6">
               <a
@@ -889,7 +896,10 @@ export default function App() {
           <a href="https://stevemoynihan.com" target="_blank" rel="noreferrer" className="hover:text-white transition">About Steve</a>
           <a href="/blog/" className="hover:text-white transition">Blog</a>
         </div>
-        <div>© {new Date().getFullYear()} Steve's IT Pro · Google Workspace Consulting · Riverside County, CA</div>
+        <div className="flex items-center justify-center gap-2">
+          <img src="/logo-mark.png" alt="" className="w-4 h-4 rounded shrink-0" width={16} height={16} />
+          © {new Date().getFullYear()} Steve's IT Pro · Google Workspace Consulting · Riverside County, CA
+        </div>
       </footer>
     </main>
   );

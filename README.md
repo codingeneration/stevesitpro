@@ -30,7 +30,3 @@ Fixed-price setup and automation packages, plus monthly support plans. See [pric
 - **Free 30-minute consult:** [book a time](https://docs.google.com/forms/d/e/1FAIpQLScGj_hocIEBDevsfLjQlSHTX74xX78hrLmz2TUejaFRTTBkvQ/viewform?usp=header)
 - **Email:** steve@stevesitpro.com
 - **About me:** [stevemoynihan.com](https://stevemoynihan.com)
-
----
-
-<sub>Working on the site itself? See [docs/MAINTAINING.md](docs/MAINTAINING.md).</sub>

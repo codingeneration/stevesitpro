@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Free Google Workspace Security Checklist | Steve's IT Pro</title>
-  <meta name="description" content="Download the free 15-point Google Workspace security checklist. The same audit used by Steve's IT Pro with every new client. No email required." />
+  <meta name="description" content="Get the free 15-point Google Workspace security checklist: the same audit Steve's IT Pro runs with every new client, with the exact Admin Console path for each item." />
   <link rel="canonical" href="https://stevesitpro.com/free-checklist/" />
 
   <meta property="og:title" content="Free Google Workspace Security Checklist" />
@@ -93,15 +93,17 @@
         <input type="text" id="cl-website" style="display:none;" tabindex="-1" autocomplete="off" />
         <button type="submit" id="cl-submit">Send Me the Checklist &rarr;</button>
       </form>
+      <p id="cl-error" style="display:none;color:#f87171;font-size:0.9rem;margin-top:0.75rem;">Sorry, that didn't go through. You can <a href="/free-checklist/google-workspace-security-checklist.pdf" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;">download the checklist here</a>, or email steve@stevesitpro.com.</p>
       <p class="privacy-note">No spam. Unsubscribe anytime. Your email stays between us.</p>
     </div>
 
     <!-- Success state -->
     <div class="success" id="success-container">
       <div class="check-big">&#10003;</div>
-      <h3>Check your inbox!</h3>
-      <p>The checklist is on its way. While you wait, you can read the full interactive version on the blog.</p>
-      <a href="/blog/google-workspace-security-checklist-small-business.html">Read the Full Security Guide &rarr;</a>
+      <h3>Here's your checklist</h3>
+      <p>I've also emailed a copy to you. If it isn't in your inbox in a few minutes, check your spam folder.</p>
+      <a href="/free-checklist/google-workspace-security-checklist.pdf" target="_blank" rel="noopener" onclick="gtag('event','checklist_download');">Download the checklist (PDF) &rarr;</a>
+      <p style="margin-top:1rem;font-size:0.9rem;">Prefer reading online? <a href="/blog/google-workspace-security-checklist-small-business.html" style="display:inline;padding:0;background:none;color:inherit;text-decoration:underline;font-weight:normal;">Read the full guide on the blog</a>.</p>
     </div>
   </div>
 
@@ -111,7 +113,7 @@
     <a href="/refunds.html">Refunds</a>
     <a href="/">Home</a>
     <a href="/blog/">Blog</a>
-    <br><br>&copy; 2026 Steve's IT Pro &middot; Google Workspace Consulting &middot; San Diego, CA
+    <br><br>&copy; 2026 Steve's IT Pro &middot; Google Workspace Consulting &middot; Riverside County, CA
   </footer>
 
   <script>
@@ -133,13 +135,17 @@
         method: "POST",
         headers: { "Content-Type": "text/plain;charset=utf-8" },
         body: JSON.stringify({ name: name, email: email, source: "security-checklist-lead-magnet" })
-      }).then(function() {
+      }).then(function(res) { return res.json(); }).then(function(data) {
+        if (!data || !data.ok) throw new Error((data && data.error) || "Request failed");
         document.getElementById("form-container").style.display = "none";
         document.getElementById("success-container").style.display = "block";
         gtag("event", "lead_magnet_submit", { lead_type: "security_checklist" });
       }).catch(function() {
-        btn.textContent = "Something went wrong. Try again.";
+        btn.textContent = "Send Me the Checklist \u2192";
         btn.disabled = false;
+        var err = document.getElementById("cl-error");
+        err.style.display = "block";
+        gtag("event", "lead_magnet_error", { lead_type: "security_checklist" });
       });
 
       return false;

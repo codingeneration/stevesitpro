@@ -11,11 +11,13 @@ export default function Contact() {
     if (!form.name || !form.email || !form.message) return;
     setStatus("sending");
     try {
-      await fetch(WEB_APP_URL, {
+      const res = await fetch(WEB_APP_URL, {
         method: "POST",
         headers: { "Content-Type": "text/plain;charset=utf-8" },
         body: JSON.stringify({ ...form, source: "stevesitpro.com" }),
       });
+      const data = await res.json();
+      if (!data?.ok) throw new Error(data?.error || "Request failed");
       setStatus("ok");
       setForm({ name: "", email: "", company: "", message: "", website: "" });
     } catch {
@@ -104,7 +106,7 @@ export default function Contact() {
                 {status === "sending" ? "Sending..." : "Send message →"}
               </button>
               {status === "error" && (
-                <p className="text-red-400 text-sm text-center">Something went wrong. Try emailing directly.</p>
+                <p className="text-red-400 text-sm text-center">That didn't go through. Please email <a href={`mailto:${CONTACT_EMAIL}`} className="underline">{CONTACT_EMAIL}</a>.</p>
               )}
             </div>
           )}

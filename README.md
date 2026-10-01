@@ -1,39 +1,32 @@
-# stevesitpro.com
+# Steve's IT Pro
 
-Marketing site for **Steve's IT Pro** — Google Workspace consulting for small businesses.
+**Google Workspace consulting for small businesses** · [stevesitpro.com](https://stevesitpro.com)
 
-The homepage is a small React + Vite + Tailwind app. Everything else (blog posts, service pages, legal pages, lead magnets) is plain HTML in `public/` and is copied to the build as-is.
+This repository is the source for stevesitpro.com. It's public on purpose: it shows the same kind of work I do for clients, using the same tools I'd use on your Google Workspace.
 
-## Run it
+## What's in here
 
-```bash
-npm install
-npm run dev       # local dev server
-npm run build     # production build -> dist/
-npm run preview   # serve the built site locally
-npm run deploy    # build + publish dist/ to the gh-pages branch (this is what updates the live site)
-```
+**An AI assistant on the site.** The chat bubble answers visitor questions about services and Google Workspace. It runs on Anthropic's Claude through a small serverless backend ([`chatbot/`](chatbot/)) that checks requests come from this site, limits how many messages each visitor can send, and keeps the API key on the server.
 
-`dist/` is a build output and is not committed.
+**Google Apps Script automation.** [`apps-script/`](apps-script/) holds the intake workflow behind my own consult form. When someone submits it, a script sends a welcome email, creates a client folder in Google Drive, logs the lead to a pipeline sheet, and notifies me. A second script builds that pipeline sheet with its tabs, formatting and dropdowns. This is the same pattern I build for clients in an Automation Sprint.
 
-## Where things live
+**A fast, simple website.** A lightweight React homepage with plain HTML for the blog and service pages, hosted on GitHub Pages behind Cloudflare. There's no CMS or database to patch.
 
-| Path | What it is |
-| --- | --- |
-| `src/config.js` | Contact email, intake form, Apps Script endpoint, Stripe links, legal links, `track()` helper |
-| `src/data/pricing.js` | Package and retainer tiers (prices, bullets, Stripe link per tier) |
-| `src/data/testimonials.js` | Testimonial cards |
-| `src/components/` | One file per homepage section: Header, Hero, Testimonials, Pricing, RetainerPlans, Contact, Footer |
-| `src/App.jsx` | Assembles the sections; holds the `<noscript>` fallback for crawlers |
-| `index.html` | Page shell: GA4 tag, SEO/Open Graph meta, icons |
-| `public/blog/`, `public/services/`, etc. | Static HTML pages served as-is |
-| `public/chat-widget.js` | Chat widget loaded on most pages |
-| `public/sitemap.xml`, `public/robots.txt` | SEO files — add new pages to the sitemap |
-| `chatbot/` | Backend for the chat bubble, hosted separately on Vercel. See `chatbot/README.md` |
-| `apps-script/` | Google Apps Script source for the intake-form automation and CRM sheet setup (pasted into Apps Script, not part of the site build) |
+## Guides
 
-## Common edits
+Practical write-ups for small business owners and IT admins:
 
-- **Change a price or package bullet:** `src/data/pricing.js`. Also update the `<noscript>` block in `src/App.jsx`, the chatbot's `chatbot/lib/knowledge.js`, and any service pages that quote the price (`grep -rn '\$950' public`).
-- **Swap a Stripe link:** `STRIPE_LINKS` in `src/config.js`.
-- **Add a blog post:** add an HTML file in `public/blog/`, link it from `public/blog/index.html`, and add it to `public/sitemap.xml`.
+- [How to set up SPF, DKIM, and DMARC for Google Workspace](https://stevesitpro.com/blog/spf-dkim-dmarc-google-workspace.html)
+- [Google Workspace security checklist for small business](https://stevesitpro.com/blog/google-workspace-security-checklist-small-business.html)
+- [How to offboard an employee without losing data](https://stevesitpro.com/blog/employee-offboarding-google-workspace.html)
+- [Shared Drive setup best practices](https://stevesitpro.com/blog/google-workspace-shared-drive-setup.html)
+- [Apps Script vs. Zapier](https://stevesitpro.com/blog/apps-script-vs-zapier-google-workspace.html)
+- [Google Workspace vs. Microsoft 365 for small business](https://stevesitpro.com/blog/google-workspace-vs-microsoft-365-small-business.html)
+
+## Work with me
+
+Fixed-price setup and automation packages, plus monthly support plans. See [pricing](https://stevesitpro.com/#pricing).
+
+- **Free 30-minute consult:** [book a time](https://docs.google.com/forms/d/e/1FAIpQLScGj_hocIEBDevsfLjQlSHTX74xX78hrLmz2TUejaFRTTBkvQ/viewform?usp=header)
+- **Email:** steve@stevesitpro.com
+- **About me:** [stevemoynihan.com](https://stevemoynihan.com)

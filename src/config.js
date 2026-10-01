@@ -4,7 +4,7 @@ export const CONTACT_EMAIL = "steve@stevesitpro.com";
 export const INTAKE_FORM_URL =
   "https://docs.google.com/forms/d/e/1FAIpQLScGj_hocIEBDevsfLjQlSHTX74xX78hrLmz2TUejaFRTTBkvQ/viewform?usp=header";
 export const WEB_APP_URL =
-  "https://script.google.com/macros/s/AKfycbyevJvyyUv4wDkbCJuHkMJ18iRICrEyLpMtJ5x7r0U9-OG7ntO7tsNgFWAE_0sKN0KM/exec";
+  "https://script.google.com/macros/s/AKfycbyq-nuIQ1sNyqdl8VZv56QpH8fMgbg87VdSrOOXR63RTF-vNaPJo8mGDa-JSpX-tXAd/exec";
 
 export const STRIPE_LINKS = {
   starter: "https://buy.stripe.com/5kQ28tcnn95wb3X0Wh8k800",

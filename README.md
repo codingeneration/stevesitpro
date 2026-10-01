@@ -11,7 +11,7 @@ npm install
 npm run dev       # local dev server
 npm run build     # production build -> dist/
 npm run preview   # serve the built site locally
-npm run deploy    # build + publish dist/ to the gh-pages branch
+npm run deploy    # build + publish dist/ to the gh-pages branch (this is what updates the live site)
 ```
 
 `dist/` is a build output and is not committed.
@@ -34,6 +34,6 @@ npm run deploy    # build + publish dist/ to the gh-pages branch
 
 ## Common edits
 
-- **Change a price or package bullet:** `src/data/pricing.js`. Also update the matching line in the `<noscript>` block in `src/App.jsx`.
+- **Change a price or package bullet:** `src/data/pricing.js`. Also update the `<noscript>` block in `src/App.jsx`, the chatbot's `chatbot/lib/knowledge.js`, and any service pages that quote the price (`grep -rn '\$950' public`).
 - **Swap a Stripe link:** `STRIPE_LINKS` in `src/config.js`.
 - **Add a blog post:** add an HTML file in `public/blog/`, link it from `public/blog/index.html`, and add it to `public/sitemap.xml`.

@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { INTAKE_FORM_URL } from "./config";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
@@ -8,6 +9,13 @@ import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 
 export default function App() {
+  // Links like /#retainers from other pages arrive before React has drawn the
+  // section, so the browser can't jump to it on its own. Do it once mounted.
+  useEffect(() => {
+    const id = decodeURIComponent(window.location.hash.slice(1));
+    if (id) document.getElementById(id)?.scrollIntoView();
+  }, []);
+
   return (
     <main className="min-h-screen bg-slate-950 text-white">
       {/* ── SEO: Static noscript fallback for crawlers ── */}

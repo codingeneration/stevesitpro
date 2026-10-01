@@ -1,0 +1,7 @@
+{
+  "name": "stevesitpro-chatbot",
+  "private": true,
+  "type": "module",
+  "description": "Backend for the chat widget on stevesitpro.com (Vercel serverless function)",
+  "engines": { "node": ">=18" }
+}

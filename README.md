@@ -29,6 +29,7 @@ npm run deploy    # build + publish dist/ to the gh-pages branch
 | `public/blog/`, `public/services/`, etc. | Static HTML pages served as-is |
 | `public/chat-widget.js` | Chat widget loaded on most pages |
 | `public/sitemap.xml`, `public/robots.txt` | SEO files — add new pages to the sitemap |
+| `chatbot/` | Backend for the chat bubble, hosted separately on Vercel. See `chatbot/README.md` |
 | `apps-script/` | Google Apps Script source for the intake-form automation and CRM sheet setup (pasted into Apps Script, not part of the site build) |
 
 ## Common edits

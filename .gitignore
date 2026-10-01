@@ -1,14 +1,7 @@
 node_modules/
-.DS_Store
-.vscode/
-.vercel/
 dist/
 build/
+.vercel/
 .env*
-node_modules/
 .DS_Store
 .vscode/
-.vercel/
-dist/
-build/
-.env*

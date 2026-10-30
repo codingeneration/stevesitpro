@@ -4,9 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Google Workspace Email Security Audit | Steve's IT Pro</title>
-  <meta name="description" content="Stop your business emails from landing in spam. Get a full SPF, DKIM, and DMARC audit for Google Workspace — fix email deliverability and prevent domain spoofing. Fixed-price service from Steve's IT Pro." />
+  <meta name="description" content="Emails landing in spam? Get a full SPF, DKIM and DMARC audit and fix for Google Workspace that also stops domain spoofing. Fixed price, done in days." />
   <meta name="author" content="Steve Moynihan" />
-  <meta name="keywords" content="google workspace email security, SPF DKIM DMARC setup service, email authentication consultant, email deliverability fix, domain spoofing prevention" />
   <link rel="canonical" href="https://stevesitpro.com/services/email-security-audit.html" />
 
   <!-- Open Graph -->
@@ -25,25 +24,98 @@
 
   <!-- Structured Data -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "name": "Google Workspace Email Security Audit",
-    "description": "Full SPF, DKIM, and DMARC audit and configuration for Google Workspace. Fix email deliverability, prevent domain spoofing, and protect your sender reputation.",
-    "provider": {
-      "@type": "Organization",
-      "name": "Steve's IT Pro",
-      "url": "https://stevesitpro.com"
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Google Workspace Email Security Audit",
+  "description": "Full SPF, DKIM, and DMARC audit and configuration for Google Workspace. Fix email deliverability, prevent domain spoofing, and protect your sender reputation.",
+  "provider": {
+    "@type": "ProfessionalService",
+    "@id": "https://stevesitpro.com/#business",
+    "name": "Steve's IT Pro",
+    "url": "https://stevesitpro.com/"
+  },
+  "serviceType": "Email Security Consulting",
+  "areaServed": {
+    "@type": "Country",
+    "name": "United States"
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "749",
+    "priceCurrency": "USD",
+    "description": "Starter Setup — includes email authentication audit and configuration",
+    "name": "Starter Setup (includes the email security audit)",
+    "url": "https://stevesitpro.com/services/google-workspace-setup.html"
+  },
+  "url": "https://stevesitpro.com/services/email-security-audit.html"
+}
+  </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How long does the audit take?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most audits are completed within 2-3 business days. DNS changes can take up to 48 hours to fully propagate, so I schedule a follow-up check to confirm everything is working."
+      }
     },
-    "serviceType": "Email Security Consulting",
-    "areaServed": "US",
-    "offers": {
-      "@type": "Offer",
-      "price": "749",
-      "priceCurrency": "USD",
-      "description": "Starter Setup — includes email authentication audit and configuration"
+    {
+      "@type": "Question",
+      "name": "Will this fix my emails going to spam?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "In most cases, yes. Missing or misconfigured SPF, DKIM, and DMARC records are the number one reason business emails land in spam. If there's an additional issue (like blocklist placement), I'll identify it during the audit and recommend next steps."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need to give you admin access?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "I'll need temporary access to your Google Admin console and your domain's DNS settings (usually through your registrar like GoDaddy, Cloudflare, or Namecheap). I'll walk you through exactly what to share. All access is revoked after the engagement."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What if I also need help with Shared Drives, security settings, or other Workspace setup?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The Starter Setup package covers email authentication plus basic Workspace cleanup and a Shared Drives blueprint. If you need more extensive work, we can scope that during the free discovery call. Check out the full Workspace setup service for details."
+      }
     }
-  }
+  ]
+}
+  </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://stevesitpro.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Services",
+      "item": "https://stevesitpro.com/#services"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Google Workspace Email Security Audit",
+      "item": "https://stevesitpro.com/services/email-security-audit.html"
+    }
+  ]
+}
   </script>
 
   <!-- Google Analytics -->
@@ -152,12 +224,14 @@
     <div class="header-inner">
       <div style="display:flex;align-items:center;gap:2rem;">
         <a href="/" class="logo">Steve's IT Pro</a>
-        <nav class="nav-links">
+        <nav class="nav-links" aria-label="Main">
+          <a href="/#services">Services</a>
+          <a href="/blog/">Guides</a>
+          <a href="/free-checklist/">Free Checklist</a>
           <a href="https://stevemoynihan.com" target="_blank" rel="noreferrer">About Steve</a>
-          <a href="/blog/">Blog</a>
         </nav>
       </div>
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLScGj_hocIEBDevsfLjQlSHTX74xX78hrLmz2TUejaFRTTBkvQ/viewform?usp=header" target="_blank" rel="noreferrer" class="cta-btn">Book a free consult &rarr;</a>
+      <a href="/book/" class="cta-btn">Book a free consult &rarr;</a>
     </div>
   </header>
 
@@ -312,12 +386,19 @@
     <div class="final-cta">
       <h2>Ready to Fix Your Email?</h2>
       <p>Book a free 30-minute discovery call. I'll review your current email authentication setup and tell you exactly what needs fixing — no commitment, no sales pressure.</p>
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLScGj_hocIEBDevsfLjQlSHTX74xX78hrLmz2TUejaFRTTBkvQ/viewform?usp=header" target="_blank" rel="noreferrer" class="cta-primary" onclick="gtag('event','email_audit_bottom_cta');">Book a Free Discovery Call &rarr;</a>
+      <a href="/book/" class="cta-primary" onclick="gtag('event','email_audit_bottom_cta');">Book a Free Discovery Call &rarr;</a>
       <p class="cta-note">Or email directly: steve@stevesitpro.com</p>
     </div>
   </section>
 
   <footer>
+    <div style="margin-bottom:0.75rem;">
+      <a href="/services/google-workspace-setup.html">Workspace Setup</a>
+      <a href="/services/email-security-audit.html">Email Security Audit</a>
+      <a href="/services/google-workspace-automation.html">Apps Script Automation</a>
+      <a href="/free-checklist/">Free Security Checklist</a>
+      <a href="/book/">Book a Consult</a>
+    </div>
     <div style="margin-bottom:0.75rem;">
       <a href="/terms.html">Terms</a>
       <a href="/privacy.html">Privacy</a>

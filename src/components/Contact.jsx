@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { ArrowRight, BadgeCheck, Mail } from "lucide-react";
-import { CONTACT_EMAIL, INTAKE_FORM_URL, WEB_APP_URL } from "../config";
+import { ABOUT_URL, BOOK_URL, CONTACT_EMAIL, WEB_APP_URL } from "../config";
 
 export default function Contact() {
   const [form, setForm] = useState({ name: "", email: "", company: "", message: "", website: "" });
@@ -36,7 +36,7 @@ export default function Contact() {
             Whether you need a quick tune-up or a full automation build, the first step is a free 30-minute discovery call. No commitment, no sales pressure — just a straight answer on what your setup needs.
           </p>
           <div className="space-y-3">
-            <a href={INTAKE_FORM_URL} target="_blank" rel="noreferrer" className="flex items-center gap-3 text-white/60 hover:text-white transition text-sm">
+            <a href={BOOK_URL} className="flex items-center gap-3 text-white/60 hover:text-white transition text-sm">
               <div className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center"><ArrowRight className="w-4 h-4 text-emerald-400" /></div>
               Book a free 30-min consult
             </a>
@@ -44,7 +44,7 @@ export default function Contact() {
               <div className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center"><Mail className="w-4 h-4 text-sky-400" /></div>
               {CONTACT_EMAIL}
             </a>
-            <a href="https://stevemoynihan.com" target="_blank" rel="noreferrer" className="flex items-center gap-3 text-white/60 hover:text-white transition text-sm">
+            <a href={ABOUT_URL} target="_blank" rel="noreferrer" className="flex items-center gap-3 text-white/60 hover:text-white transition text-sm">
               <div className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center"><BadgeCheck className="w-4 h-4 text-white/40" /></div>
               About Steve → stevemoynihan.com
             </a>
@@ -66,12 +66,14 @@ export default function Contact() {
               <input
                 className="bg-slate-900 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white placeholder-white/30 focus:outline-none focus:border-emerald-500 transition"
                 placeholder="Your name *"
+                aria-label="Your name"
                 value={form.name}
                 onChange={(e) => setForm({ ...form, name: e.target.value })}
               />
               <input
                 className="bg-slate-900 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white placeholder-white/30 focus:outline-none focus:border-emerald-500 transition"
                 placeholder="Email address *"
+                aria-label="Email address"
                 type="email"
                 value={form.email}
                 onChange={(e) => setForm({ ...form, email: e.target.value })}
@@ -79,6 +81,7 @@ export default function Contact() {
               <input
                 className="bg-slate-900 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white placeholder-white/30 focus:outline-none focus:border-emerald-500 transition"
                 placeholder="Company (optional)"
+                aria-label="Company"
                 value={form.company}
                 onChange={(e) => setForm({ ...form, company: e.target.value })}
               />
@@ -86,12 +89,14 @@ export default function Contact() {
                 className="bg-slate-900 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white placeholder-white/30 focus:outline-none focus:border-emerald-500 transition resize-none"
                 rows={4}
                 placeholder="What do you need help with? *"
+                aria-label="What do you need help with?"
                 value={form.message}
                 onChange={(e) => setForm({ ...form, message: e.target.value })}
               />
               {/* Honeypot */}
               <input
                 type="text"
+                aria-hidden="true"
                 className="hidden"
                 value={form.website}
                 onChange={(e) => setForm({ ...form, website: e.target.value })}

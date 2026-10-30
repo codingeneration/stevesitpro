@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Google Workspace Shared Drive Setup: Best Practices for Small Business Teams | Steve's IT Pro</title>
-  <meta name="description" content="My Drive is a trap. Learn how to set up Shared Drives with the right structure, permissions, and naming conventions so your team's files are always organized and secure." />
+  <title>Google Shared Drive Setup: Best Practices (2026)</title>
+  <meta name="description" content="How to set up Google Shared Drives for a small team: folder structure, permissions, naming conventions and the mistakes that cause lost files." />
   <meta name="author" content="Steve Moynihan" />
   <link rel="canonical" href="https://stevesitpro.com/blog/google-workspace-shared-drive-setup.html" />
 
   <!-- Open Graph -->
   <meta property="og:type" content="article" />
-  <meta property="og:title" content="Google Workspace Shared Drive Setup: Best Practices for Small Business Teams" />
+  <meta property="og:title" content="Google Shared Drive Setup: Best Practices (2026)" />
   <meta property="og:description" content="My Drive is a trap. Learn how to set up Shared Drives with the right structure, permissions, and naming conventions so your team's files stay organized." />
   <meta property="og:url" content="https://stevesitpro.com/blog/google-workspace-shared-drive-setup.html" />
   <meta property="og:site_name" content="Steve's IT Pro" />
@@ -18,30 +18,73 @@
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Google Workspace Shared Drive Setup: Best Practices for Small Business Teams" />
+  <meta name="twitter:title" content="Google Shared Drive Setup: Best Practices (2026)" />
   <meta name="twitter:description" content="My Drive is a trap. Learn how to set up Shared Drives with the right structure, permissions, and naming conventions so your team's files stay organized." />
   <meta name="twitter:image" content="https://stevesitpro.com/og-image.png" />
 
   <!-- Structured Data -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    "headline": "Google Workspace Shared Drive Setup: Best Practices for Small Business Teams",
-    "description": "My Drive is a trap. Learn how to set up Shared Drives with the right structure, permissions, and naming conventions so your team's files stay organized.",
-    "author": {
-      "@type": "Person",
-      "name": "Steve Moynihan",
-      "url": "https://stevemoynihan.com"
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Google Workspace Shared Drive Setup: Best Practices for Small Business Teams",
+  "description": "My Drive is a trap. Learn how to set up Shared Drives with the right structure, permissions, and naming conventions so your team's files stay organized.",
+  "author": {
+    "@type": "Person",
+    "@id": "https://stevesitpro.com/#steve",
+    "name": "Steve Moynihan",
+    "url": "https://stevemoynihan.com",
+    "sameAs": [
+      "https://stevemoynihan.com",
+      "https://www.linkedin.com/in/stevenmoynihan/"
+    ]
+  },
+  "publisher": {
+    "@type": "ProfessionalService",
+    "@id": "https://stevesitpro.com/#business",
+    "name": "Steve's IT Pro",
+    "url": "https://stevesitpro.com/",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://stevesitpro.com/logo.png"
+    }
+  },
+  "datePublished": "2026-03-12",
+  "dateModified": "2026-03-12",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://stevesitpro.com/blog/google-workspace-shared-drive-setup.html"
+  },
+  "url": "https://stevesitpro.com/blog/google-workspace-shared-drive-setup.html",
+  "image": "https://stevesitpro.com/og-image.png",
+  "inLanguage": "en-US"
+}
+  </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://stevesitpro.com/"
     },
-    "publisher": {
-      "@type": "Organization",
-      "name": "Steve's IT Pro",
-      "url": "https://stevesitpro.com"
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Guides",
+      "item": "https://stevesitpro.com/blog/"
     },
-    "datePublished": "2026-03-12",
-    "dateModified": "2026-03-12"
-  }
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Google Workspace Shared Drive Setup: Best Practices for Small Business Teams",
+      "item": "https://stevesitpro.com/blog/google-workspace-shared-drive-setup.html"
+    }
+  ]
+}
   </script>
 
   <!-- Google Analytics -->
@@ -81,7 +124,18 @@
     footer a { color: rgba(255,255,255,0.4); margin: 0 0.5rem; }
     footer a:hover { color: #fff; }
     @media (max-width: 640px) { h1 { font-size: 1.5rem; } .nav-links { display: none; } }
+    .related { display: grid; gap: 1rem; margin-top: 3rem; }
+    @media (min-width: 640px) { .related { grid-template-columns: 1fr 1fr; } }
+    .related > div { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 1rem; padding: 1.25rem; }
+    .related-label { display: block; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 0.5rem; }
+    .related-title { font-weight: 700; font-size: 1.05rem; }
+    .related p { font-size: 0.875rem; color: rgba(255,255,255,0.6); margin: 0.5rem 0 0; }
+    .related ul { list-style: none; padding: 0; margin: 0; }
+    .related li { display: block; margin: 0 0 0.5rem; font-size: 0.9rem; }
+    .byline a { color: rgba(255,255,255,0.6); }
   </style>
+  <meta property="article:published_time" content="2026-03-12" />
+  <meta property="article:modified_time" content="2026-03-12" />
 </head>
 <body>
 
@@ -89,12 +143,14 @@
     <div class="header-inner">
       <div style="display:flex;align-items:center;gap:2rem;">
         <a href="/" class="logo">Steve's IT Pro</a>
-        <nav class="nav-links">
+        <nav class="nav-links" aria-label="Main">
+          <a href="/#services">Services</a>
+          <a href="/blog/">Guides</a>
+          <a href="/free-checklist/">Free Checklist</a>
           <a href="https://stevemoynihan.com" target="_blank" rel="noreferrer">About Steve</a>
-          <a href="/blog/">Blog</a>
         </nav>
       </div>
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLScGj_hocIEBDevsfLjQlSHTX74xX78hrLmz2TUejaFRTTBkvQ/viewform?usp=header" target="_blank" rel="noreferrer" class="cta-btn">Book a free consult &rarr;</a>
+      <a href="/book/" class="cta-btn">Book a free consult &rarr;</a>
     </div>
   </header>
 
@@ -103,7 +159,7 @@
 
     <span class="category">Google Workspace</span>
     <h1>Google Workspace Shared Drive Setup: Best Practices for Small Business Teams</h1>
-    <p class="byline">By Steve &middot; Google Workspace Consultant &middot; 9 min read</p>
+    <p class="byline">By <a href="https://stevemoynihan.com" rel="author" target="_blank">Steve Moynihan</a>, Google Workspace Consultant &middot; <time datetime="2026-03-12">Mar 12, 2026</time> &middot; 9 min read</p>
 
     <p class="lead">
       "My Drive" is a trap. When every employee stores files in their personal Drive, you're one
@@ -160,14 +216,36 @@
       <li style="display:flex;gap:0.75rem;margin-bottom:0.75rem;"><span style="color:#f87171;font-weight:700;flex-shrink:0;">&#10007;</span> <span><strong>Not migrating existing My Drive files:</strong> If critical files are still in individual My Drives, they're still at risk.</span></li>
     </ul>
 
+    <aside class="related" aria-label="Related">
+      <div class="related-service">
+        <span class="related-label">Done-for-you service</span>
+        <a class="related-title" href="/services/google-workspace-setup.html">Google Workspace Setup &rarr;</a>
+        <p>Includes a Shared Drives blueprint built for your team, plus admin roles, sharing policies and security hardening. Fixed price.</p>
+      </div>
+      <div class="related-guides">
+        <span class="related-label">Related guides</span>
+        <ul>
+        <li><a href="/blog/employee-offboarding-google-workspace.html">How to Offboard an Employee in Google Workspace Without Losing Data</a></li>
+        <li><a href="/blog/google-workspace-security-checklist-small-business.html">Google Workspace Security Checklist for Small Business (2026)</a></li>
+        </ul>
+      </div>
+    </aside>
+
     <div class="cta-box">
       <h2>Want a Shared Drive Blueprint Built for Your Business?</h2>
       <p>The Starter Setup ($749) includes a full Shared Drive blueprint — structure, naming conventions, permission setup, and 2 hours of admin coaching.</p>
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLScGj_hocIEBDevsfLjQlSHTX74xX78hrLmz2TUejaFRTTBkvQ/viewform?usp=header" target="_blank" rel="noreferrer" class="btn">View Starter Setup &rarr;</a>
+      <a href="/book/" class="btn">View Starter Setup &rarr;</a>
     </div>
   </article>
 
   <footer>
+    <div style="margin-bottom:0.75rem;">
+      <a href="/services/google-workspace-setup.html">Workspace Setup</a>
+      <a href="/services/email-security-audit.html">Email Security Audit</a>
+      <a href="/services/google-workspace-automation.html">Apps Script Automation</a>
+      <a href="/free-checklist/">Free Security Checklist</a>
+      <a href="/book/">Book a Consult</a>
+    </div>
     <div style="margin-bottom:0.75rem;">
       <a href="/terms.html">Terms</a>
       <a href="/privacy.html">Privacy</a>

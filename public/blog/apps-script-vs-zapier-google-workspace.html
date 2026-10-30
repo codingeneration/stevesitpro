@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Apps Script vs. Zapier: Which Automation Is Right for Your Google Workspace? | Steve's IT Pro</title>
-  <meta name="description" content="Both tools automate Google Workspace — but they solve different problems. Learn which one saves your business the most time and money based on your actual workflows." />
+  <title>Apps Script vs Zapier for Google Workspace | Steve's IT Pro</title>
+  <meta name="description" content="Apps Script or Zapier? A plain-English comparison of cost, limits and use cases to help you pick the right Google Workspace automation tool." />
   <meta name="author" content="Steve Moynihan" />
   <link rel="canonical" href="https://stevesitpro.com/blog/apps-script-vs-zapier-google-workspace.html" />
 
   <!-- Open Graph -->
   <meta property="og:type" content="article" />
-  <meta property="og:title" content="Apps Script vs. Zapier: Which Automation Is Right for Your Google Workspace?" />
+  <meta property="og:title" content="Apps Script vs Zapier for Google Workspace | Steve&#x27;s IT Pro" />
   <meta property="og:description" content="Both tools automate Google Workspace — but they solve different problems. Learn which one saves your business the most time and money." />
   <meta property="og:url" content="https://stevesitpro.com/blog/apps-script-vs-zapier-google-workspace.html" />
   <meta property="og:site_name" content="Steve's IT Pro" />
@@ -18,30 +18,73 @@
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Apps Script vs. Zapier: Which Automation Is Right for Your Google Workspace?" />
+  <meta name="twitter:title" content="Apps Script vs Zapier for Google Workspace | Steve&#x27;s IT Pro" />
   <meta name="twitter:description" content="Both tools automate Google Workspace — but they solve different problems. Learn which one saves your business the most time and money." />
   <meta name="twitter:image" content="https://stevesitpro.com/og-image.png" />
 
   <!-- Structured Data -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    "headline": "Apps Script vs. Zapier: Which Automation Is Right for Your Google Workspace?",
-    "description": "Both tools automate Google Workspace — but they solve different problems. Learn which one saves your business the most time and money.",
-    "author": {
-      "@type": "Person",
-      "name": "Steve Moynihan",
-      "url": "https://stevemoynihan.com"
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Apps Script vs. Zapier: Which Automation Is Right for Your Google Workspace?",
+  "description": "Both tools automate Google Workspace — but they solve different problems. Learn which one saves your business the most time and money.",
+  "author": {
+    "@type": "Person",
+    "@id": "https://stevesitpro.com/#steve",
+    "name": "Steve Moynihan",
+    "url": "https://stevemoynihan.com",
+    "sameAs": [
+      "https://stevemoynihan.com",
+      "https://www.linkedin.com/in/stevenmoynihan/"
+    ]
+  },
+  "publisher": {
+    "@type": "ProfessionalService",
+    "@id": "https://stevesitpro.com/#business",
+    "name": "Steve's IT Pro",
+    "url": "https://stevesitpro.com/",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://stevesitpro.com/logo.png"
+    }
+  },
+  "datePublished": "2026-03-12",
+  "dateModified": "2026-03-12",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://stevesitpro.com/blog/apps-script-vs-zapier-google-workspace.html"
+  },
+  "url": "https://stevesitpro.com/blog/apps-script-vs-zapier-google-workspace.html",
+  "image": "https://stevesitpro.com/og-image.png",
+  "inLanguage": "en-US"
+}
+  </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://stevesitpro.com/"
     },
-    "publisher": {
-      "@type": "Organization",
-      "name": "Steve's IT Pro",
-      "url": "https://stevesitpro.com"
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Guides",
+      "item": "https://stevesitpro.com/blog/"
     },
-    "datePublished": "2026-03-12",
-    "dateModified": "2026-03-12"
-  }
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Apps Script vs. Zapier: Which Automation Is Right for Your Google Workspace?",
+      "item": "https://stevesitpro.com/blog/apps-script-vs-zapier-google-workspace.html"
+    }
+  ]
+}
   </script>
 
   <!-- Google Analytics -->
@@ -90,7 +133,18 @@
     footer a { color: rgba(255,255,255,0.4); margin: 0 0.5rem; }
     footer a:hover { color: #fff; }
     @media (max-width: 640px) { h1 { font-size: 1.5rem; } .compare-grid { grid-template-columns: 1fr; } .nav-links { display: none; } }
+    .related { display: grid; gap: 1rem; margin-top: 3rem; }
+    @media (min-width: 640px) { .related { grid-template-columns: 1fr 1fr; } }
+    .related > div { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 1rem; padding: 1.25rem; }
+    .related-label { display: block; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 0.5rem; }
+    .related-title { font-weight: 700; font-size: 1.05rem; }
+    .related p { font-size: 0.875rem; color: rgba(255,255,255,0.6); margin: 0.5rem 0 0; }
+    .related ul { list-style: none; padding: 0; margin: 0; }
+    .related li { display: block; margin: 0 0 0.5rem; font-size: 0.9rem; }
+    .byline a { color: rgba(255,255,255,0.6); }
   </style>
+  <meta property="article:published_time" content="2026-03-12" />
+  <meta property="article:modified_time" content="2026-03-12" />
 </head>
 <body>
 
@@ -98,12 +152,14 @@
     <div class="header-inner">
       <div style="display:flex;align-items:center;gap:2rem;">
         <a href="/" class="logo">Steve's IT Pro</a>
-        <nav class="nav-links">
+        <nav class="nav-links" aria-label="Main">
+          <a href="/#services">Services</a>
+          <a href="/blog/">Guides</a>
+          <a href="/free-checklist/">Free Checklist</a>
           <a href="https://stevemoynihan.com" target="_blank" rel="noreferrer">About Steve</a>
-          <a href="/blog/">Blog</a>
         </nav>
       </div>
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLScGj_hocIEBDevsfLjQlSHTX74xX78hrLmz2TUejaFRTTBkvQ/viewform?usp=header" target="_blank" rel="noreferrer" class="cta-btn">Book a free consult &rarr;</a>
+      <a href="/book/" class="cta-btn">Book a free consult &rarr;</a>
     </div>
   </header>
 
@@ -112,7 +168,7 @@
 
     <span class="category">Automation</span>
     <h1>Apps Script vs. Zapier: Which Automation Is Right for Your Google Workspace?</h1>
-    <p class="byline">By Steve &middot; Google Workspace Consultant &middot; 7 min read</p>
+    <p class="byline">By <a href="https://stevemoynihan.com" rel="author" target="_blank">Steve Moynihan</a>, Google Workspace Consultant &middot; <time datetime="2026-03-12">Mar 12, 2026</time> &middot; 7 min read</p>
 
     <p class="lead">
       If your team is doing repetitive work in Google Sheets, Forms, Drive, or Gmail — there's
@@ -165,14 +221,36 @@
       <div class="verdict verdict-sky"><strong>Verdict:</strong> Zapier wins when connecting Google to non-Google tools.</div>
     </div>
 
+    <aside class="related" aria-label="Related">
+      <div class="related-service">
+        <span class="related-label">Done-for-you service</span>
+        <a class="related-title" href="/services/google-workspace-automation.html">Automation Sprint &rarr;</a>
+        <p>One custom Apps Script workflow — forms, approvals, notifications or reports — scoped, built and handed off in 1–2 weeks at a fixed price.</p>
+      </div>
+      <div class="related-guides">
+        <span class="related-label">Related guides</span>
+        <ul>
+        <li><a href="/blog/employee-offboarding-google-workspace.html">How to Offboard an Employee in Google Workspace Without Losing Data</a></li>
+        <li><a href="/blog/google-workspace-shared-drive-setup.html">Google Workspace Shared Drive Setup: Best Practices for Small Business Teams</a></li>
+        </ul>
+      </div>
+    </aside>
+
     <div class="cta-box">
       <h2>Want Busywork Removed From Your Team's Day?</h2>
       <p>I build custom Apps Script workflows for small businesses — scoped, documented, and delivered in 1–2 weeks. Starting at $1,499.</p>
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLScGj_hocIEBDevsfLjQlSHTX74xX78hrLmz2TUejaFRTTBkvQ/viewform?usp=header" target="_blank" rel="noreferrer" class="btn">Start an Automation Sprint &rarr;</a>
+      <a href="/book/" class="btn">Start an Automation Sprint &rarr;</a>
     </div>
   </article>
 
   <footer>
+    <div style="margin-bottom:0.75rem;">
+      <a href="/services/google-workspace-setup.html">Workspace Setup</a>
+      <a href="/services/email-security-audit.html">Email Security Audit</a>
+      <a href="/services/google-workspace-automation.html">Apps Script Automation</a>
+      <a href="/free-checklist/">Free Security Checklist</a>
+      <a href="/book/">Book a Consult</a>
+    </div>
     <div style="margin-bottom:0.75rem;">
       <a href="/terms.html">Terms</a>
       <a href="/privacy.html">Privacy</a>

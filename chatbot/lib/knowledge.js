@@ -35,7 +35,7 @@ Every engagement includes a clear scope document before work starts, documentati
 - **Fractional IT Lead** — $3,950/mo, up to 25 hrs, priority 4-business-hour response. Everything in Managed plus project work, security remediation and hardening, vendor and tooling management, on-call escalation, quarterly IT roadmap session.
 
 ## About Steve
-- 7+ years of Google Workspace experience; Meta and Salesforce alumni. Fixed-price packages.
+- 10+ years of Google Workspace experience; Meta and Salesforce alumni. Fixed-price packages.
 - Specialties: Workspace setup and migrations, email security (SPF/DKIM/DMARC), Apps Script automation, admin console and security hardening, SSO/SAML/SCIM with identity providers like Okta.
 - More about Steve: https://stevemoynihan.com
 

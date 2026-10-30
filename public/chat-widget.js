@@ -2,8 +2,7 @@
   "use strict";
 
   const API_URL = "https://stevesitpro-chatbot.vercel.app/api/chat";
-  const CONSULT_URL =
-    "https://docs.google.com/forms/d/e/1FAIpQLScGj_hocIEBDevsfLjQlSHTX74xX78hrLmz2TUejaFRTTBkvQ/viewform?usp=header";
+  const CONSULT_URL = "https://stevesitpro.com/book/";
 
   let messages = [];
   let isOpen = false;

@@ -1,5 +1,5 @@
 import { Check, Clock, Sparkles, Zap } from "lucide-react";
-import { CONTACT_EMAIL, INTAKE_FORM_URL, track } from "../config";
+import { BOOK_URL, CONTACT_EMAIL, track } from "../config";
 import { RETAINER_TIERS as tiers } from "../data/pricing";
 
 export default function RetainerPlans() {
@@ -48,9 +48,7 @@ export default function RetainerPlans() {
                 Subscribe →
               </a>
               <a
-                href={INTAKE_FORM_URL}
-                target="_blank"
-                rel="noreferrer"
+                href={BOOK_URL}
                 className="border border-white/20 rounded-xl py-2.5 text-center text-white/60 text-sm hover:text-white hover:border-white/40 transition"
               >
                 Ask a question first

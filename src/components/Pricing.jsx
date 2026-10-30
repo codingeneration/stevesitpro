@@ -1,5 +1,5 @@
 import { Check, Sparkles } from "lucide-react";
-import { CONTACT_EMAIL, INTAKE_FORM_URL, track } from "../config";
+import { BOOK_URL, CONTACT_EMAIL, SERVICE_PAGES, track } from "../config";
 import { PACKAGES as tiers } from "../data/pricing";
 
 export default function Pricing() {
@@ -20,7 +20,9 @@ export default function Pricing() {
             )}
             <div className="text-3xl font-extrabold">{t.price}</div>
             <div className="text-white/50 text-sm">{t.cadence}</div>
-            <h3 className="mt-2 text-lg font-semibold text-white">{t.name}</h3>
+            <h3 className="mt-2 text-lg font-semibold text-white">
+              <a href={t.page} className="hover:text-emerald-400 transition">{t.name}</a>
+            </h3>
             <ul className="mt-4 space-y-2 text-sm flex-1">
               {t.points.map((p, i) => (
                 <li key={i} className="flex gap-2 text-white/70">
@@ -39,12 +41,10 @@ export default function Pricing() {
                 Get started →
               </a>
               <a
-                href={INTAKE_FORM_URL}
-                target="_blank"
-                rel="noreferrer"
+                href={t.page}
                 className="border border-white/20 rounded-xl py-2.5 text-center text-white/60 text-sm hover:text-white hover:border-white/40 transition"
               >
-                Ask a question first
+                See what's included
               </a>
             </div>
           </div>
@@ -53,7 +53,7 @@ export default function Pricing() {
 
       {/* Money-back / risk-reduction note */}
       <p className="text-center text-white/30 text-xs mt-6">
-        All packages include a clear scope document before work begins. Questions? <a href={`mailto:${CONTACT_EMAIL}`} className="text-emerald-400 hover:underline">Email Steve directly</a>.
+        All packages include a clear scope document before work begins. Only need email fixed? See the <a href={SERVICE_PAGES.emailSecurity} className="text-emerald-400 hover:underline">email security audit</a>. Questions? <a href={BOOK_URL} className="text-emerald-400 hover:underline">Book a free call</a> or <a href={`mailto:${CONTACT_EMAIL}`} className="text-emerald-400 hover:underline">email Steve directly</a>.
       </p>
     </section>
   );

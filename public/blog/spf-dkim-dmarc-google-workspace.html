@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>How to Set Up SPF, DKIM, and DMARC for Google Workspace (2026 Guide) | Steve's IT Pro</title>
-  <meta name="description" content="Your emails are vulnerable without SPF, DKIM, and DMARC. This step-by-step guide shows you how to lock down your Google Workspace email authentication — and why it matters for your business." />
+  <title>SPF, DKIM &amp; DMARC Setup for Google Workspace (2026)</title>
+  <meta name="description" content="Step-by-step SPF, DKIM and DMARC setup for Google Workspace, with the exact DNS records, a safe DMARC rollout plan and fixes for common mistakes." />
   <meta name="author" content="Steve Moynihan" />
   <link rel="canonical" href="https://stevesitpro.com/blog/spf-dkim-dmarc-google-workspace.html" />
 
   <!-- Open Graph -->
   <meta property="og:type" content="article" />
-  <meta property="og:title" content="How to Set Up SPF, DKIM, and DMARC for Google Workspace (2026 Guide)" />
+  <meta property="og:title" content="SPF, DKIM &amp; DMARC Setup for Google Workspace (2026)" />
   <meta property="og:description" content="Your emails are vulnerable without SPF, DKIM, and DMARC. This step-by-step guide shows you how to lock down your Google Workspace email authentication." />
   <meta property="og:url" content="https://stevesitpro.com/blog/spf-dkim-dmarc-google-workspace.html" />
   <meta property="og:site_name" content="Steve's IT Pro" />
@@ -18,30 +18,122 @@
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="How to Set Up SPF, DKIM, and DMARC for Google Workspace (2026 Guide)" />
+  <meta name="twitter:title" content="SPF, DKIM &amp; DMARC Setup for Google Workspace (2026)" />
   <meta name="twitter:description" content="Your emails are vulnerable without SPF, DKIM, and DMARC. This step-by-step guide shows you how to lock down your Google Workspace email authentication." />
   <meta name="twitter:image" content="https://stevesitpro.com/og-image.png" />
 
   <!-- Structured Data -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    "headline": "How to Set Up SPF, DKIM, and DMARC for Google Workspace (2026 Guide)",
-    "description": "Your emails are vulnerable without SPF, DKIM, and DMARC. This step-by-step guide shows you how to lock down your Google Workspace email authentication.",
-    "author": {
-      "@type": "Person",
-      "name": "Steve Moynihan",
-      "url": "https://stevemoynihan.com"
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "How to Set Up SPF, DKIM, and DMARC for Google Workspace (2026 Guide)",
+  "description": "Step-by-step SPF, DKIM and DMARC setup for Google Workspace, with the exact DNS records, a safe DMARC rollout plan and how to verify it works.",
+  "author": {
+    "@type": "Person",
+    "@id": "https://stevesitpro.com/#steve",
+    "name": "Steve Moynihan",
+    "url": "https://stevemoynihan.com",
+    "sameAs": [
+      "https://stevemoynihan.com",
+      "https://www.linkedin.com/in/stevenmoynihan/"
+    ]
+  },
+  "publisher": {
+    "@type": "ProfessionalService",
+    "@id": "https://stevesitpro.com/#business",
+    "name": "Steve's IT Pro",
+    "url": "https://stevesitpro.com/",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://stevesitpro.com/logo.png"
+    }
+  },
+  "datePublished": "2026-03-12",
+  "dateModified": "2026-10-30",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://stevesitpro.com/blog/spf-dkim-dmarc-google-workspace.html"
+  },
+  "url": "https://stevesitpro.com/blog/spf-dkim-dmarc-google-workspace.html",
+  "image": "https://stevesitpro.com/og-image.png",
+  "inLanguage": "en-US",
+  "wordCount": 1729
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Does Google Workspace set up SPF, DKIM, and DMARC automatically?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Usually not. Google can add some records for you if you bought the domain through Google during sign-up, but DKIM signing has to be started in the Admin Console, and no DMARC record is created for you. Check all three yourself."
+      }
     },
-    "publisher": {
-      "@type": "Organization",
-      "name": "Steve's IT Pro",
-      "url": "https://stevesitpro.com"
+    {
+      "@type": "Question",
+      "name": "How long do SPF, DKIM, and DMARC changes take to work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most DNS changes are visible within an hour, but allow up to 48 hours. DKIM only starts working after you click Start authentication in Google Admin, once the DNS record is visible."
+      }
     },
-    "datePublished": "2026-03-12",
-    "dateModified": "2026-03-12"
-  }
+    {
+      "@type": "Question",
+      "name": "Will setting up DMARC stop my emails from going to spam?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Missing or broken authentication is the most common reason legitimate business email lands in spam, so fixing it usually helps quickly. It won't fix a blocklisted IP, a poor sending reputation, or spammy content, but it's the foundation everything else depends on."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should I use ~all or -all in my SPF record?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "With DMARC in place, ~all is a safe long-term choice because DMARC decides what happens to failing mail. Use -all only when you're certain every service that sends as your domain is listed in the record."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need DMARC if I'm a small business that sends very little email?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. DMARC protects your domain from being impersonated, which matters regardless of how much you send. A monitoring-only record takes five minutes to add and starts showing you who is sending as your domain."
+      }
+    }
+  ]
+}
+  </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://stevesitpro.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Guides",
+      "item": "https://stevesitpro.com/blog/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "How to Set Up SPF, DKIM, and DMARC for Google Workspace (2026 Guide)",
+      "item": "https://stevesitpro.com/blog/spf-dkim-dmarc-google-workspace.html"
+    }
+  ]
+}
   </script>
 
   <!-- Google Analytics -->
@@ -95,7 +187,33 @@
     footer a { color: rgba(255,255,255,0.4); margin: 0 0.5rem; }
     footer a:hover { color: #fff; }
     @media (max-width: 640px) { h1 { font-size: 1.5rem; } .policy-grid { grid-template-columns: 1fr; } .nav-links { display: none; } }
+    .related { display: grid; gap: 1rem; margin-top: 3rem; }
+    @media (min-width: 640px) { .related { grid-template-columns: 1fr 1fr; } }
+    .related > div { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 1rem; padding: 1.25rem; }
+    .related-label { display: block; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 0.5rem; }
+    .related-title { font-weight: 700; font-size: 1.05rem; }
+    .related p { font-size: 0.875rem; color: rgba(255,255,255,0.6); margin: 0.5rem 0 0; }
+    .related ul { list-style: none; padding: 0; margin: 0; }
+    .related li { display: block; margin: 0 0 0.5rem; font-size: 0.9rem; }
+    .byline a { color: rgba(255,255,255,0.6); }
+    h3 { font-size: 1.15rem; font-weight: 700; color: #fff; margin: 1.75rem 0 0.75rem; }
+    code { background: rgba(255,255,255,0.1); padding: 0.1rem 0.3rem; border-radius: 0.25rem; color: #6ee7b7; font-size: 0.9em; }
+    .code-block { overflow-x: auto; overflow-wrap: anywhere; }
+    h2[id] { scroll-margin-top: 4.5rem; }
+    .toc { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 1rem; padding: 1.25rem 1.5rem; margin-bottom: 2.5rem; }
+    .toc-label { display: block; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 0.5rem; }
+    .toc ol { list-style: decimal; padding-left: 1.25rem; margin: 0; }
+    .toc li { display: list-item; margin-bottom: 0.25rem; font-size: 0.9rem; }
+    .table-wrap { overflow-x: auto; margin-bottom: 1.5rem; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
+    th, td { text-align: left; padding: 0.6rem 0.75rem; border-bottom: 1px solid rgba(255,255,255,0.1); vertical-align: top; }
+    th { color: #fff; font-weight: 600; }
+    .faq-item { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 0.75rem; padding: 1rem 1.25rem; margin-bottom: 0.75rem; }
+    .faq-item summary { cursor: pointer; color: #fff; font-weight: 600; }
+    .faq-item p { margin: 0.75rem 0 0; color: rgba(255,255,255,0.7); }
   </style>
+  <meta property="article:published_time" content="2026-03-12" />
+  <meta property="article:modified_time" content="2026-10-30" />
 </head>
 <body>
 
@@ -103,12 +221,14 @@
     <div class="header-inner">
       <div style="display:flex;align-items:center;gap:2rem;">
         <a href="/" class="logo">Steve's IT Pro</a>
-        <nav class="nav-links">
+        <nav class="nav-links" aria-label="Main">
+          <a href="/#services">Services</a>
+          <a href="/blog/">Guides</a>
+          <a href="/free-checklist/">Free Checklist</a>
           <a href="https://stevemoynihan.com" target="_blank" rel="noreferrer">About Steve</a>
-          <a href="/blog/">Blog</a>
         </nav>
       </div>
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLScGj_hocIEBDevsfLjQlSHTX74xX78hrLmz2TUejaFRTTBkvQ/viewform?usp=header" target="_blank" rel="noreferrer" class="cta-btn">Book a free consult &rarr;</a>
+      <a href="/book/" class="cta-btn">Book a free consult &rarr;</a>
     </div>
   </header>
 
@@ -117,95 +237,234 @@
 
     <span class="category">Email Security</span>
     <h1>How to Set Up SPF, DKIM, and DMARC for Google Workspace (2026 Guide)</h1>
-    <p class="byline">By Steve &middot; Google Workspace Consultant &middot; 8 min read</p>
+    <p class="byline">By <a href="https://stevemoynihan.com" rel="author" target="_blank">Steve Moynihan</a>, Google Workspace Consultant &middot; Updated <time datetime="2026-10-30">Oct 30, 2026</time> &middot; 14 min read</p>
 
     <p class="lead">
       If your business runs on Google Workspace and you haven't configured SPF, DKIM, and DMARC,
-      your emails are vulnerable. Bad actors can spoof your domain, send phishing emails that look
-      like they came from you, and damage your sender reputation — all without ever touching your
-      account. This guide walks you through exactly how to fix that.
+      your email is exposed twice over: anyone can send mail that looks like it came from your domain,
+      and your real invoices and proposals are more likely to land in spam. This guide gives you the exact
+      DNS records for Google Workspace, the Admin Console steps, a safe DMARC rollout plan, and how to
+      check that everything passes.
     </p>
 
-    <h2>What Are SPF, DKIM, and DMARC?</h2>
+    <nav class="toc" aria-label="Contents">
+      <span class="toc-label">In this guide</span>
+      <ol>
+        <li><a href="#what-they-are">What SPF, DKIM, and DMARC do</a></li>
+        <li><a href="#why-now">Why this is now mandatory</a></li>
+        <li><a href="#spf">Step 1: Set up SPF</a></li>
+        <li><a href="#dkim">Step 2: Turn on DKIM in Google Workspace</a></li>
+        <li><a href="#dmarc">Step 3: Add a DMARC policy</a></li>
+        <li><a href="#rollout">A safe DMARC rollout schedule</a></li>
+        <li><a href="#verify">How to check it's working</a></li>
+        <li><a href="#mistakes">Common mistakes</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ol>
+    </nav>
+
+    <h2 id="what-they-are">What Are SPF, DKIM, and DMARC?</h2>
     <p>
-      Think of these three protocols as a three-layer lock on your business email. Each one does
-      something different, but together they make it nearly impossible for anyone to impersonate
-      your domain.
+      Think of these three DNS records as a building's security desk. SPF is the guest list, DKIM is a
+      tamper-proof seal on every package, and DMARC is the instruction card telling the guard what to do
+      when someone shows up who isn't on the list.
     </p>
     <ul>
-      <li><span class="arrow">&rarr;</span> <div><strong>SPF (Sender Policy Framework):</strong> Tells receiving mail servers which IP addresses are allowed to send email on behalf of your domain. Unauthorized senders get flagged.</div></li>
-      <li><span class="arrow">&rarr;</span> <div><strong>DKIM (DomainKeys Identified Mail):</strong> Adds a cryptographic signature to every email you send so receiving servers can verify the message wasn't tampered with in transit.</div></li>
-      <li><span class="arrow">&rarr;</span> <div><strong>DMARC (Domain-based Message Authentication):</strong> The policy layer. It tells receiving servers what to do when SPF or DKIM checks fail — monitor, quarantine, or reject.</div></li>
+      <li><span class="arrow">&rarr;</span> <div><strong>SPF (Sender Policy Framework):</strong> A TXT record listing the servers allowed to send email for your domain. Receiving servers check the sending server against that list.</div></li>
+      <li><span class="arrow">&rarr;</span> <div><strong>DKIM (DomainKeys Identified Mail):</strong> Google signs every outgoing message with a private key. You publish the matching public key in DNS so receivers can confirm the message really came from you and wasn't altered.</div></li>
+      <li><span class="arrow">&rarr;</span> <div><strong>DMARC (Domain-based Message Authentication, Reporting &amp; Conformance):</strong> The policy layer. It tells receivers what to do when a message fails (nothing, spam folder, or reject) and sends you daily reports on who is sending as your domain.</div></li>
     </ul>
+    <p>
+      The piece most guides skip is <strong>alignment</strong>. DMARC only passes when SPF or DKIM passes
+      <em>and</em> the domain it checked matches the domain in the visible From: address. A newsletter tool
+      that passes SPF for its own domain but sends From: you@yourcompany.com still fails DMARC unless it
+      signs with DKIM for your domain. That's why third-party senders are where most setups break.
+    </p>
 
     <div class="callout">
-      <strong>Real-world impact:</strong> Without DMARC, anyone can send emails from your domain to your clients. They won't know it's fake. This is one of the most common ways small businesses lose client trust overnight.
+      <strong>Real-world impact:</strong> Without DMARC, anyone can send email from your domain to your clients, and they won't know it's fake. Spoofed invoice and payment-change emails are one of the most common ways small businesses lose money and client trust.
     </div>
 
-    <h2>Step 1: Set Up SPF</h2>
-    <p>Log in to your domain registrar (GoDaddy, Cloudflare, Namecheap, etc.) and add this TXT record:</p>
+    <h2 id="why-now">Why This Is Now Mandatory</h2>
+    <p>
+      Since February 2024, Gmail and Yahoo require every sender to authenticate with SPF or DKIM. Anyone sending
+      more than 5,000 messages a day to Gmail must have SPF, DKIM, <em>and</em> a DMARC record, with the From:
+      domain aligned. Microsoft applied similar rules to Outlook.com in 2025. Even if you send far less than
+      that, mail without authentication is treated as suspicious, and Gmail shows recipients a "Be careful with
+      this message" warning when it can't verify you.
+    </p>
+
+    <h2 id="spf">Step 1: Set Up SPF</h2>
+    <p>Sign in to wherever your domain's DNS lives (Cloudflare, GoDaddy, Namecheap, Squarespace Domains, etc.) and add one TXT record at the root of your domain:</p>
     <div class="code-block">
-      <div class="comment">// DNS TXT Record</div>
-      <div>Name: @</div>
+      <div class="comment">// DNS TXT record — Google Workspace only</div>
+      <div>Host / Name: @</div>
       <div>Value: v=spf1 include:_spf.google.com ~all</div>
-      <div>TTL: 3600</div>
+      <div>TTL: 3600 (or Auto)</div>
     </div>
-    <p>The <code style="background:rgba(255,255,255,0.1);padding:0.1rem 0.3rem;border-radius:0.25rem;color:#6ee7b7;">~all</code> means "soft fail" — unauthorized senders get flagged but not outright rejected. Once verified, switch to <code style="background:rgba(255,255,255,0.1);padding:0.1rem 0.3rem;border-radius:0.25rem;color:#6ee7b7;">-all</code> for strict enforcement.</p>
-    <p class="warn">&#9888;&#65039; You can only have one SPF record per domain. If you use Mailchimp, HubSpot, etc., combine them all into one record.</p>
-
-    <h2>Step 2: Enable DKIM in Google Workspace</h2>
-    <ol>
-      <li><span class="arrow" style="font-weight:700;width:1.25rem;flex-shrink:0;">1.</span> <span>Log in to admin.google.com</span></li>
-      <li><span class="arrow" style="font-weight:700;width:1.25rem;flex-shrink:0;">2.</span> <span>Go to Apps &rarr; Google Workspace &rarr; Gmail &rarr; Authenticate email</span></li>
-      <li><span class="arrow" style="font-weight:700;width:1.25rem;flex-shrink:0;">3.</span> <span>Select your domain and click Generate new record</span></li>
-      <li><span class="arrow" style="font-weight:700;width:1.25rem;flex-shrink:0;">4.</span> <span>Copy the TXT record (it starts with "v=DKIM1")</span></li>
-      <li><span class="arrow" style="font-weight:700;width:1.25rem;flex-shrink:0;">5.</span> <span>Add that TXT record in your DNS provider</span></li>
-      <li><span class="arrow" style="font-weight:700;width:1.25rem;flex-shrink:0;">6.</span> <span>Wait 24–48 hours, then return and click Start authentication</span></li>
-    </ol>
-
-    <h2>Step 3: Add a DMARC Policy</h2>
-    <p>Start with a monitor-only policy so you can observe before enforcing:</p>
+    <p>If other services also send email as your domain (a CRM, an email-marketing tool, a helpdesk, your accounting software), add each one's <code>include:</code> to the <em>same</em> record. Each vendor's help docs list the value to use:</p>
     <div class="code-block">
-      <div class="comment">// DNS TXT Record</div>
-      <div>Name: _dmarc</div>
-      <div>Value: v=DMARC1; p=none; rua=mailto:dmarc@yourdomain.com</div>
+      <div class="comment">// Example: Google Workspace plus a transactional email service</div>
+      <div>v=spf1 include:_spf.google.com include:sendgrid.net ~all</div>
+    </div>
+
+    <h3>~all or -all?</h3>
+    <p>
+      <code>~all</code> (soft fail) marks unlisted senders as suspicious; <code>-all</code> (hard fail) tells
+      receivers to reject them. Once DMARC is enforcing, DMARC makes the final call anyway, so <code>~all</code>
+      is a safe long-term choice. Use <code>-all</code> only when you're certain every legitimate sender is listed.
+    </p>
+
+    <h3>The two SPF rules that break everything</h3>
+    <ul>
+      <li><span class="x-mark">&#10007;</span> <span><strong>Only one SPF record per domain.</strong> Two records starting with <code>v=spf1</code> make SPF fail for <em>all</em> your mail. Merge them.</span></li>
+      <li><span class="x-mark">&#10007;</span> <span><strong>Ten DNS lookups maximum.</strong> Every <code>include:</code>, <code>a</code>, <code>mx</code>, and nested include counts. Go over ten and SPF returns a permanent error. Remove services you no longer use, and prefer DKIM-based authentication for vendors that offer it.</span></li>
+    </ul>
+
+    <h2 id="dkim">Step 2: Turn On DKIM in Google Workspace</h2>
+    <p>DKIM is off by default in Google Workspace. Until you turn it on, Google signs your mail with a generic Google key that doesn't align with your domain, which means it does nothing for DMARC.</p>
+    <ol>
+      <li><span class="arrow" style="font-weight:700;width:1.25rem;flex-shrink:0;">1.</span> <span>Sign in to <strong>admin.google.com</strong> as a super admin.</span></li>
+      <li><span class="arrow" style="font-weight:700;width:1.25rem;flex-shrink:0;">2.</span> <span>Go to <strong>Apps &rarr; Google Workspace &rarr; Gmail &rarr; Authenticate email</strong>.</span></li>
+      <li><span class="arrow" style="font-weight:700;width:1.25rem;flex-shrink:0;">3.</span> <span>Pick your domain, then click <strong>Generate new record</strong>. Choose a <strong>2048-bit</strong> key and leave the prefix selector as <code>google</code>.</span></li>
+      <li><span class="arrow" style="font-weight:700;width:1.25rem;flex-shrink:0;">4.</span> <span>Copy the TXT record name (<code>google._domainkey</code>) and value (it starts with <code>v=DKIM1; k=rsa; p=</code>).</span></li>
+      <li><span class="arrow" style="font-weight:700;width:1.25rem;flex-shrink:0;">5.</span> <span>Add that TXT record at your DNS provider.</span></li>
+      <li><span class="arrow" style="font-weight:700;width:1.25rem;flex-shrink:0;">6.</span> <span>Wait for DNS to update (usually under an hour, up to 48 hours), then return to the same screen and click <strong>Start authentication</strong>. The status should change to "Authenticating email with DKIM."</span></li>
+    </ol>
+    <div class="code-block">
+      <div class="comment">// DNS TXT record — value shortened</div>
+      <div>Host / Name: google._domainkey</div>
+      <div>Value: v=DKIM1; k=rsa; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA…</div>
+    </div>
+    <p class="warn">&#9888;&#65039; Some older DNS panels cap a TXT value at 255 characters and silently cut a 2048-bit key in half. If Google says the record is invalid, check the saved value is complete. Most panels (including Cloudflare) split long values automatically; a few need you to paste it as two quoted strings.</p>
+    <p>Do the same for every service that sends as your domain. Most email-marketing and CRM tools give you one or two CNAME records for DKIM. Those are what make their mail align for DMARC, and they don't count against SPF's ten-lookup limit.</p>
+
+    <h2 id="dmarc">Step 3: Add a DMARC Policy</h2>
+    <p>Start with a monitor-only policy. It changes nothing about delivery but starts the daily reports, so you can see every service sending as you before you enforce anything:</p>
+    <div class="code-block">
+      <div class="comment">// DNS TXT record</div>
+      <div>Host / Name: _dmarc</div>
+      <div>Value: v=DMARC1; p=none; rua=mailto:dmarc-reports@yourdomain.com</div>
       <div>TTL: 3600</div>
     </div>
-    <p>After 2–4 weeks of reviewing reports, escalate your policy:</p>
+    <p>What each tag means:</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Tag</th><th>What it does</th><th>Typical value</th></tr></thead>
+        <tbody>
+          <tr><td><code>p</code></td><td>Policy for your main domain</td><td><code>none</code> &rarr; <code>quarantine</code> &rarr; <code>reject</code></td></tr>
+          <tr><td><code>rua</code></td><td>Where daily aggregate reports go</td><td>A group or shared mailbox, not a person's inbox</td></tr>
+          <tr><td><code>pct</code></td><td>Share of failing mail the policy applies to</td><td><code>25</code>, then <code>100</code> during rollout</td></tr>
+          <tr><td><code>sp</code></td><td>Policy for subdomains (defaults to <code>p</code>)</td><td>Same as <code>p</code>, or <code>reject</code> if you never send from subdomains</td></tr>
+          <tr><td><code>adkim</code> / <code>aspf</code></td><td>Strict (<code>s</code>) or relaxed (<code>r</code>) alignment</td><td>Leave at the default, relaxed</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="warn">&#9888;&#65039; Aggregate reports are XML files, one per receiver per day. Create a Google Group or dedicated mailbox for them, and use a DMARC report viewer (many have free tiers) to turn them into readable charts.</p>
+
+    <h2 id="rollout">A Safe DMARC Rollout Schedule</h2>
+    <p>Jumping straight to <code>p=reject</code> is the fastest way to block your own invoices. Move up one step at a time, and only when the reports show every legitimate sender passing:</p>
     <div class="policy-grid">
       <div class="policy-card">
         <div class="mono">p=none</div>
-        <div class="label">Monitor</div>
-        <div class="desc">Collect data only</div>
+        <div class="label">Weeks 1–4: Monitor</div>
+        <div class="desc">Read reports. Fix SPF/DKIM for every real sender you find.</div>
       </div>
       <div class="policy-card">
-        <div class="mono">p=quarantine</div>
-        <div class="label">Quarantine</div>
-        <div class="desc">Suspicious mail &rarr; spam</div>
+        <div class="mono">p=quarantine; pct=25&rarr;100</div>
+        <div class="label">Weeks 5–8: Quarantine</div>
+        <div class="desc">Failing mail goes to spam. Ramp pct up as reports stay clean.</div>
       </div>
       <div class="policy-card">
         <div class="mono">p=reject</div>
-        <div class="label">Reject</div>
-        <div class="desc">Block unauthorized email</div>
+        <div class="label">Week 9+: Reject</div>
+        <div class="desc">Spoofed mail is refused outright. Keep reading reports monthly.</div>
       </div>
     </div>
+    <p>
+      For a small business with just Google Workspace and one or two other tools, the whole process often takes
+      six to eight weeks. If the reports show nothing but Google and services you've already fixed, you can move faster.
+    </p>
 
-    <h2>Common Mistakes to Avoid</h2>
+    <h2 id="verify">How to Check It's Working</h2>
+    <p><strong>In Gmail:</strong> send a message from your domain to a personal Gmail account, open it, click the three-dot menu, and choose <strong>Show original</strong>. You want three lines reading PASS:</p>
+    <div class="code-block">
+      <div>SPF:   PASS with IP 209.85.220.41</div>
+      <div>DKIM:  'PASS' with domain yourdomain.com</div>
+      <div>DMARC: 'PASS'</div>
+    </div>
+    <p>The DKIM line must name <em>your</em> domain, not <code>gappssmtp.com</code>. If it shows Google's domain, DKIM isn't turned on yet (Step 2, item 6).</p>
+    <p><strong>From a terminal:</strong> query the records directly to confirm what the world sees:</p>
+    <div class="code-block">
+      <div>dig TXT yourdomain.com +short</div>
+      <div>dig TXT google._domainkey.yourdomain.com +short</div>
+      <div>dig TXT _dmarc.yourdomain.com +short</div>
+    </div>
+    <p><strong>With Google's tools:</strong> the free <a href="https://toolbox.googleapps.com/apps/checkmx/" target="_blank" rel="noopener">Google Admin Toolbox Check MX</a> flags missing or broken SPF, DKIM, and DMARC records. If you send marketing email, <a href="https://postmaster.google.com/" target="_blank" rel="noopener">Google Postmaster Tools</a> shows your domain's spam rate and authentication pass rates over time.</p>
+
+    <h2 id="mistakes">Common Mistakes to Avoid</h2>
     <ul>
-      <li><span class="x-mark">&#10007;</span> <span><strong>Multiple SPF records:</strong> You can only have one. Combine all services into a single record.</span></li>
-      <li><span class="x-mark">&#10007;</span> <span><strong>Jumping straight to p=reject:</strong> Always start with p=none and monitor first or you risk blocking legitimate email.</span></li>
-      <li><span class="x-mark">&#10007;</span> <span><strong>Forgetting subdomains:</strong> If you send from subdomains, they need their own DMARC coverage.</span></li>
-      <li><span class="x-mark">&#10007;</span> <span><strong>No rua address:</strong> Without an aggregate report address you can't see who's spoofing you.</span></li>
+      <li><span class="x-mark">&#10007;</span> <span><strong>Two SPF records:</strong> Very common after switching email providers. Delete the old one and merge its includes.</span></li>
+      <li><span class="x-mark">&#10007;</span> <span><strong>Publishing DKIM but never clicking Start authentication:</strong> The DNS record alone does nothing. Google has to start signing with it.</span></li>
+      <li><span class="x-mark">&#10007;</span> <span><strong>Jumping straight to p=reject:</strong> Always start with p=none and watch the reports first, or you will block legitimate email you forgot about.</span></li>
+      <li><span class="x-mark">&#10007;</span> <span><strong>Forgetting third-party senders:</strong> Your website's contact form, invoicing tool, and newsletter platform all send as you. Each needs SPF and, ideally, its own DKIM.</span></li>
+      <li><span class="x-mark">&#10007;</span> <span><strong>No rua address:</strong> Without reports you can't see who's sending as your domain, so you can never safely enforce.</span></li>
+      <li><span class="x-mark">&#10007;</span> <span><strong>Leaving parked domains unprotected:</strong> Domains you own but don't send from can still be spoofed. Give them <code>v=spf1 -all</code> and <code>v=DMARC1; p=reject;</code>.</span></li>
     </ul>
+
+    <h2 id="faq">Frequently Asked Questions</h2>
+    <div class="faq">
+      <details class="faq-item">
+        <summary>Does Google Workspace set up SPF, DKIM, and DMARC automatically?</summary>
+        <p>Usually not. Google can add some records for you if you bought the domain through Google during sign-up, but DKIM signing has to be started in the Admin Console, and no DMARC record is created for you. Check all three yourself.</p>
+      </details>
+      <details class="faq-item">
+        <summary>How long do SPF, DKIM, and DMARC changes take to work?</summary>
+        <p>Most DNS changes are visible within an hour, but allow up to 48 hours. DKIM only starts working after you click Start authentication in Google Admin, once the DNS record is visible.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Will setting up DMARC stop my emails from going to spam?</summary>
+        <p>Missing or broken authentication is the most common reason legitimate business email lands in spam, so fixing it usually helps quickly. It won't fix a blocklisted IP, a poor sending reputation, or spammy content, but it's the foundation everything else depends on.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Should I use ~all or -all in my SPF record?</summary>
+        <p>With DMARC in place, ~all is a safe long-term choice because DMARC decides what happens to failing mail. Use -all only when you're certain every service that sends as your domain is listed in the record.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Do I need DMARC if I'm a small business that sends very little email?</summary>
+        <p>Yes. DMARC protects your domain from being impersonated, which matters regardless of how much you send. A monitoring-only record takes five minutes to add and starts showing you who is sending as your domain.</p>
+      </details>
+    </div>
+
+    <aside class="related" aria-label="Related">
+      <div class="related-service">
+        <span class="related-label">Done-for-you service</span>
+        <a class="related-title" href="/services/email-security-audit.html">Email Security Audit &rarr;</a>
+        <p>I'll audit and fix SPF, DKIM and DMARC for your domain, test delivery to Gmail, Outlook and Yahoo, and document every change. Fixed price, 2–3 business days.</p>
+      </div>
+      <div class="related-guides">
+        <span class="related-label">Related guides</span>
+        <ul>
+        <li><a href="/blog/google-workspace-security-checklist-small-business.html">Google Workspace Security Checklist for Small Business (2026)</a></li>
+        <li><a href="/blog/google-workspace-vs-microsoft-365-small-business.html">Google Workspace vs. Microsoft 365 for Small Business: An Honest Comparison (2026)</a></li>
+        </ul>
+      </div>
+    </aside>
 
     <div class="cta-box">
       <h2>Not Sure If Your Setup Is Correct?</h2>
       <p>A misconfigured record can silently break email deliverability for weeks. Book a free consult and I'll audit your full Google Workspace email security — at no charge.</p>
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLScGj_hocIEBDevsfLjQlSHTX74xX78hrLmz2TUejaFRTTBkvQ/viewform?usp=header" target="_blank" rel="noreferrer" class="btn">Book a Free Consult &rarr;</a>
+      <a href="/book/" class="btn">Book a Free Consult &rarr;</a>
     </div>
   </article>
 
   <footer>
+    <div style="margin-bottom:0.75rem;">
+      <a href="/services/google-workspace-setup.html">Workspace Setup</a>
+      <a href="/services/email-security-audit.html">Email Security Audit</a>
+      <a href="/services/google-workspace-automation.html">Apps Script Automation</a>
+      <a href="/free-checklist/">Free Security Checklist</a>
+      <a href="/book/">Book a Consult</a>
+    </div>
     <div style="margin-bottom:0.75rem;">
       <a href="/terms.html">Terms</a>
       <a href="/privacy.html">Privacy</a>

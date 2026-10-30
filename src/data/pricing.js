@@ -1,4 +1,4 @@
-import { STRIPE_LINKS } from "../config";
+import { SERVICE_PAGES, STRIPE_LINKS } from "../config";
 
 // One-time packages (shown in the Pricing section)
 export const PACKAGES = [
@@ -8,6 +8,7 @@ export const PACKAGES = [
     price: "$749",
     cadence: "one-time",
     stripe: STRIPE_LINKS.starter,
+    page: SERVICE_PAGES.setup,
     points: [
       "Workspace setup or cleanup",
       "SPF / DKIM / DMARC config",
@@ -21,6 +22,7 @@ export const PACKAGES = [
     price: "$1,499",
     cadence: "1–2 weeks",
     stripe: STRIPE_LINKS.automation,
+    page: SERVICE_PAGES.automation,
     popular: true,
     points: [
       "One scoped Apps Script workflow",

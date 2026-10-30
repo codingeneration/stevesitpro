@@ -1,0 +1,43 @@
+# Builds the site and publishes it to the gh-pages branch every time main
+# changes — the same thing `npm run deploy` does, without needing a computer
+# set up. GitHub Pages keeps serving from gh-pages, so no Pages settings change.
+# You can also run it by hand: Actions tab → "Deploy site" → Run workflow.
+name: Deploy site
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: deploy
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install
+        run: npm ci
+
+      - name: Build (includes homepage prerender)
+        run: npm run build
+
+      - name: Publish dist/ to gh-pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          publish_branch: gh-pages
+          cname: stevesitpro.com
+          commit_message: "Deploy ${{ github.sha }}"

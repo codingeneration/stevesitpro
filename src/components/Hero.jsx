@@ -45,7 +45,7 @@ export default function Hero() {
 
         {/* Trust signals */}
         <div className="mt-5 flex flex-wrap gap-3 text-xs text-white/40">
-          <span className="flex items-center gap-1"><BadgeCheck className="w-3.5 h-3.5 text-emerald-500" /> 7+ years Google Workspace</span>
+          <span className="flex items-center gap-1"><BadgeCheck className="w-3.5 h-3.5 text-emerald-500" /> 10+ years Google Workspace</span>
           <span className="flex items-center gap-1"><BadgeCheck className="w-3.5 h-3.5 text-emerald-500" /> Meta &amp; Salesforce alumni</span>
           <span className="flex items-center gap-1"><BadgeCheck className="w-3.5 h-3.5 text-emerald-500" /> Fixed-price packages</span>
         </div>
